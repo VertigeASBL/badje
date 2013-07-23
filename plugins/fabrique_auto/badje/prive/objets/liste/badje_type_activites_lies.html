@@ -1,0 +1,60 @@
+[(#SET{defaut_tri,#ARRAY{
+	multi type_activite,1,
+	id_type_activite,1
+}})
+]
+#SET{selection,#ENV**{selection,#ENV{objet_source}|lister_objets_lies{#ENV{objet},#ENV{id_objet},#ENV{_objet_lien}}}}
+#SET{debut,#ENV{debutbadl,#EVAL{_request("debutbadl");}}}
+<B_liste_badje_type_activites>
+[(#REM) En cas de pagination indirecte @32, il faut refaire le set car la boucle
+a mis a jour la valeur avec la page reelle]
+#SET{debut,#ENV{debutbadl,#EVAL{_request("debutbadl");}}}
+#SET{afficher_lettres,#TRI|=={'multi type_activite'}|oui}
+#ANCRE_PAGINATION
+<div class="liste-objets liste-objets-lies badje_type_activites">
+<table class='spip liste'>
+[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{type_activite:info_1_type_activite,type_activite:info_nb_badje_type_activites}})</strong></caption>]
+	<thead>
+		#SET{p,''}
+		<BOUCLE_lettre(BADJE_TYPE_ACTIVITES){tout}{id_type_activite IN #GET{selection}}{where?}
+			{tri #ENV{par,multi type_activite},#GET{defaut_tri}}{id_type_activite==#GET{afficher_lettres}|?{'.*','A'}}>[
+		(#TYPE_ACTIVITE**|extraire_multi|initiale|unique|oui)
+		[(#SET{p,#GET{p}|concat{
+		#SELF|parametre_url{debutbadl,@#ID_TYPE_ACTIVITE}|ancre_url{paginationbadl}|afficher_initiale{#TYPE_ACTIVITE**|extraire_multi|initiale{},#COMPTEUR_BOUCLE,#GET{debut},#ENV{nb,10}}
+		}})]
+		]#SAUTER{#ENV{nb,10}|moins{#COMPTEUR_BOUCLE|=={1}|?{2,1}}}</BOUCLE_lettre>[
+		(#SET{p,
+			#GET{p}|concat{
+				#REM|afficher_initiale{#REM,#TOTAL_BOUCLE,#GET{debut},#ENV{nb,10}}
+			}
+		})]</B_lettre>
+		[<tr><td colspan="4"><p class='pagination'>(#GET{p})</p></td></tr>]
+
+		<tr class='first_row'>
+			<th class='type_activite' scope='col'>[(#TRI{multi type_activite,<:type_activite:label_type_activite:>,ajax})]</th>
+			<th class='action' scope='col'></th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_badje_type_activites(BADJE_TYPE_ACTIVITES){id_type_activite IN #GET{selection}}
+		{tri #ENV{par,multi type_activite},#GET{defaut_tri}}{pagination #ENV{nb,10} badl}>
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})][ (#EXPOSE|unique)][ (#TYPE_ACTIVITE**|extraire_multi|initiale|=={#ENV{i}}|?{on}|unique)][(#ID_TYPE_ACTIVITE|=={#ENV{id_lien_ajoute}}|oui)append]">
+			<td class='type_activite'>[(#LOGO_TYPE_ACTIVITE|image_reduire{20,20})]<a href="[(#ID_TYPE_ACTIVITE|generer_url_entite{type_activite})]">#TYPE_ACTIVITE</a></td>
+
+			<td class='action'>
+				[(#ENV{editable}|oui)
+					<button class="button link delete" name="supprimer_lien\[type_activite-#ID_TYPE_ACTIVITE-#OBJET-#ID_OBJET\]" value="X"><:type_activite:retirer_lien_type_activite:> [(#CHEMIN_IMAGE{supprimer-12.png}|balise_img{'X'})]</button>
+				]
+			</td>
+		</tr>
+	</BOUCLE_liste_badje_type_activites>
+	</tbody>
+</table>
+[<p class='pagination'>(#PAGINATION{prive})</p>]
+[(#GRAND_TOTAL|>{3}|oui)<div class="action"><button class="button link" name="supprimer_lien\[type_activite-*-#OBJET-#ID_OBJET\]" value="X"><:type_activite:retirer_tous_liens_badje_type_activites:> [(#CHEMIN_IMAGE{supprimer-8.png}|balise_img{'X'})]</button></div>]
+</div>
+</B_liste_badje_type_activites>
+<div class="liste-objets liste-objets-lies BADJE_TYPE_ACTIVITES caption-wrap">
+	<strong class="caption">[(#ENV*{titre,<:type_activite:info_aucun_type_activite:>})]</strong>
+</div>
+<//B_liste_badje_type_activites>

@@ -1,0 +1,54 @@
+<div class='formulaire_spip formulaire_editer formulaire_#FORM formulaire_#FORM-#ENV{id_activite,nouveau}'>
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+	[(#ENV{editable})
+	<form method='post' action='#ENV{action}'><div>
+		#ACTION_FORMULAIRE{#ENV{action}}
+		<input type='hidden' name='id_activite' value='#ENV{id_activite}' />
+		<ul>
+
+			[(#SAISIE{input, nom, obligatoire=oui,
+				label=<:activite:label_nom:>})]
+
+			[(#SAISIE{textarea, descriptif,
+				label=<:activite:label_descriptif:>,
+				li_class=haut, class=inserer_barre_edition, rows=4})]
+
+			[(#SAISIE{input, prix,
+				label=<:activite:label_prix:>})]
+
+			[(#SAISIE{oui_non, accessibilite_handicap,
+				label=<:activite:label_accessibilite_handicap:>,
+				explication=<:activite:explication_accessibilite_handicap:> })]
+
+			[(#SAISIE{checkbox, logement,
+				label=<:activite:label_logement:>,
+				datas=[(#ARRAY{internat,internat,externat,externat})]})]
+
+			[(#SAISIE{oui_non, garderie,
+				label=<:activite:label_garderie:>})]
+
+			[(#SAISIE{oui_non, repas_chaud,
+				label=<:activite:label_repas_chaud:>})]
+
+			[(#SAISIE{input, nom_organisation,
+				label=<:activite:label_nom_organisation:>})]
+
+			[(#SAISIE{checkbox, periode,
+				label=<:activite:label_periode:>,
+				datas=[(#ARRAY{Toussaint,Toussaint, Noël,Noël, Carnaval,Carnaval, Pâques,Pâques, Juillet,Juillet, Août,Août})]})]
+
+			[(#SAISIE{input, age_min,
+				label=<:activite:label_age_min:>})]
+
+			[(#SAISIE{input, age_max,
+				label=<:activite:label_age_max:>})]
+
+		</ul>
+		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+		<!--extra-->
+		<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+	</div></form>
+	]
+</div>

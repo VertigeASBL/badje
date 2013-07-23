@@ -49,6 +49,8 @@ function badje_upgrade($nom_meta_base_version, $version_cible) {
 	# );
 	# ...
 
+	$maj['create'] = array(array('maj_tables', array('spip_badje_communes', 'spip_badje_communes_liens', 'spip_badje_organismes', 'spip_badje_organismes_liens', 'spip_badje_activites', 'spip_badje_activites_liens', 'spip_badje_type_activites', 'spip_badje_type_activites_liens')));
+
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 }
@@ -72,6 +74,19 @@ function badje_vider_tables($nom_meta_base_version) {
 	# sql_drop_table("spip_xx");
 	# sql_drop_table("spip_xx_liens");
 
+	sql_drop_table("spip_badje_communes");
+	sql_drop_table("spip_badje_communes_liens");
+	sql_drop_table("spip_badje_organismes");
+	sql_drop_table("spip_badje_organismes_liens");
+	sql_drop_table("spip_badje_activites");
+	sql_drop_table("spip_badje_activites_liens");
+	sql_drop_table("spip_badje_type_activites");
+	sql_drop_table("spip_badje_type_activites_liens");
+
+	# Nettoyer les versionnages et forums
+	sql_delete("spip_versions",              sql_in("objet", array('commune', 'organisme', 'activite', 'type_activite')));
+	sql_delete("spip_versions_fragments",    sql_in("objet", array('commune', 'organisme', 'activite', 'type_activite')));
+	sql_delete("spip_forum",                 sql_in("objet", array('commune', 'organisme', 'activite', 'type_activite')));
 
 	effacer_meta($nom_meta_base_version);
 }

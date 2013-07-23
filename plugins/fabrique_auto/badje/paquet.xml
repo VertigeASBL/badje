@@ -9,7 +9,7 @@
 	schema="1.0.0" 
 >
 	<!--
-		Paquet genere le 2013-06-20 11:59:13
+		Paquet genere le 2013-07-22 17:44:53
 		(Vous pouvez bien entendu supprimer ces commentaires) 
 	-->
 
@@ -39,6 +39,22 @@
 		<onglet nom="badje" titre="badje:badje_titre" parent="configuration" icone="images/badje-24.png" />
 	-->
 
+	<necessite nom="saisies" compatibilite="[1.24.0;]" /> 
 
+	<pipeline nom="autoriser" inclure="badje_autorisations.php" /> 
 
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/badje.php" /> 
+	<pipeline nom="declarer_tables_interfaces" inclure="base/badje.php" /> 
+	<pipeline nom="declarer_tables_auxiliaires" inclure="base/badje.php" /> 
+	<pipeline nom="affiche_milieu" inclure="badje_pipelines.php" /> 
+	<pipeline nom="optimiser_base_disparus" inclure="badje_pipelines.php" /> 
+
+	<menu nom="badje_communes" titre="commune:titre_badje_communes" parent="menu_edition" icone="images/commune-16.png" action="badje_communes" /> 
+	<menu nom="commune_creer" titre="commune:icone_creer_commune" parent="outils_rapides" icone="images/commune-new-16.png" action="commune_edit" parametres="new=oui" /> 
+	<menu nom="badje_organismes" titre="organisme:titre_badje_organismes" parent="menu_edition" icone="images/organisme-16.png" action="badje_organismes" /> 
+	<menu nom="organisme_creer" titre="organisme:icone_creer_organisme" parent="outils_rapides" icone="images/organisme-new-16.png" action="organisme_edit" parametres="new=oui" /> 
+	<menu nom="badje_activites" titre="activite:titre_badje_activites" parent="menu_edition" icone="images/activite-16.png" action="badje_activites" /> 
+	<menu nom="activite_creer" titre="activite:icone_creer_activite" parent="outils_rapides" icone="images/activite-new-16.png" action="activite_edit" parametres="new=oui" /> 
+	<menu nom="badje_type_activites" titre="type_activite:titre_badje_type_activites" parent="menu_edition" icone="images/type_activite-16.png" action="badje_type_activites" /> 
+	<menu nom="type_activite_creer" titre="type_activite:icone_creer_type_activite" parent="outils_rapides" icone="images/type_activite-new-16.png" action="type_activite_edit" parametres="new=oui" /> 
 </paquet>

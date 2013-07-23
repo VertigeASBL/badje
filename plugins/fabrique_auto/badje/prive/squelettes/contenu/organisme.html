@@ -1,0 +1,46 @@
+[(#AUTORISER{voir,organisme,#ID_ORGANISME}|sinon_interdire_acces)]
+<BOUCLE_organisme(BADJE_ORGANISMES){id_organisme}{si #ENV{exec}|=={organisme}}>
+[(#BOITE_OUVRIR{[
+	[(#AUTORISER{modifier,organisme,#ID_ORGANISME})
+		[(#ID_ORGANISME|afficher_qui_edite{organisme}|non)
+			[(#URL_ECRIRE{organisme_edit,id_organisme=#ID_ORGANISME}|icone_verticale{<:organisme:icone_modifier_organisme:>,organisme,edit,right ajax preload})]
+		]
+		[(#ID_ORGANISME|afficher_qui_edite{organisme}|oui)
+			[(#URL_ECRIRE{organisme_edit,id_organisme=#ID_ORGANISME}|icone_verticale{#ID_ORGANISME|afficher_qui_edite{organisme},warning-24,'',right edition_deja ajax preload})]
+		]
+	]
+
+	<h1>[(#RANG). ](#NOM_ORGANISME|sinon{<:info_sans_titre:>})[(#CHEMIN_IMAGE{organisme-24.png}|balise_img{organisme,cadre-icone})]</h1>
+
+],simple fiche_objet})]
+
+<div class="ajax">
+	#FORMULAIRE_DATER{organisme,#ID_ORGANISME}
+</div>
+
+<!--affiche_milieu-->
+
+<div id="wysiwyg">
+<INCLURE{fond=prive/objets/contenu/organisme,id=#ID_ORGANISME,id_organisme=#ID_ORGANISME,virtuel=oui,ajax=wysiwyg,wysiwyg=1}>
+</div>
+
+<div class="nettoyeur"></div>
+
+[(#AUTORISER{modifier,organisme,#ID_ORGANISME})
+	[(#ID_ORGANISME|afficher_qui_edite{organisme}|non)
+		[(#URL_ECRIRE{organisme_edit,id_organisme=#ID_ORGANISME}|icone_verticale{<:organisme:icone_modifier_organisme:>,organisme,edit,right ajax preload})]
+	]
+	[(#ID_ORGANISME|afficher_qui_edite{organisme}|oui)
+		[(#URL_ECRIRE{organisme_edit,id_organisme=#ID_ORGANISME}|icone_verticale{#ID_ORGANISME|afficher_qui_edite{organisme},warning-24,'',right edition_deja ajax preload})]
+	]
+]
+
+#PIPELINE{afficher_complement_objet,#ARRAY{args,#ARRAY{type,organisme,id,#ID_ORGANISME},data,'<div class="nettoyeur"></div>'}}
+
+#BOITE_FERMER
+[(#EVAL{_AJAX}|oui)
+	<script type="text/javascript">/*<!\\[CDATA\\[*/reloadExecPage('#ENV{exec}','#navigation,#chemin');/*\\]\\]>*/</script>
+]
+</BOUCLE_organisme>
+[(#ENV**{exec}|=={organisme_edit}|?{#INCLURE{fond=prive/squelettes/contenu/organisme_edit,redirect='',env,retourajax=oui},#REM|sinon_interdire_acces})]
+<//B_organisme>

@@ -1,0 +1,30 @@
+[(#ID_OBJET|oui)
+	[(#AUTORISER{modifier,organisme,#ID_ORGANISME}|sinon_interdire_acces)]
+][(#ID_OBJET|non)
+	[(#AUTORISER{creer,organisme}|sinon_interdire_acces)]
+]
+ 
+#SET{redirect,#ENV{redirect}|sinon{#ID_ORGANISME|?{#ID_ORGANISME|generer_url_entite{organisme},#URL_ECRIRE{badje_organismes}}}}
+
+<div class='cadre-formulaire-editer'>
+<div class="entete-formulaire">
+	[(#ID_ORGANISME|oui)
+	[(#GET{redirect}|icone_verticale{Retour,organisme,'',left retour[(#ENV{retourajax,''}|oui)ajax preload]})]
+	]
+	[
+		[(#ID_ORGANISME|?{<:organisme:icone_modifier_organisme:>,<:organisme:icone_creer_organisme:>})]
+		<h1>(#ENV{titre,#INFO_NOM_ORGANISME{organisme,#ID_ORGANISME}|sinon{<:info_sans_titre:>}})</h1>
+	]
+</div>
+
+#SET{redirect,#ENV{redirect,#ID_ORGANISME|generer_url_entite{organisme}}}
+[(#ENV{retourajax,''}|oui)
+	#SET{redirect,'javascript:if (window.jQuery) jQuery(".entete-formulaire .retour a").followLink();'}
+	<div class="ajax">
+]
+		[(#FORMULAIRE_EDITER_ORGANISME{#ENV{id_organisme,oui}, #GET{redirect}, #ENV{associer_objet}})]
+[(#ENV{retourajax,''}|oui)
+	</div>
+	<script type="text/javascript">/*<!\[CDATA\[*/reloadExecPage('#ENV{exec}');/*\]\]>*/</script>
+]
+</div>

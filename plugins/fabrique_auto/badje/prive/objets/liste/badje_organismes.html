@@ -1,0 +1,34 @@
+[(#SET{defaut_tri,#ARRAY{
+	nom_organisme,1, 
+	id_organisme,1,
+	points,-1
+}})]<B_liste_badje_organismes>
+#ANCRE_PAGINATION
+<div class="liste-objets badje_organismes">
+<table class='spip liste'>
+	[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{organisme:info_1_organisme,organisme:info_nb_badje_organismes}})</strong></caption>]
+	<thead>
+		<tr class='first_row'>
+			<th class='picto' scope='col'></th>
+			<th class='nom_organisme' scope='col'>[(#TRI{nom_organisme,<:organisme:label_nom_organisme:>,ajax})]</th>
+			<th class='id' scope='col'>[(#TRI{id_organisme,<:info_numero_abbreviation:>,ajax})]</th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){id_mot?}{id_auteur?}{where?}{recherche?}{tri #ENV{par,num nom_organisme},#GET{defaut_tri}}{par nom_organisme}{pagination #ENV{nb,10}}>
+		<tr class='[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]'>
+			<td class='picto'>[(#CHEMIN_IMAGE{organisme-16.png}|balise_img)]</td>
+			<td class='nom_organisme principale'>[(#LOGO_ORGANISME|image_reduire{20,26})]<a href="[(#ID_ORGANISME|generer_url_entite{organisme})]" title="<:info_numero_abbreviation|attribut_html:> #ID_ORGANISME">[(#RANG). ]#NOM_ORGANISME</a></td>
+			<td class='id'>[(#AUTORISER{modifier,organisme,#ID_ORGANISME}|?{
+				<a href="[(#URL_ECRIRE{organisme_edit,id_organisme=#ID_ORGANISME})]">#ID_ORGANISME</a>,
+				#ID_ORGANISME
+			})]</td>
+		</tr>
+	</BOUCLE_liste_badje_organismes>
+	</tbody>
+</table>
+[<p class='pagination'>(#PAGINATION{prive})</p>]
+</div>
+</B_liste_badje_organismes>[
+<div class="liste-objets badje_organismes caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
+]<//B_liste_badje_organismes>

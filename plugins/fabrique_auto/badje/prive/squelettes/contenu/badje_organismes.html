@@ -1,0 +1,8 @@
+#FORMULAIRE_RECHERCHE_ECRIRE{#SELF,ajax}
+<div class="nettoyeur"></div>
+
+<INCLURE{fond=prive/objets/liste/badje_organismes, par=nom_organisme, env, ajax, sinon=<:organisme:info_aucun_organisme:>}>
+
+[(#AUTORISER{creer,organisme})
+	[(#URL_ECRIRE{organisme_edit,new=oui}|icone_verticale{<:organisme:icone_creer_organisme:>,organisme,new,right})]
+]

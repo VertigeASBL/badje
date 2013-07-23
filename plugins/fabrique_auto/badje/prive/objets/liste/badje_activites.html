@@ -1,0 +1,36 @@
+[(#SET{defaut_tri,#ARRAY{
+	nom_organisation,1, 
+	id_activite,1,
+	points,-1
+}})]<B_liste_badje_activites>
+#ANCRE_PAGINATION
+<div class="liste-objets badje_activites">
+<table class='spip liste'>
+	[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{activite:info_1_activite,activite:info_nb_badje_activites}})</strong></caption>]
+	<thead>
+		<tr class='first_row'>
+			<th class='picto' scope='col'></th>
+			<th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th> 
+			<th class='nom_organisation' scope='col'>[(#TRI{nom_organisation,<:activite:label_nom_organisation:>,ajax})]</th>
+			<th class='id' scope='col'>[(#TRI{id_activite,<:info_numero_abbreviation:>,ajax})]</th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_badje_activites(BADJE_ACTIVITES){id_mot?}{id_auteur?}{where?}{statut?}{recherche?}{tri #ENV{par,num nom_organisation},#GET{defaut_tri}}{par nom_organisation}{pagination #ENV{nb,10}}>
+		<tr class='[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]'>
+			<td class='picto'>[(#CHEMIN_IMAGE{activite-16.png}|balise_img)]</td>
+			<td class='statut'>[(#STATUT|puce_statut{activite,#ID_ACTIVITE})]</td> 
+			<td class='nom_organisation principale'>[(#LOGO_ACTIVITE|image_reduire{20,26})]<a href="[(#ID_ACTIVITE|generer_url_entite{activite})]" title="<:info_numero_abbreviation|attribut_html:> #ID_ACTIVITE">[(#RANG). ]#NOM_ORGANISATION</a></td>
+			<td class='id'>[(#AUTORISER{modifier,activite,#ID_ACTIVITE}|?{
+				<a href="[(#URL_ECRIRE{activite_edit,id_activite=#ID_ACTIVITE})]">#ID_ACTIVITE</a>,
+				#ID_ACTIVITE
+			})]</td>
+		</tr>
+	</BOUCLE_liste_badje_activites>
+	</tbody>
+</table>
+[<p class='pagination'>(#PAGINATION{prive})</p>]
+</div>
+</B_liste_badje_activites>[
+<div class="liste-objets badje_activites caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
+]<//B_liste_badje_activites>

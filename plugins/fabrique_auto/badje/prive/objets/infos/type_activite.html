@@ -1,0 +1,7 @@
+<BOUCLE_type_activite(BADJE_TYPE_ACTIVITES){id_type_activite=#ENV{id}}>
+<div class='infos'>
+[(#SET{texte_objet,<:type_activite:titre_type_activite:>})]
+<div class='numero'><:titre_cadre_numero_objet{objet=#GET{texte_objet}}:><p>#ID_TYPE_ACTIVITE</p></div>
+
+</div>
+</BOUCLE_type_activite>
