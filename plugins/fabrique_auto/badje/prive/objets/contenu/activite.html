@@ -10,9 +10,29 @@
 	<span dir='#LANG_DIR' class='#EDIT{descriptif} descriptif'>(#DESCRIPTIF)</span>
 </div>]
 
+[<div class="champ contenu_adresse[ (#ADRESSE*|strlen|?{'',vide})]">
+	<label><:activite:label_adresse:> : </label>
+	<span dir='#LANG_DIR' class='#EDIT{adresse} adresse'>(#ADRESSE)</span>
+</div>]
+
+[<div class="champ contenu_commune[ (#COMMUNE*|strlen|?{'',vide})]">
+	<label><:activite:label_commune:> : </label>
+	<span dir='#LANG_DIR' class='#EDIT{commune} commune'>(#COMMUNE)</span>
+</div>]
+
+[<div class="champ contenu_code_postal[ (#CODE_POSTAL*|strlen|?{'',vide})]">
+	<label><:activite:label_code_postal:> : </label>
+	<span dir='#LANG_DIR' class='#EDIT{code_postal} code_postal'>(#CODE_POSTAL)</span>
+</div>]
+
 [<div class="champ contenu_prix[ (#PRIX*|strlen|?{'',vide})]">
 	<label><:activite:label_prix:> : </label>
 	<span dir='#LANG_DIR' class='#EDIT{prix} prix'>(#PRIX)</span>
+</div>]
+
+[<div class="champ contenu_accueil_handicap[ (#ACCUEIL_HANDICAP*|strlen|?{'',vide})]">
+	<label><:activite:label_accueil_handicap:> : </label>
+	<span dir='#LANG_DIR' class='#EDIT{accueil_handicap} accueil_handicap'>(#ACCUEIL_HANDICAP)</span>
 </div>]
 
 [<div class="champ contenu_accessibilite_handicap[ (#ACCESSIBILITE_HANDICAP*|strlen|?{'',vide})]">
@@ -33,11 +53,6 @@
 [<div class="champ contenu_repas_chaud[ (#REPAS_CHAUD*|strlen|?{'',vide})]">
 	<label><:activite:label_repas_chaud:> : </label>
 	<span dir='#LANG_DIR' class='#EDIT{repas_chaud} repas_chaud'>(#REPAS_CHAUD)</span>
-</div>]
-
-[<div class="champ contenu_nom_organisation[ (#NOM_ORGANISATION*|strlen|?{'',vide})]">
-	<label><:activite:label_nom_organisation:> : </label>
-	<span dir='#LANG_DIR' class='#EDIT{nom_organisation} nom_organisation'>(#NOM_ORGANISATION)</span>
 </div>]
 
 [<div class="champ contenu_periode[ (#PERIODE*|strlen|?{'',vide})]">

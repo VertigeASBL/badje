@@ -24,7 +24,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_fax' => 'Fax',
 	'label_gsm' => 'GSM',
 	'label_localite' => 'Localité',
-	'label_membre_badje' => 'membre badje',
 	'label_nom_organisme' => 'Nom de l\'organisme',
 	'label_one' => 'Association reconnue par l\'ONE',
 	'label_site_internet' => 'Site internet',

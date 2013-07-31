@@ -2,7 +2,7 @@
 
 /**
  *  Fichier généré par la Fabrique de plugin v5
- *   le 2013-07-22 17:44:53
+ *   le 2013-07-24 12:07:39
  *
  *  Ce fichier de sauvegarde peut servir à recréer
  *  votre plugin avec le plugin «Fabrique» qui a servi à le créer.
@@ -44,9 +44,10 @@ $data = array (
     'formulaire_config_titre' => '',
     'fichiers' => 
     array (
-      0 => 'fonctions',
-      1 => 'options',
-      2 => 'pipelines',
+      0 => 'autorisations',
+      1 => 'fonctions',
+      2 => 'options',
+      3 => 'pipelines',
     ),
     'inserer' => 
     array (
@@ -76,20 +77,20 @@ $data = array (
   array (
     0 => 
     array (
-      'nom' => 'Communes',
-      'nom_singulier' => 'Commune',
+      'nom' => 'Activités',
+      'nom_singulier' => 'Activité',
       'genre' => 'feminin',
       'logo_variantes' => 'on',
-      'table' => 'spip_badje_communes',
-      'cle_primaire' => 'id_commune',
+      'table' => 'spip_badje_activites',
+      'cle_primaire' => 'id_activite',
       'cle_primaire_sql' => 'bigint(21) NOT NULL',
-      'table_type' => 'commune',
+      'table_type' => 'activite',
       'champs' => 
       array (
         0 => 
         array (
-          'nom' => 'Nom de la commune',
-          'champ' => 'nom_commune',
+          'nom' => 'Nom',
+          'champ' => 'nom',
           'sql' => 'text NOT NULL DEFAULT \'\'',
           'caracteristiques' => 
           array (
@@ -102,44 +103,235 @@ $data = array (
           'explication' => '',
           'saisie_options' => '',
         ),
+        1 => 
+        array (
+          'nom' => 'Descriptif de l\'activité',
+          'champ' => 'descriptif',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '6',
+          'saisie' => 'textarea',
+          'explication' => '',
+          'saisie_options' => 'li_class=haut, class=inserer_barre_edition, rows=4',
+        ),
+        2 => 
+        array (
+          'nom' => 'Adresse de l\'activité',
+          'champ' => 'adresse',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '8',
+          'saisie' => 'textarea',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+        3 => 
+        array (
+          'nom' => 'Commune',
+          'champ' => 'commune',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '8',
+          'saisie' => 'input',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+        4 => 
+        array (
+          'nom' => 'Code Postal',
+          'champ' => 'code_postal',
+          'sql' => 'int(11) NOT NULL DEFAULT 0',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '6',
+          'saisie' => 'input',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+        5 => 
+        array (
+          'nom' => 'Prix',
+          'champ' => 'prix',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '',
+          'saisie' => 'input',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+        6 => 
+        array (
+          'nom' => 'Accueil des enfants en situation de handicap',
+          'champ' => 'accueil_handicap',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '',
+          'saisie' => 'oui_non',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+        7 => 
+        array (
+          'nom' => 'Accessibilite handicap',
+          'champ' => 'accessibilite_handicap',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '2',
+          'saisie' => 'oui_non',
+          'explication' => 'Accessible aux personnes handicapées',
+          'saisie_options' => '',
+        ),
+        8 => 
+        array (
+          'nom' => 'Logement',
+          'champ' => 'logement',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '',
+          'saisie' => 'checkbox',
+          'explication' => '',
+          'saisie_options' => 'datas=[(#ARRAY{Externat,Externat,Séjour,Séjour})]',
+        ),
+        9 => 
+        array (
+          'nom' => 'Garderie',
+          'champ' => 'garderie',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '',
+          'saisie' => 'oui_non',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+        10 => 
+        array (
+          'nom' => 'Repas chaud',
+          'champ' => 'repas_chaud',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '2',
+          'saisie' => 'oui_non',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+        11 => 
+        array (
+          'nom' => 'Période',
+          'champ' => 'periode',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '1',
+          'saisie' => 'checkbox',
+          'explication' => '',
+          'saisie_options' => 'datas=[(#ARRAY{
+Automne,automne, 
+Hiver,Hiver, 
+Détente,Détente, 
+Printemps,Printemps, 
+Juillet,Juillet, 
+Août,Août})]',
+        ),
+        12 => 
+        array (
+          'nom' => 'Age minimum',
+          'champ' => 'age_min',
+          'sql' => 'int(11) NOT NULL DEFAULT 0',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '6',
+          'saisie' => 'input',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+        13 => 
+        array (
+          'nom' => 'Age maximum',
+          'champ' => 'age_max',
+          'sql' => 'int(11) NOT NULL DEFAULT 0',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+          ),
+          'recherche' => '',
+          'saisie' => 'input',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
       ),
-      'champ_titre' => 'nom_commune',
+      'champ_titre' => 'nom',
       'champ_date' => '',
-      'statut' => '',
+      'statut' => 'on',
       'chaines' => 
       array (
-        'titre_objets' => 'Communes',
-        'titre_objet' => 'Commune',
-        'info_aucun_objet' => 'Aucune commune',
-        'info_1_objet' => 'Une commune',
-        'info_nb_objets' => '@nb@ communes',
-        'icone_creer_objet' => 'Créer une commune',
-        'icone_modifier_objet' => 'Modifier cette commune',
-        'titre_logo_objet' => 'Logo de cette commune',
-        'titre_langue_objet' => 'Langue de cette commune',
-        'titre_objets_rubrique' => 'Communes de la rubrique',
-        'info_objets_auteur' => 'Les communes de cet auteur',
-        'retirer_lien_objet' => 'Retirer cette commune',
-        'retirer_tous_liens_objets' => 'Retirer toutes les communes',
-        'ajouter_lien_objet' => 'Ajouter cette commune',
-        'texte_ajouter_objet' => 'Ajouter une commune',
-        'texte_creer_associer_objet' => 'Créer et associer une commune',
-        'texte_changer_statut_objet' => 'Cette commune est :',
+        'titre_objets' => 'Activités',
+        'titre_objet' => 'Activité',
+        'info_aucun_objet' => 'Aucune activité',
+        'info_1_objet' => 'Une activité',
+        'info_nb_objets' => '@nb@ activités',
+        'icone_creer_objet' => 'Créer une activité',
+        'icone_modifier_objet' => 'Modifier cette activité',
+        'titre_logo_objet' => 'Logo de cette activité',
+        'titre_langue_objet' => 'Langue de cette activité',
+        'titre_objets_rubrique' => 'Activités de la rubrique',
+        'info_objets_auteur' => 'Les activités de cet auteur',
+        'retirer_lien_objet' => 'Retirer cette activité',
+        'retirer_tous_liens_objets' => 'Retirer toutes les activités',
+        'ajouter_lien_objet' => 'Ajouter cette activité',
+        'texte_ajouter_objet' => 'Ajouter une activité',
+        'texte_creer_associer_objet' => 'Créer et associer une activité',
+        'texte_changer_statut_objet' => 'Cette activité est :',
       ),
-      'table_liens' => 'on',
-      'vue_liens' => 
-      array (
-        0 => 'spip_badje_organismes',
-      ),
+      'table_liens' => '',
       'roles' => '',
-      'auteurs_liens' => '',
-      'vue_auteurs_liens' => '',
-      'echafaudages' => 
-      array (
-        0 => 'prive/squelettes/contenu/objets.html',
-        1 => 'prive/objets/infos/objet.html',
-        2 => 'prive/squelettes/contenu/objet.html',
-      ),
+      'auteurs_liens' => 'on',
+      'vue_auteurs_liens' => 'on',
       'autorisations' => 
       array (
         'objet_creer' => '',
@@ -302,21 +494,6 @@ $data = array (
           'explication' => '',
           'saisie_options' => '',
         ),
-        9 => 
-        array (
-          'nom' => 'membre badje',
-          'champ' => 'membre_badje',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '',
-          'saisie' => 'oui_non',
-          'explication' => '',
-          'saisie_options' => '',
-        ),
         10 => 
         array (
           'nom' => 'Association reconnue par l\'ONE',
@@ -362,14 +539,8 @@ $data = array (
         0 => 'spip_badje_activites',
       ),
       'roles' => '',
-      'auteurs_liens' => '',
-      'vue_auteurs_liens' => '',
-      'echafaudages' => 
-      array (
-        0 => 'prive/squelettes/contenu/objets.html',
-        1 => 'prive/objets/infos/objet.html',
-        2 => 'prive/squelettes/contenu/objet.html',
-      ),
+      'auteurs_liens' => 'on',
+      'vue_auteurs_liens' => 'on',
       'autorisations' => 
       array (
         'objet_creer' => '',
@@ -386,236 +557,6 @@ $data = array (
     ),
     2 => 
     array (
-      'nom' => 'Activités',
-      'nom_singulier' => 'Activité',
-      'genre' => 'feminin',
-      'logo_variantes' => 'on',
-      'table' => 'spip_badje_activites',
-      'cle_primaire' => 'id_activite',
-      'cle_primaire_sql' => 'bigint(21) NOT NULL',
-      'table_type' => 'activite',
-      'champs' => 
-      array (
-        0 => 
-        array (
-          'nom' => 'Nom',
-          'champ' => 'nom',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-            2 => 'obligatoire',
-          ),
-          'recherche' => '8',
-          'saisie' => 'input',
-          'explication' => '',
-          'saisie_options' => '',
-        ),
-        1 => 
-        array (
-          'nom' => 'Descriptif de l\'activité',
-          'champ' => 'descriptif',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '6',
-          'saisie' => 'textarea',
-          'explication' => '',
-          'saisie_options' => 'li_class=haut, class=inserer_barre_edition, rows=4',
-        ),
-        2 => 
-        array (
-          'nom' => 'Prix',
-          'champ' => 'prix',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '',
-          'saisie' => 'input',
-          'explication' => '',
-          'saisie_options' => '',
-        ),
-        3 => 
-        array (
-          'nom' => 'Accessibilite handicap',
-          'champ' => 'accessibilite_handicap',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '2',
-          'saisie' => 'oui_non',
-          'explication' => 'Accessible aux personnes handicapées',
-          'saisie_options' => '',
-        ),
-        4 => 
-        array (
-          'nom' => 'Logement',
-          'champ' => 'logement',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '',
-          'saisie' => 'checkbox',
-          'explication' => '',
-          'saisie_options' => 'datas=[(#ARRAY{internat,internat,externat,externat})]',
-        ),
-        5 => 
-        array (
-          'nom' => 'Garderie',
-          'champ' => 'garderie',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '',
-          'saisie' => 'oui_non',
-          'explication' => '',
-          'saisie_options' => '',
-        ),
-        6 => 
-        array (
-          'nom' => 'Repas chaud',
-          'champ' => 'repas_chaud',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '2',
-          'saisie' => 'oui_non',
-          'explication' => '',
-          'saisie_options' => '',
-        ),
-        7 => 
-        array (
-          'nom' => 'nom_organisation',
-          'champ' => 'nom_organisation',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '6',
-          'saisie' => 'input',
-          'explication' => '',
-          'saisie_options' => '',
-        ),
-        8 => 
-        array (
-          'nom' => 'Période',
-          'champ' => 'periode',
-          'sql' => 'text NOT NULL DEFAULT \'\'',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '1',
-          'saisie' => 'checkbox',
-          'explication' => '',
-          'saisie_options' => 'datas=[(#ARRAY{Toussaint,Toussaint, Noël,Noël, Carnaval,Carnaval, Pâques,Pâques, Juillet,Juillet, Août,Août})]',
-        ),
-        9 => 
-        array (
-          'nom' => 'Age minimum',
-          'champ' => 'age_min',
-          'sql' => 'int(11) NOT NULL DEFAULT 0',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '6',
-          'saisie' => 'input',
-          'explication' => '',
-          'saisie_options' => '',
-        ),
-        10 => 
-        array (
-          'nom' => 'Age maximum',
-          'champ' => 'age_max',
-          'sql' => 'int(11) NOT NULL DEFAULT 0',
-          'caracteristiques' => 
-          array (
-            0 => 'editable',
-            1 => 'versionne',
-          ),
-          'recherche' => '',
-          'saisie' => 'input',
-          'explication' => '',
-          'saisie_options' => '',
-        ),
-      ),
-      'champ_titre' => 'nom_organisation',
-      'champ_date' => '',
-      'statut' => 'on',
-      'chaines' => 
-      array (
-        'titre_objets' => 'Activités',
-        'titre_objet' => 'Activité',
-        'info_aucun_objet' => 'Aucune activité',
-        'info_1_objet' => 'Une activité',
-        'info_nb_objets' => '@nb@ activités',
-        'icone_creer_objet' => 'Créer une activité',
-        'icone_modifier_objet' => 'Modifier cette activité',
-        'titre_logo_objet' => 'Logo de cette activité',
-        'titre_langue_objet' => 'Langue de cette activité',
-        'titre_objets_rubrique' => 'Activités de la rubrique',
-        'info_objets_auteur' => 'Les activités de cet auteur',
-        'retirer_lien_objet' => 'Retirer cette activité',
-        'retirer_tous_liens_objets' => 'Retirer toutes les activités',
-        'ajouter_lien_objet' => 'Ajouter cette activité',
-        'texte_ajouter_objet' => 'Ajouter une activité',
-        'texte_creer_associer_objet' => 'Créer et associer une activité',
-        'texte_changer_statut_objet' => 'Cette activité est :',
-      ),
-      'table_liens' => 'on',
-      'vue_liens' => 
-      array (
-        0 => 'spip_badje_organismes',
-      ),
-      'roles' => '',
-      'auteurs_liens' => '',
-      'vue_auteurs_liens' => '',
-      'echafaudages' => 
-      array (
-        0 => 'prive/squelettes/contenu/objets.html',
-        1 => 'prive/objets/infos/objet.html',
-        2 => 'prive/squelettes/contenu/objet.html',
-      ),
-      'autorisations' => 
-      array (
-        'objet_creer' => '',
-        'objet_voir' => '',
-        'objet_modifier' => '',
-        'objet_supprimer' => '',
-        'associerobjet' => '',
-      ),
-      'boutons' => 
-      array (
-        0 => 'menu_edition',
-        1 => 'outils_rapides',
-      ),
-    ),
-    3 => 
-    array (
       'nom' => 'types d\'activités',
       'nom_singulier' => 'type d\'activité',
       'genre' => 'masculin',
@@ -626,7 +567,7 @@ $data = array (
       'table_type' => 'type_activite',
       'champs' => 
       array (
-        0 => 
+        1 => 
         array (
           'nom' => 'Type d\'activité',
           'champ' => 'type_activite',
@@ -673,12 +614,80 @@ $data = array (
       'roles' => '',
       'auteurs_liens' => '',
       'vue_auteurs_liens' => '',
-      'echafaudages' => 
+      'autorisations' => 
       array (
-        0 => 'prive/squelettes/contenu/objets.html',
-        1 => 'prive/objets/infos/objet.html',
-        2 => 'prive/squelettes/contenu/objet.html',
+        'objet_creer' => '',
+        'objet_voir' => '',
+        'objet_modifier' => '',
+        'objet_supprimer' => '',
+        'associerobjet' => '',
       ),
+      'boutons' => 
+      array (
+        0 => 'menu_edition',
+        1 => 'outils_rapides',
+      ),
+    ),
+    3 => 
+    array (
+      'nom' => 'Groupes d\'activités',
+      'nom_singulier' => 'Groupe d\'activité',
+      'genre' => 'masculin',
+      'logo_variantes' => 'on',
+      'table' => 'spip_badje_groupe_activitie',
+      'cle_primaire' => 'id_groupe_activite',
+      'cle_primaire_sql' => 'bigint(21) NOT NULL',
+      'table_type' => 'groupe_activite',
+      'champs' => 
+      array (
+        0 => 
+        array (
+          'nom' => 'Nom du groupe',
+          'champ' => 'nom_groupe',
+          'sql' => 'text NOT NULL DEFAULT \'\'',
+          'caracteristiques' => 
+          array (
+            0 => 'editable',
+            1 => 'versionne',
+            2 => 'obligatoire',
+          ),
+          'recherche' => '6',
+          'saisie' => 'input',
+          'explication' => '',
+          'saisie_options' => '',
+        ),
+      ),
+      'champ_titre' => 'nom_groupe',
+      'champ_date' => '',
+      'statut' => '',
+      'chaines' => 
+      array (
+        'titre_objets' => 'Groupes d\'activités',
+        'titre_objet' => 'Groupe d\'activité',
+        'info_aucun_objet' => 'Aucun groupe d\'activité',
+        'info_1_objet' => 'Un groupe d\'activité',
+        'info_nb_objets' => '@nb@ groupes d\'activités',
+        'icone_creer_objet' => 'Créer un groupe d\'activité',
+        'icone_modifier_objet' => 'Modifier ce groupe d\'activité',
+        'titre_logo_objet' => 'Logo de ce groupe d\'activité',
+        'titre_langue_objet' => 'Langue de ce groupe d\'activité',
+        'titre_objets_rubrique' => 'Groupes d\'activités de la rubrique',
+        'info_objets_auteur' => 'Les groupes d\'activités de cet auteur',
+        'retirer_lien_objet' => 'Retirer ce groupe d\'activité',
+        'retirer_tous_liens_objets' => 'Retirer tous les groupes d\'activités',
+        'ajouter_lien_objet' => 'Ajouter ce groupe d\'activité',
+        'texte_ajouter_objet' => 'Ajouter un groupe d\'activité',
+        'texte_creer_associer_objet' => 'Créer et associer un groupe d\'activité',
+        'texte_changer_statut_objet' => 'Ce groupe d\'activité est :',
+      ),
+      'table_liens' => 'on',
+      'vue_liens' => 
+      array (
+        0 => 'spip_badje_type_activites',
+      ),
+      'roles' => '',
+      'auteurs_liens' => '',
+      'vue_auteurs_liens' => '',
       'autorisations' => 
       array (
         'objet_creer' => '',
@@ -716,7 +725,7 @@ $data = array (
           0 => 
           array (
             'extension' => 'png',
-            'contenu' => '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',
+            'contenu' => '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',
           ),
         ),
       ),
@@ -738,7 +747,7 @@ $data = array (
           0 => 
           array (
             'extension' => 'png',
-            'contenu' => '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',
+            'contenu' => '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',
           ),
         ),
       ),
@@ -749,7 +758,7 @@ $data = array (
           0 => 
           array (
             'extension' => 'png',
-            'contenu' => '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',
+            'contenu' => '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',
           ),
         ),
       ),

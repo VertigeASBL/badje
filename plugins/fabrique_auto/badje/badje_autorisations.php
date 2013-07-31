@@ -36,11 +36,11 @@ function autoriser_configurer_badje_dist($faire, $type, $id, $qui, $opt) {
 */
 
 // -----------------
-// Objet badje_communes
+// Objet badje_activites
 
 
 /**
- * Autorisation de voir un élément de menu (badjecommunes)
+ * Autorisation de voir un élément de menu (badjeactivites)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -49,13 +49,13 @@ function autoriser_configurer_badje_dist($faire, $type, $id, $qui, $opt) {
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_badjecommunes_menu_dist($faire, $type, $id, $qui, $opt){
+function autoriser_badjeactivites_menu_dist($faire, $type, $id, $qui, $opt){
 	return true;
 } 
 
 
 /**
- * Autorisation de voir le bouton d'accès rapide de création (commune)
+ * Autorisation de voir le bouton d'accès rapide de création (activite)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -64,12 +64,12 @@ function autoriser_badjecommunes_menu_dist($faire, $type, $id, $qui, $opt){
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_communecreer_menu_dist($faire, $type, $id, $qui, $opt){
-	return autoriser('creer', 'commune', '', $qui, $opt);
+function autoriser_activitecreer_menu_dist($faire, $type, $id, $qui, $opt){
+	return autoriser('creer', 'activite', '', $qui, $opt);
 } 
 
 /**
- * Autorisation de créer (commune)
+ * Autorisation de créer (activite)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -78,12 +78,12 @@ function autoriser_communecreer_menu_dist($faire, $type, $id, $qui, $opt){
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_commune_creer_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_activite_creer_dist($faire, $type, $id, $qui, $opt) {
 	return in_array($qui['statut'], array('0minirezo', '1comite')); 
 }
 
 /**
- * Autorisation de voir (commune)
+ * Autorisation de voir (activite)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -92,12 +92,12 @@ function autoriser_commune_creer_dist($faire, $type, $id, $qui, $opt) {
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_commune_voir_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_activite_voir_dist($faire, $type, $id, $qui, $opt) {
 	return true;
 }
 
 /**
- * Autorisation de modifier (commune)
+ * Autorisation de modifier (activite)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -106,12 +106,12 @@ function autoriser_commune_voir_dist($faire, $type, $id, $qui, $opt) {
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_commune_modifier_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_activite_modifier_dist($faire, $type, $id, $qui, $opt) {
 	return in_array($qui['statut'], array('0minirezo', '1comite'));
 }
 
 /**
- * Autorisation de supprimer (commune)
+ * Autorisation de supprimer (activite)
  *
  * @param  string $faire Action demandée
  * @param  string $type  Type d'objet sur lequel appliquer l'action
@@ -120,24 +120,11 @@ function autoriser_commune_modifier_dist($faire, $type, $id, $qui, $opt) {
  * @param  array  $opt   Options de cette autorisation
  * @return bool          true s'il a le droit, false sinon
 **/
-function autoriser_commune_supprimer_dist($faire, $type, $id, $qui, $opt) {
+function autoriser_activite_supprimer_dist($faire, $type, $id, $qui, $opt) {
 	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
 }
 
 
-/**
- * Autorisation de lier/délier l'élément (badjecommunes)
- *
- * @param  string $faire Action demandée
- * @param  string $type  Type d'objet sur lequel appliquer l'action
- * @param  int    $id    Identifiant de l'objet
- * @param  array  $qui   Description de l'auteur demandant l'autorisation
- * @param  array  $opt   Options de cette autorisation
- * @return bool          true s'il a le droit, false sinon
-**/
-function autoriser_associerbadjecommunes_dist($faire, $type, $id, $qui, $opt) {
-	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
-}
 // -----------------
 // Objet badje_organismes
 
@@ -242,109 +229,6 @@ function autoriser_associerbadjeorganismes_dist($faire, $type, $id, $qui, $opt) 
 	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
 }
 // -----------------
-// Objet badje_activites
-
-
-/**
- * Autorisation de voir un élément de menu (badjeactivites)
- *
- * @param  string $faire Action demandée
- * @param  string $type  Type d'objet sur lequel appliquer l'action
- * @param  int    $id    Identifiant de l'objet
- * @param  array  $qui   Description de l'auteur demandant l'autorisation
- * @param  array  $opt   Options de cette autorisation
- * @return bool          true s'il a le droit, false sinon
-**/
-function autoriser_badjeactivites_menu_dist($faire, $type, $id, $qui, $opt){
-	return true;
-} 
-
-
-/**
- * Autorisation de voir le bouton d'accès rapide de création (activite)
- *
- * @param  string $faire Action demandée
- * @param  string $type  Type d'objet sur lequel appliquer l'action
- * @param  int    $id    Identifiant de l'objet
- * @param  array  $qui   Description de l'auteur demandant l'autorisation
- * @param  array  $opt   Options de cette autorisation
- * @return bool          true s'il a le droit, false sinon
-**/
-function autoriser_activitecreer_menu_dist($faire, $type, $id, $qui, $opt){
-	return autoriser('creer', 'activite', '', $qui, $opt);
-} 
-
-/**
- * Autorisation de créer (activite)
- *
- * @param  string $faire Action demandée
- * @param  string $type  Type d'objet sur lequel appliquer l'action
- * @param  int    $id    Identifiant de l'objet
- * @param  array  $qui   Description de l'auteur demandant l'autorisation
- * @param  array  $opt   Options de cette autorisation
- * @return bool          true s'il a le droit, false sinon
-**/
-function autoriser_activite_creer_dist($faire, $type, $id, $qui, $opt) {
-	return in_array($qui['statut'], array('0minirezo', '1comite')); 
-}
-
-/**
- * Autorisation de voir (activite)
- *
- * @param  string $faire Action demandée
- * @param  string $type  Type d'objet sur lequel appliquer l'action
- * @param  int    $id    Identifiant de l'objet
- * @param  array  $qui   Description de l'auteur demandant l'autorisation
- * @param  array  $opt   Options de cette autorisation
- * @return bool          true s'il a le droit, false sinon
-**/
-function autoriser_activite_voir_dist($faire, $type, $id, $qui, $opt) {
-	return true;
-}
-
-/**
- * Autorisation de modifier (activite)
- *
- * @param  string $faire Action demandée
- * @param  string $type  Type d'objet sur lequel appliquer l'action
- * @param  int    $id    Identifiant de l'objet
- * @param  array  $qui   Description de l'auteur demandant l'autorisation
- * @param  array  $opt   Options de cette autorisation
- * @return bool          true s'il a le droit, false sinon
-**/
-function autoriser_activite_modifier_dist($faire, $type, $id, $qui, $opt) {
-	return in_array($qui['statut'], array('0minirezo', '1comite'));
-}
-
-/**
- * Autorisation de supprimer (activite)
- *
- * @param  string $faire Action demandée
- * @param  string $type  Type d'objet sur lequel appliquer l'action
- * @param  int    $id    Identifiant de l'objet
- * @param  array  $qui   Description de l'auteur demandant l'autorisation
- * @param  array  $opt   Options de cette autorisation
- * @return bool          true s'il a le droit, false sinon
-**/
-function autoriser_activite_supprimer_dist($faire, $type, $id, $qui, $opt) {
-	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
-}
-
-
-/**
- * Autorisation de lier/délier l'élément (badjeactivites)
- *
- * @param  string $faire Action demandée
- * @param  string $type  Type d'objet sur lequel appliquer l'action
- * @param  int    $id    Identifiant de l'objet
- * @param  array  $qui   Description de l'auteur demandant l'autorisation
- * @param  array  $opt   Options de cette autorisation
- * @return bool          true s'il a le droit, false sinon
-**/
-function autoriser_associerbadjeactivites_dist($faire, $type, $id, $qui, $opt) {
-	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
-}
-// -----------------
 // Objet badje_type_activites
 
 
@@ -445,6 +329,109 @@ function autoriser_typeactivite_supprimer_dist($faire, $type, $id, $qui, $opt) {
  * @return bool          true s'il a le droit, false sinon
 **/
 function autoriser_associerbadjetypeactivites_dist($faire, $type, $id, $qui, $opt) {
+	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
+}
+// -----------------
+// Objet badje_groupe_activitie
+
+
+/**
+ * Autorisation de voir un élément de menu (badjegroupeactivitie)
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_badjegroupeactivitie_menu_dist($faire, $type, $id, $qui, $opt){
+	return true;
+} 
+
+
+/**
+ * Autorisation de voir le bouton d'accès rapide de création (groupeactivite)
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_groupeactivitecreer_menu_dist($faire, $type, $id, $qui, $opt){
+	return autoriser('creer', 'groupe_activite', '', $qui, $opt);
+} 
+
+/**
+ * Autorisation de créer (groupeactivite)
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_groupeactivite_creer_dist($faire, $type, $id, $qui, $opt) {
+	return in_array($qui['statut'], array('0minirezo', '1comite')); 
+}
+
+/**
+ * Autorisation de voir (groupeactivite)
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_groupeactivite_voir_dist($faire, $type, $id, $qui, $opt) {
+	return true;
+}
+
+/**
+ * Autorisation de modifier (groupeactivite)
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_groupeactivite_modifier_dist($faire, $type, $id, $qui, $opt) {
+	return in_array($qui['statut'], array('0minirezo', '1comite'));
+}
+
+/**
+ * Autorisation de supprimer (groupeactivite)
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_groupeactivite_supprimer_dist($faire, $type, $id, $qui, $opt) {
+	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
+}
+
+
+/**
+ * Autorisation de lier/délier l'élément (badjegroupeactivitie)
+ *
+ * @param  string $faire Action demandée
+ * @param  string $type  Type d'objet sur lequel appliquer l'action
+ * @param  int    $id    Identifiant de l'objet
+ * @param  array  $qui   Description de l'auteur demandant l'autorisation
+ * @param  array  $opt   Options de cette autorisation
+ * @return bool          true s'il a le droit, false sinon
+**/
+function autoriser_associerbadjegroupeactivitie_dist($faire, $type, $id, $qui, $opt) {
 	return $qui['statut'] == '0minirezo' AND !$qui['restreint'];
 }
 

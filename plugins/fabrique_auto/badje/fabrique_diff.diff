@@ -1,65 +1,27 @@
 diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/badje_pipelines.php ../plugins/fabrique_auto/badje/badje_pipelines.php
-38c38
-< 	if (!$e['edition'] AND in_array($e['type'], array('organisme'))) {
----
-> 	if (!$e['edition'] AND in_array($e['type'], array('badje_organisme'))) {
 46c46
-< 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
+< 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
 ---
-> 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
+> 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
 54c54
-< 	if (!$e['edition'] AND in_array($e['type'], array('organisme'))) {
+< 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
 ---
-> 	if (!$e['edition'] AND in_array($e['type'], array('badje_organisme'))) {
+> 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
 62c62
-< 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
+< 	if (!$e['edition'] AND in_array($e['type'], array('badje_type_activite'))) {
 ---
-> 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
-diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/lang/type_activite_fr.php ../plugins/fabrique_auto/badje/lang/type_activite_fr.php
-10c10
-< 	'ajouter_lien_type_activite' => 'Ajouter ce type_activité',
----
-> 	'ajouter_lien_type_activite' => 'Ajouter ce type d\'activité',
-13,18c13,18
-< 	'icone_creer_type_activite' => 'Créer un type_activité',
-< 	'icone_modifier_type_activite' => 'Modifier ce type_activité',
-< 	'info_1_type_activite' => 'Un type_activité',
-< 	'info_aucun_type_activite' => 'Aucun type_activité',
-< 	'info_badje_type_activites_auteur' => 'Les type_activités de cet auteur',
-< 	'info_nb_badje_type_activites' => '@nb@ type_activités',
----
-> 	'icone_creer_type_activite' => 'Créer un type d\'activité',
-> 	'icone_modifier_type_activite' => 'Modifier ce type d\'activité',
-> 	'info_1_type_activite' => 'Un type d\'activité',
-> 	'info_aucun_type_activite' => 'Aucun type d\'activité',
-> 	'info_badje_type_activites_auteur' => 'Les types d\'activités de cet auteur',
-> 	'info_nb_badje_type_activites' => '@nb@ types d\'activités',
-24,25c24,25
-< 	'retirer_lien_type_activite' => 'Retirer ce type_activité',
-< 	'retirer_tous_liens_badje_type_activites' => 'Retirer tous les type_activités',
----
-> 	'retirer_lien_type_activite' => 'Retirer ce type d\'activité',
-> 	'retirer_tous_liens_badje_type_activites' => 'Retirer tous les types d\'activités',
-28,35c28,35
-< 	'texte_ajouter_type_activite' => 'Ajouter un type_activité',
-< 	'texte_changer_statut_type_activite' => 'Ce type_activité est :',
-< 	'texte_creer_associer_type_activite' => 'Créer et associer un type_activité',
-< 	'titre_badje_type_activites' => 'Type_activités',
-< 	'titre_badje_type_activites_rubrique' => 'Type_activités de la rubrique',
-< 	'titre_langue_type_activite' => 'Langue de ce type_activité',
-< 	'titre_logo_type_activite' => 'Logo de ce type_activité',
-< 	'titre_type_activite' => 'Type activité',
----
-> 	'texte_ajouter_type_activite' => 'Ajouter un type d\'activité',
-> 	'texte_changer_statut_type_activite' => 'Ce type d\'activité est :',
-> 	'texte_creer_associer_type_activite' => 'Créer et associer un type d\'activité',
-> 	'titre_badje_type_activites' => 'Types d\'activités',
-> 	'titre_badje_type_activites_rubrique' => 'Types d\'activités de la rubrique',
-> 	'titre_langue_type_activite' => 'Langue de ce type d\'activité',
-> 	'titre_logo_type_activite' => 'Logo de ce type d\'activité',
-> 	'titre_type_activite' => 'Type d\'activité',
+> 	if (!$e['edition'] AND in_array($e['type'], array('type_activite'))) {
 diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/paquet.xml ../plugins/fabrique_auto/badje/paquet.xml
 12c12
-< 		Paquet genere le 2013-07-22 17:28:43
+< 		Paquet genere le 2013-07-24 12:04:40
 ---
-> 		Paquet genere le 2013-07-22 17:44:53
+> 		Paquet genere le 2013-07-24 12:07:39
+Only in ../plugins/fabrique_auto/.backup/badje/prive/objets: infos
+Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: activite.html
+Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: badje_activites.html
+Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: badje_groupe_activitie.html
+Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: badje_organismes.html
+Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: badje_type_activites.html
+Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: groupe_activite.html
+Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: organisme.html
+Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: type_activite.html

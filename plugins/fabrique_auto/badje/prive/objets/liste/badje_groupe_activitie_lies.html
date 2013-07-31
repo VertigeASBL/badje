@@ -1,0 +1,60 @@
+[(#SET{defaut_tri,#ARRAY{
+	multi nom_groupe,1,
+	id_groupe_activite,1
+}})
+]
+#SET{selection,#ENV**{selection,#ENV{objet_source}|lister_objets_lies{#ENV{objet},#ENV{id_objet},#ENV{_objet_lien}}}}
+#SET{debut,#ENV{debutbadl,#EVAL{_request("debutbadl");}}}
+<B_liste_badje_groupe_activitie>
+[(#REM) En cas de pagination indirecte @32, il faut refaire le set car la boucle
+a mis a jour la valeur avec la page reelle]
+#SET{debut,#ENV{debutbadl,#EVAL{_request("debutbadl");}}}
+#SET{afficher_lettres,#TRI|=={'multi nom_groupe'}|oui}
+#ANCRE_PAGINATION
+<div class="liste-objets liste-objets-lies badje_groupe_activitie">
+<table class='spip liste'>
+[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{groupe_activite:info_1_groupe_activite,groupe_activite:info_nb_badje_groupe_activitie}})</strong></caption>]
+	<thead>
+		#SET{p,''}
+		<BOUCLE_lettre(BADJE_GROUPE_ACTIVITIE){tout}{id_groupe_activite IN #GET{selection}}{where?}
+			{tri #ENV{par,multi nom_groupe},#GET{defaut_tri}}{id_groupe_activite==#GET{afficher_lettres}|?{'.*','A'}}>[
+		(#NOM_GROUPE**|extraire_multi|initiale|unique|oui)
+		[(#SET{p,#GET{p}|concat{
+		#SELF|parametre_url{debutbadl,@#ID_GROUPE_ACTIVITE}|ancre_url{paginationbadl}|afficher_initiale{#NOM_GROUPE**|extraire_multi|initiale{},#COMPTEUR_BOUCLE,#GET{debut},#ENV{nb,10}}
+		}})]
+		]#SAUTER{#ENV{nb,10}|moins{#COMPTEUR_BOUCLE|=={1}|?{2,1}}}</BOUCLE_lettre>[
+		(#SET{p,
+			#GET{p}|concat{
+				#REM|afficher_initiale{#REM,#TOTAL_BOUCLE,#GET{debut},#ENV{nb,10}}
+			}
+		})]</B_lettre>
+		[<tr><td colspan="4"><p class='pagination'>(#GET{p})</p></td></tr>]
+
+		<tr class='first_row'>
+			<th class='nom_groupe' scope='col'>[(#TRI{multi nom_groupe,<:groupe_activite:label_nom_groupe:>,ajax})]</th>
+			<th class='action' scope='col'></th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_badje_groupe_activitie(BADJE_GROUPE_ACTIVITIE){id_groupe_activite IN #GET{selection}}
+		{tri #ENV{par,multi nom_groupe},#GET{defaut_tri}}{pagination #ENV{nb,10} badl}>
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})][ (#EXPOSE|unique)][ (#NOM_GROUPE**|extraire_multi|initiale|=={#ENV{i}}|?{on}|unique)][(#ID_GROUPE_ACTIVITE|=={#ENV{id_lien_ajoute}}|oui)append]">
+			<td class='nom_groupe'>[(#LOGO_GROUPE_ACTIVITE|image_reduire{20,20})]<a href="[(#ID_GROUPE_ACTIVITE|generer_url_entite{groupe_activite})]">#NOM_GROUPE</a></td>
+
+			<td class='action'>
+				[(#ENV{editable}|oui)
+					<button class="button link delete" name="supprimer_lien\[groupe_activite-#ID_GROUPE_ACTIVITE-#OBJET-#ID_OBJET\]" value="X"><:groupe_activite:retirer_lien_groupe_activite:> [(#CHEMIN_IMAGE{supprimer-12.png}|balise_img{'X'})]</button>
+				]
+			</td>
+		</tr>
+	</BOUCLE_liste_badje_groupe_activitie>
+	</tbody>
+</table>
+[<p class='pagination'>(#PAGINATION{prive})</p>]
+[(#GRAND_TOTAL|>{3}|oui)<div class="action"><button class="button link" name="supprimer_lien\[groupe_activite-*-#OBJET-#ID_OBJET\]" value="X"><:groupe_activite:retirer_tous_liens_badje_groupe_activitie:> [(#CHEMIN_IMAGE{supprimer-8.png}|balise_img{'X'})]</button></div>]
+</div>
+</B_liste_badje_groupe_activitie>
+<div class="liste-objets liste-objets-lies BADJE_GROUPE_ACTIVITIE caption-wrap">
+	<strong class="caption">[(#ENV*{titre,<:groupe_activite:info_aucun_groupe_activite:>})]</strong>
+</div>
+<//B_liste_badje_groupe_activitie>

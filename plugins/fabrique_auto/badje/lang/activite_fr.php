@@ -22,13 +22,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'label_accessibilite_handicap' => 'Accessibilite handicap',
+	'label_accueil_handicap' => 'Accueil des enfants en situation de handicap',
+	'label_adresse' => 'Adresse de l\'activité',
 	'label_age_max' => 'Age maximum',
 	'label_age_min' => 'Age minimum',
+	'label_code_postal' => 'Code Postal',
+	'label_commune' => 'Commune',
 	'label_descriptif' => 'Descriptif de l\'activité',
 	'label_garderie' => 'Garderie',
 	'label_logement' => 'Logement',
 	'label_nom' => 'Nom',
-	'label_nom_organisation' => 'nom_organisation',
 	'label_periode' => 'Période',
 	'label_prix' => 'Prix',
 	'label_repas_chaud' => 'Repas chaud',

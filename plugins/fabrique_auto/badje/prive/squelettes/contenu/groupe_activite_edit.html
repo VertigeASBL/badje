@@ -1,0 +1,30 @@
+[(#ID_OBJET|oui)
+	[(#AUTORISER{modifier,groupe_activite,#ID_GROUPE_ACTIVITE}|sinon_interdire_acces)]
+][(#ID_OBJET|non)
+	[(#AUTORISER{creer,groupe_activite}|sinon_interdire_acces)]
+]
+ 
+#SET{redirect,#ENV{redirect}|sinon{#ID_GROUPE_ACTIVITE|?{#ID_GROUPE_ACTIVITE|generer_url_entite{groupe_activite},#URL_ECRIRE{badje_groupe_activitie}}}}
+
+<div class='cadre-formulaire-editer'>
+<div class="entete-formulaire">
+	[(#ID_GROUPE_ACTIVITE|oui)
+	[(#GET{redirect}|icone_verticale{Retour,groupe_activite,'',left retour[(#ENV{retourajax,''}|oui)ajax preload]})]
+	]
+	[
+		[(#ID_GROUPE_ACTIVITE|?{<:groupe_activite:icone_modifier_groupe_activite:>,<:groupe_activite:icone_creer_groupe_activite:>})]
+		<h1>(#ENV{titre,#INFO_NOM_GROUPE{groupe_activite,#ID_GROUPE_ACTIVITE}|sinon{<:info_sans_titre:>}})</h1>
+	]
+</div>
+
+#SET{redirect,#ENV{redirect,#ID_GROUPE_ACTIVITE|generer_url_entite{groupe_activite}}}
+[(#ENV{retourajax,''}|oui)
+	#SET{redirect,'javascript:if (window.jQuery) jQuery(".entete-formulaire .retour a").followLink();'}
+	<div class="ajax">
+]
+		[(#FORMULAIRE_EDITER_GROUPE_ACTIVITE{#ENV{id_groupe_activite,oui}, #GET{redirect}, #ENV{associer_objet}})]
+[(#ENV{retourajax,''}|oui)
+	</div>
+	<script type="text/javascript">/*<!\[CDATA\[*/reloadExecPage('#ENV{exec}');/*\]\]>*/</script>
+]
+</div>

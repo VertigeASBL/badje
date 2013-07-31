@@ -15,7 +15,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){id_mot?}{id_auteur?}{where?}{recherche?}{tri #ENV{par,num nom_organisme},#GET{defaut_tri}}{par nom_organisme}{pagination #ENV{nb,10}}>
+	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){id_mot?}{auteurs_liens.id_auteur?}{where?}{recherche?}{tri #ENV{par,num nom_organisme},#GET{defaut_tri}}{par nom_organisme}{pagination #ENV{nb,10}}>
 		<tr class='[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]'>
 			<td class='picto'>[(#CHEMIN_IMAGE{organisme-16.png}|balise_img)]</td>
 			<td class='nom_organisme principale'>[(#LOGO_ORGANISME|image_reduire{20,26})]<a href="[(#ID_ORGANISME|generer_url_entite{organisme})]" title="<:info_numero_abbreviation|attribut_html:> #ID_ORGANISME">[(#RANG). ]#NOM_ORGANISME</a></td>

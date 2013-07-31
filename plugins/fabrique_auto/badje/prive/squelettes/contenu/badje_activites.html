@@ -1,8 +1,0 @@
-#FORMULAIRE_RECHERCHE_ECRIRE{#SELF,ajax}
-<div class="nettoyeur"></div>
-
-<INCLURE{fond=prive/objets/liste/badje_activites, par=nom_organisation, env, ajax, sinon=<:activite:info_aucun_activite:>}>
-
-[(#AUTORISER{creer,activite})
-	[(#URL_ECRIRE{activite_edit,new=oui}|icone_verticale{<:activite:icone_creer_activite:>,activite,new,right})]
-]

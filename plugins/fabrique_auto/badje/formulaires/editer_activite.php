@@ -21,9 +21,6 @@ include_spip('inc/editer');
  *     Identifiant du activite. 'new' pour un nouveau activite.
  * @param string $retour
  *     URL de redirection après le traitement
- * @param string $associer_objet
- *     Éventuel `objet|x` indiquant de lier le activite créé à cet objet,
- *     tel que `article|3`
  * @param int $lier_trad
  *     Identifiant éventuel d'un activite source d'une traduction
  * @param string $config_fonc
@@ -35,8 +32,8 @@ include_spip('inc/editer');
  * @return string
  *     Hash du formulaire
  */
-function formulaires_editer_activite_identifier_dist($id_activite='new', $retour='', $associer_objet='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
-	return serialize(array(intval($id_activite), $associer_objet));
+function formulaires_editer_activite_identifier_dist($id_activite='new', $retour='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
+	return serialize(array(intval($id_activite)));
 }
 
 /**
@@ -50,9 +47,6 @@ function formulaires_editer_activite_identifier_dist($id_activite='new', $retour
  *     Identifiant du activite. 'new' pour un nouveau activite.
  * @param string $retour
  *     URL de redirection après le traitement
- * @param string $associer_objet
- *     Éventuel `objet|x` indiquant de lier le activite créé à cet objet,
- *     tel que `article|3`
  * @param int $lier_trad
  *     Identifiant éventuel d'un activite source d'une traduction
  * @param string $config_fonc
@@ -64,7 +58,7 @@ function formulaires_editer_activite_identifier_dist($id_activite='new', $retour
  * @return array
  *     Environnement du formulaire
  */
-function formulaires_editer_activite_charger_dist($id_activite='new', $retour='', $associer_objet='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
+function formulaires_editer_activite_charger_dist($id_activite='new', $retour='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
 	$valeurs = formulaires_editer_objet_charger('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
 	return $valeurs;
 }
@@ -80,9 +74,6 @@ function formulaires_editer_activite_charger_dist($id_activite='new', $retour=''
  *     Identifiant du activite. 'new' pour un nouveau activite.
  * @param string $retour
  *     URL de redirection après le traitement
- * @param string $associer_objet
- *     Éventuel `objet|x` indiquant de lier le activite créé à cet objet,
- *     tel que `article|3`
  * @param int $lier_trad
  *     Identifiant éventuel d'un activite source d'une traduction
  * @param string $config_fonc
@@ -94,7 +85,7 @@ function formulaires_editer_activite_charger_dist($id_activite='new', $retour=''
  * @return array
  *     Tableau des erreurs
  */
-function formulaires_editer_activite_verifier_dist($id_activite='new', $retour='', $associer_objet='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
+function formulaires_editer_activite_verifier_dist($id_activite='new', $retour='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
 	return formulaires_editer_objet_verifier('activite',$id_activite, array('nom'));
 }
 
@@ -109,9 +100,6 @@ function formulaires_editer_activite_verifier_dist($id_activite='new', $retour='
  *     Identifiant du activite. 'new' pour un nouveau activite.
  * @param string $retour
  *     URL de redirection après le traitement
- * @param string $associer_objet
- *     Éventuel `objet|x` indiquant de lier le activite créé à cet objet,
- *     tel que `article|3`
  * @param int $lier_trad
  *     Identifiant éventuel d'un activite source d'une traduction
  * @param string $config_fonc
@@ -123,23 +111,8 @@ function formulaires_editer_activite_verifier_dist($id_activite='new', $retour='
  * @return array
  *     Retours des traitements
  */
-function formulaires_editer_activite_traiter_dist($id_activite='new', $retour='', $associer_objet='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
-	$res = formulaires_editer_objet_traiter('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
- 
-	// Un lien a prendre en compte ?
-	if ($associer_objet AND $id_activite = $res['id_activite']) {
-		list($objet, $id_objet) = explode('|', $associer_objet);
-
-		if ($objet AND $id_objet AND autoriser('modifier', $objet, $id_objet)) {
-			include_spip('action/editer_liens');
-			objet_associer(array('activite' => $id_activite), array($objet => $id_objet));
-			if (isset($res['redirect'])) {
-				$res['redirect'] = parametre_url ($res['redirect'], "id_lien_ajoute", $id_activite, '&');
-			}
-		}
-	}
-	return $res;
-
+function formulaires_editer_activite_traiter_dist($id_activite='new', $retour='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
+	return formulaires_editer_objet_traiter('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
 }
 
 

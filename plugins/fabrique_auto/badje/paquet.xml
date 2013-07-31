@@ -9,7 +9,7 @@
 	schema="1.0.0" 
 >
 	<!--
-		Paquet genere le 2013-07-22 17:44:53
+		Paquet genere le 2013-07-24 12:07:39
 		(Vous pouvez bien entendu supprimer ces commentaires) 
 	-->
 
@@ -47,14 +47,15 @@
 	<pipeline nom="declarer_tables_interfaces" inclure="base/badje.php" /> 
 	<pipeline nom="declarer_tables_auxiliaires" inclure="base/badje.php" /> 
 	<pipeline nom="affiche_milieu" inclure="badje_pipelines.php" /> 
+	<pipeline nom="affiche_auteurs_interventions" inclure="badje_pipelines.php" /> 
 	<pipeline nom="optimiser_base_disparus" inclure="badje_pipelines.php" /> 
 
-	<menu nom="badje_communes" titre="commune:titre_badje_communes" parent="menu_edition" icone="images/commune-16.png" action="badje_communes" /> 
-	<menu nom="commune_creer" titre="commune:icone_creer_commune" parent="outils_rapides" icone="images/commune-new-16.png" action="commune_edit" parametres="new=oui" /> 
-	<menu nom="badje_organismes" titre="organisme:titre_badje_organismes" parent="menu_edition" icone="images/organisme-16.png" action="badje_organismes" /> 
-	<menu nom="organisme_creer" titre="organisme:icone_creer_organisme" parent="outils_rapides" icone="images/organisme-new-16.png" action="organisme_edit" parametres="new=oui" /> 
 	<menu nom="badje_activites" titre="activite:titre_badje_activites" parent="menu_edition" icone="images/activite-16.png" action="badje_activites" /> 
 	<menu nom="activite_creer" titre="activite:icone_creer_activite" parent="outils_rapides" icone="images/activite-new-16.png" action="activite_edit" parametres="new=oui" /> 
+	<menu nom="badje_organismes" titre="organisme:titre_badje_organismes" parent="menu_edition" icone="images/organisme-16.png" action="badje_organismes" /> 
+	<menu nom="organisme_creer" titre="organisme:icone_creer_organisme" parent="outils_rapides" icone="images/organisme-new-16.png" action="organisme_edit" parametres="new=oui" /> 
 	<menu nom="badje_type_activites" titre="type_activite:titre_badje_type_activites" parent="menu_edition" icone="images/type_activite-16.png" action="badje_type_activites" /> 
 	<menu nom="type_activite_creer" titre="type_activite:icone_creer_type_activite" parent="outils_rapides" icone="images/type_activite-new-16.png" action="type_activite_edit" parametres="new=oui" /> 
+	<menu nom="badje_groupe_activitie" titre="groupe_activite:titre_badje_groupe_activitie" parent="menu_edition" icone="images/groupe_activite-16.png" action="badje_groupe_activitie" /> 
+	<menu nom="groupe_activite_creer" titre="groupe_activite:icone_creer_groupe_activite" parent="outils_rapides" icone="images/groupe_activite-new-16.png" action="groupe_activite_edit" parametres="new=oui" /> 
 </paquet>

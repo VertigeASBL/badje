@@ -15,8 +15,20 @@
 				label=<:activite:label_descriptif:>,
 				li_class=haut, class=inserer_barre_edition, rows=4})]
 
+			[(#SAISIE{textarea, adresse,
+				label=<:activite:label_adresse:>})]
+
+			[(#SAISIE{input, commune,
+				label=<:activite:label_commune:>})]
+
+			[(#SAISIE{input, code_postal,
+				label=<:activite:label_code_postal:>})]
+
 			[(#SAISIE{input, prix,
 				label=<:activite:label_prix:>})]
+
+			[(#SAISIE{oui_non, accueil_handicap,
+				label=<:activite:label_accueil_handicap:>})]
 
 			[(#SAISIE{oui_non, accessibilite_handicap,
 				label=<:activite:label_accessibilite_handicap:>,
@@ -24,7 +36,7 @@
 
 			[(#SAISIE{checkbox, logement,
 				label=<:activite:label_logement:>,
-				datas=[(#ARRAY{internat,internat,externat,externat})]})]
+				datas=[(#ARRAY{Externat,Externat,Séjour,Séjour})]})]
 
 			[(#SAISIE{oui_non, garderie,
 				label=<:activite:label_garderie:>})]
@@ -32,12 +44,15 @@
 			[(#SAISIE{oui_non, repas_chaud,
 				label=<:activite:label_repas_chaud:>})]
 
-			[(#SAISIE{input, nom_organisation,
-				label=<:activite:label_nom_organisation:>})]
-
 			[(#SAISIE{checkbox, periode,
 				label=<:activite:label_periode:>,
-				datas=[(#ARRAY{Toussaint,Toussaint, Noël,Noël, Carnaval,Carnaval, Pâques,Pâques, Juillet,Juillet, Août,Août})]})]
+				datas=[(#ARRAY{
+Automne,automne, 
+Hiver,Hiver, 
+Détente,Détente, 
+Printemps,Printemps, 
+Juillet,Juillet, 
+Août,Août})]})]
 
 			[(#SAISIE{input, age_min,
 				label=<:activite:label_age_min:>})]
