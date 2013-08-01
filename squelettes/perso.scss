@@ -49,7 +49,8 @@ body {
         border: none;
         padding: 0;
         margin: 0;
-        
+        height: 180px;
+
         .header_bg {
             background: transparent url(images/header.png) no-repeat center;
             width: 773px;
@@ -88,12 +89,26 @@ body {
 
     #info_site {
         text-align: center;
+        padding-left: 35px;
+        margin-top: 15px;
         
         h2 {
             color: #87362b;
             font-family: helvetica;
             font-size: pem(16);
             text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        p {
+            font-family: helvetica;
+            font-size: pem(14);
+        }
+    }
+    
+    #selection {
+        .ma_selection {
+            margin-left: -15px;
+            margin-top: 15px;
         }
     }
 
@@ -101,5 +116,18 @@ body {
         background: #fcbf00;
         border: none;
         border-bottom: 2px solid #d7ccbf;
+        text-transform: uppercase;
+        
+        .liens {
+            text-align: left;
+            a {
+                color: #000;
+            }
+        }
+        
+        #copyright {
+            text-align: left;
+            padding-left: 20px;
+        }
     }
 }

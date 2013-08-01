@@ -1,5 +1,5 @@
 <div id="page">
-    <div id="entete" class="rows">
+    <div id="entete" class="row">
         <div class="large-10 columns">
             [(#REM) Header du site uniquement en image. ]
             <div class="header_bg">
@@ -14,23 +14,39 @@
     
     [(#REM) Si on est sur le sommaire, on va afficher les informations du site. ]
     [(#ENV{composition}|=={sommaire}|oui)
-        <div class="rows">
-            <div id="info_site" class="large-8 columns">
+        <div class="row">
+            <div id="info_site" class="large-9 columns">
                 <INCLURE{fond=inclure/info_site, env}>
             </div>
-            <div class="large-4 columns">
+            <div id="selection" class="large-3 columns">
                 [(#CHEMIN{images/ma_selection.png}|balise_img{Ma séléction, ma_selection})]
             </div>
         </div>
     ]
     
-    <div id="conteneur">    
-        <div id="contenu">
+    
+    <div id="conteneur" class="row">
+        [(#REM) Contenu principal ]
+        <div class="large-8">
             <INCLURE{fond=contenu/#ENV{type},env}>
         </div>
+        
+        [(#REM) Sur le sommaire, on affiche la sidebar sommaire ]
+        [(#ENV{composition}|=={sommaire}|oui)
+            <div class="large-4 columns">
+                <INCLURE{fond=inclure/sommaire-sidebar, env}>
+            </div>
+        ]
+
     </div>
 
-    <div id="pied">
-        <INCLURE{fond=inclure/pied,env}>
+    <div id="pied" class="row">
+        <div id="copyright" class="large-6 columns">
+            Badje [(#DATE|affdate{Y})]
+        </div>
+        <div class="liens large-6 columns">
+            <a href="[(#URL_PAGE{backend})]">Site map</a> - <a href="[(#URL_PAGE{contact})]">Contact</a>
+        </div>
+        
     </div>
 </div>
