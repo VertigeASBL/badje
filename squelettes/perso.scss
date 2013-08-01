@@ -35,6 +35,10 @@ body {
     background: #716750;
 }
 
+// On vire les marges de foundation elles ne sont pas utile ici
+.columns, .column {
+    padding: 0;
+}
 
 #page {
     width: 980px;
@@ -66,11 +70,18 @@ body {
             list-style: none;
             
             li {
-                color: #FFF;
                 width: 207px;
-                padding-left: 27px;
+                height: 28px;
+                padding-left: 28px;
                 margin-left: -43px;
-                margin-top: 1px;
+                margin-top: 2px;
+                display: block;
+
+                a {
+                    color: #FFF;
+                    font-family: PaperJohnnyEinhalbRegular;
+                    font-size: pem(12);
+                }
             }
         }
     }
