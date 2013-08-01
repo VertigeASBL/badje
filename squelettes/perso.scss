@@ -35,6 +35,7 @@ body {
     background: #716750;
 }
 
+
 #page {
     width: 980px;
     border: none;
@@ -61,8 +62,8 @@ body {
             }
         }
 
-        .menu-principal {
-            
+        ul.menu-principal {
+            list-style: none;
         }
     }
 
