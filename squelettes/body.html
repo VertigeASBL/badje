@@ -1,0 +1,23 @@
+<div id="page">
+    <div id="entete" class="rows">
+        <div class="large-10 columns">
+            <div class="header_bg">
+                <div class="timbre"></div>
+            </div>
+        </div>
+        <div class="large-2 columns">
+            <INCLURE{fond=inclure/menu-principal, env}>
+        </div>
+    </div>
+    
+    
+    <div id="conteneur">    
+        <div id="contenu">
+            <INCLURE{fond=contenu/#ENV{type},env}>
+        </div>
+    </div>
+
+    <div id="pied">
+        <INCLURE{fond=inclure/pied,env}>
+    </div>
+</div>

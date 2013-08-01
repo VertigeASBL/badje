@@ -2,6 +2,8 @@
     @return #{$pxval / $base}em;
 }
 
+@import "fonts";
+
 // On reset titre par défaut mis par foundation
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     line-height: normal;
@@ -15,4 +17,38 @@ body {
 
 #page {
     width: 980px;
+    border: none;
+    margin-top: 0;
+    
+    #entete {
+        border: none;
+        padding: 0;
+        margin: 0;
+        
+        .header_bg {
+            background: transparent url(images/header.png) no-repeat center;
+            width: 773px;
+            height: 180px;
+            position: relative;
+
+            .timbre {
+                background: transparent url(images/timbre.png) no-repeat center;
+                position: absolute;
+                width: 135px;
+                height: 81px;
+                top: 127px;
+                left: 584px;
+            }
+        }
+
+        .menu-principal {
+            
+        }
+    }
+
+    #pied {
+        background: #fcbf00;
+        border: none;
+        border-bottom: 2px solid #d7ccbf;
+    }
 }
