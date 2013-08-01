@@ -35,10 +35,11 @@ function formulaires_badje_charger_dist() {
                 'nom' => 'lieux', 
                 'label' => 'Lieux'),
             'saisies' => array(
-                array('saisie' =>'input',
+                array('saisie' => 'checkbox',
                     'options' => array(
-                        'nom' => 'recherche', 
-                        'placeholder' => 'effectuer un recherche')
+                        'nom' => 'lieux', 
+                        'datas' => array('all' => 'Toutes les communes')
+                        )
                 )
             )
         )
