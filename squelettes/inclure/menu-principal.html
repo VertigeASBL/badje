@@ -2,7 +2,7 @@
 <B_menu_principal>
 <ul class="menu-principal">
     <BOUCLE_menu_principal(RUBRIQUES){id_parent = 1}>
-    [<li><a href="#URL_RUBRIQUE" title="[(#TITRE|attribut_html)]">(#TITRE)</a></li>]
+    [<li class="[(#COMPTEUR_BOUCLE|alterner{vert, turquoise, rouge, bleu, orange, brun})]"><a href="#URL_RUBRIQUE" title="[(#TITRE|attribut_html)]">(#TITRE)</a></li>]
     </BOUCLE_menu_principal>
 </ul>
 </B_menu_principal>

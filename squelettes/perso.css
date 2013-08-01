@@ -41,6 +41,24 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 body {
   background: #f8f0d1 url(images/main.png) no-repeat top center; }
 
+.vert {
+  background: #adb451; }
+
+.turquoise {
+  background: #00ada9; }
+
+.rouge {
+  background: #a80231; }
+
+.bleu {
+  background: #6983ab; }
+
+.orange {
+  background: #ee8016; }
+
+.brun {
+  background: #716750; }
+
 #page {
   width: 980px;
   border: none;
