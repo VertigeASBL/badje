@@ -1,15 +1,28 @@
 <div id="page">
     <div id="entete" class="rows">
         <div class="large-10 columns">
+            [(#REM) Header du site uniquement en image. ]
             <div class="header_bg">
                 <div class="timbre"></div>
             </div>
         </div>
         <div class="large-2 columns">
+            [(#REM) Menu du site. ]
             <INCLURE{fond=inclure/menu-principal, env}>
         </div>
     </div>
     
+    [(#REM) Si on est sur le sommaire, on va afficher les informations du site. ]
+    [(#ENV{composition}|=={sommaire}|oui)
+        <div class="rows">
+            <div id="info_site" class="large-8 columns">
+                <INCLURE{fond=inclure/info_site, env}>
+            </div>
+            <div class="large-4 columns">
+                [(#CHEMIN{images/ma_selection.png}|balise_img{Ma séléction, ma_selection})]
+            </div>
+        </div>
+    ]
     
     <div id="conteneur">    
         <div id="contenu">
