@@ -76,7 +76,18 @@ function formulaires_badje_charger_dist() {
     foreach ($activite_creative_sql as $key => $value) {
         $activite_creative[$value['id_type_activite']] = $value['type_activite'];
     }
-    
+
+    // Liste des activité sportive
+    $activite_sportive = array();
+    $activite_sportive_sql = sql_allfetsel(
+        'id_type_activite, type_activite', 
+        'spip_badje_type_activites AS type
+        INNER JOIN spip_badje_groupe_activitie_liens AS L ON L.id_objet = type.id_type_activite
+        INNER JOIN spip_badje_groupe_activitie AS groupe ON L.id_groupe_activite = groupe.id_groupe_activite', 
+        'L.objet='.sql_quote('type_activite').' AND groupe.id_groupe_activite=1');
+    foreach ($activite_sportive_sql as $key => $value) {
+        $activite_sportive[$value['id_type_activite']] = $value['type_activite'];
+    }
 
 
     $form_saisie_options = array( 
@@ -100,7 +111,7 @@ function formulaires_badje_charger_dist() {
         array(
             'saisie' => 'fieldset',
             'options' => array(
-                'nom' => 'Âges',
+                'nom' => 'ages',
                 'label' => 'Âges'
                 ),
             'saisies' => array(
@@ -147,6 +158,59 @@ function formulaires_badje_charger_dist() {
                         'label' => 'Activités créatives, ludiques et culturelles',
                         'class' => 'chosen',
                         'datas' => $activite_creative
+                        )
+                    ),
+                array(
+                    'saisie' => 'selection_multiple',
+                    'options' => array(
+                        'nom' => 'sportive',
+                        'label' => 'Activités sportives',
+                        'class' => 'chosen',
+                        'datas' => $activite_sportive
+                        )
+                    ),
+                array(
+                    'saisie' => 'checkbox',
+                    'options' => array(
+                        'nom' => 'multiactivite',
+                        'datas' => array('oui' => 'Multiactivités')
+                        )
+                    ),
+                array(
+                    'saisie' => 'checkbox',
+                    'options' => array(
+                        'nom' => 'soutien',
+                        'datas' => array('oui' => 'Soutien Scolaire')
+                        )
+                    ),
+                array(
+                    'saisie' => 'checkbox',
+                    'options' => array(
+                        'nom' => 'sejour',
+                        'datas' => array('oui' => 'Séjours')
+                        )
+                    )
+                )
+            ),
+        array(
+            'saisie' => 'fieldset',
+            'options' => array(
+                'nom' => 'Handicap',
+                'label' => 'Handicap'
+                ),
+            'saisies' => array(
+                array(
+                    'saisie' => 'checkbox',
+                    'options' => array(
+                        'nom' => 'accueil_handicap',
+                        'datas' => array('oui' => 'Accueil des enfants en situation de handicap')
+                        )
+                    ),
+                array(
+                    'saisie' => 'checkbox',
+                    'options' => array(
+                        'nom' => 'acces_handicap',
+                        'datas' => array('oui' => 'Accessible aux enfants à mobilité réduite')
                         )
                     )
                 )
