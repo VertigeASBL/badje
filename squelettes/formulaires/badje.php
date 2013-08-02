@@ -65,6 +65,20 @@ function formulaires_badje_charger_dist() {
         'Août' => 'Août'
     );
 
+    // liste des Activités créatives
+    $activite_creative = array();
+    $activite_creative_sql = sql_allfetsel(
+        'id_type_activite, type_activite', 
+        'spip_badje_type_activites AS type
+        INNER JOIN spip_badje_groupe_activitie_liens AS L ON L.id_objet = type.id_type_activite
+        INNER JOIN spip_badje_groupe_activitie AS groupe ON L.id_groupe_activite = groupe.id_groupe_activite', 
+        'L.objet='.sql_quote('type_activite').' AND groupe.id_groupe_activite=1');
+    foreach ($activite_creative_sql as $key => $value) {
+        $activite_creative[$value['id_type_activite']] = $value['type_activite'];
+    }
+    
+
+
     $form_saisie_options = array( 
         // La saisie des lieux
         array(
@@ -115,6 +129,24 @@ function formulaires_badje_charger_dist() {
                     'options' => array(
                         'nom' => 'periodes',
                         'datas' => $periodes
+                        )
+                    )
+                )
+            ),
+        array(
+            'saisie' => 'fieldset',
+            'options' => array(
+                'nom' => 'activite',
+                'label' => 'Activité'
+                ),
+            'saisies' => array(
+                array(
+                    'saisie' => 'selection_multiple',
+                    'options' => array(
+                        'nom' => 'creative',
+                        'label' => 'Activités créatives, ludiques et culturelles',
+                        'class' => 'chosen',
+                        'datas' => $activite_creative
                         )
                     )
                 )
