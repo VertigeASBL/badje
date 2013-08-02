@@ -53,6 +53,7 @@ function formulaires_badje_charger_dist() {
     );
 
     $form_saisie_options = array( 
+        // La saisie des lieux
         array(
             'saisie' => 'fieldset',
             'options' => array(
@@ -68,6 +69,7 @@ function formulaires_badje_charger_dist() {
                     )
                 )
         ),
+        // La saisie des périodes
         array(
             'saisie' => 'fieldset',
             'options' => array(
