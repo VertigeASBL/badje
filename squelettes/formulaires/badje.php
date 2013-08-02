@@ -42,6 +42,19 @@ function formulaires_badje_charger_dist() {
         $commune[$value['code_postal']] = $value['localite'].' '.$value['code_postal'];
     }
 
+    // Liste des ages pour les enfants.
+    $age_list = array(
+        1.5 => '1,5 ans',
+        2 => '2 ans',
+        2.5 => '2,5 ans'
+        );
+    // maintenant ça suffit, on boucle pour ajouter les autres nombre
+    $i = 3;
+    while ($i <= 12) {
+        $age_list[$i] = $i.' ans';
+        $i++;
+    }
+
     // La liste des périodes disponible.
     $periodes = array(
         'Automne' => 'Automne', 
@@ -69,6 +82,26 @@ function formulaires_badje_charger_dist() {
                     )
                 )
         ),
+        // La saisie pour les ages.
+        array(
+            'saisie' => 'fieldset',
+            'options' => array(
+                'nom' => 'Âges',
+                'label' => 'Âges'
+                ),
+            'saisies' => array(
+                    array(
+                        'saisie' => 'selection_multiple',
+                        'options' => array(
+                            'nom' => 'ages',
+                            'label' => 'Mes enfants ont',
+                            'class' => 'chosen',
+                            'datas' => $age_list
+                            )
+                        )
+                )
+            ),
+
         // La saisie des périodes
         array(
             'saisie' => 'fieldset',
