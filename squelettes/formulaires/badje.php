@@ -8,7 +8,6 @@
 */
 
 function formulaires_badje_charger_dist() {
-    
     /*
     *   Ce tableau va défini la structure du le formulaire.
     */
@@ -17,7 +16,9 @@ function formulaires_badje_charger_dist() {
             'saisie' => 'fieldset',
             'options' => array(
                 'nom' => 'Recherche_libre', 
-                'label' => 'Recherche Libre'),
+                'label' => 'Recherche Libre',
+                'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
+                ),
             'saisies' => array(
                 array('saisie' =>'input',
                     'options' => array(
@@ -58,10 +59,10 @@ function formulaires_badje_charger_dist() {
     // La liste des périodes disponible.
     $periodes = array(
         'Automne' => 'Automne', 
-        'Hiver' => 'Hiver',
         'Détente' => 'Détente', 
-        'Printemps' => 'Printemps', 
         'Juillet' => 'Juillet', 
+        'Hiver' => 'Hiver',
+        'Printemps' => 'Printemps', 
         'Août' => 'Août'
     );
 
@@ -89,14 +90,15 @@ function formulaires_badje_charger_dist() {
         $activite_sportive[$value['id_type_activite']] = $value['type_activite'];
     }
 
-
+    include_spip('inc/filtres');
     $form_saisie_options = array( 
         // La saisie des lieux
         array(
             'saisie' => 'fieldset',
             'options' => array(
                 'nom' => 'lieux', 
-                'label' => 'Lieux'
+                'label' => 'Lieux',
+                'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
                 ),
             'saisies' => array(
                 array('saisie' => 'checkbox',
@@ -106,7 +108,7 @@ function formulaires_badje_charger_dist() {
                         )
                     )
                 )
-        ),
+            ),
         // La saisie pour les ages.
         array(
             'saisie' => 'fieldset',
@@ -121,7 +123,8 @@ function formulaires_badje_charger_dist() {
                             'nom' => 'ages',
                             'label' => 'Mes enfants ont',
                             'class' => 'chosen',
-                            'datas' => $age_list
+                            'datas' => $age_list,
+                            'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
                             )
                         )
                 )
@@ -161,19 +164,11 @@ function formulaires_badje_charger_dist() {
                         )
                     ),
                 array(
-                    'saisie' => 'selection_multiple',
-                    'options' => array(
-                        'nom' => 'sportive',
-                        'label' => 'Activités sportives',
-                        'class' => 'chosen',
-                        'datas' => $activite_sportive
-                        )
-                    ),
-                array(
                     'saisie' => 'checkbox',
                     'options' => array(
                         'nom' => 'multiactivite',
-                        'datas' => array('oui' => 'Multiactivités')
+                        'datas' => array('oui' => 'Multiactivités'),
+                        'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
                         )
                     ),
                 array(
@@ -189,14 +184,25 @@ function formulaires_badje_charger_dist() {
                         'nom' => 'sejour',
                         'datas' => array('oui' => 'Séjours')
                         )
-                    )
-                )
+                    ),
+                array(
+                    'saisie' => 'selection_multiple',
+                    'options' => array(
+                        'nom' => 'sportive',
+                        'label' => 'Activités sportives',
+                        'class' => 'chosen',
+                        'datas' => $activite_sportive
+                        )
+                    ),
+                ),
+                
             ),
         array(
             'saisie' => 'fieldset',
             'options' => array(
-                'nom' => 'Handicap',
-                'label' => 'Handicap'
+                'nom' => 'handicap',
+                'label' => 'Handicap',
+                'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
                 ),
             'saisies' => array(
                 array(

@@ -5,13 +5,24 @@
 
 <form action="#ENV{action}" method="post">
     #ACTION_FORMULAIRE{#ENV{action}}
-    <ul>
-        [(#GENERER_SAISIES{#ENV{form_saisie_recherche}})]
-    </ul>
+    <div id="recherche_libre" class="row">
+        <div class="large-7 columns">
+            <ul>
+                [(#GENERER_SAISIES{#ENV{form_saisie_recherche}})]
+            </ul>
+        </div>
+        <div class="large-5 columns submit_haut">
+            <input type="submit" class="submit" value="" />
+        </div>
+    </div>
 
     <ul>
         [(#GENERER_SAISIES{#ENV{form_saisie_options}})]
+        <li class="submit_bouton">
+            <input type="submit" class="submit" value="" />
+        </li>
+        <li class="clear"></li>
     </ul>
-    <p class="boutons"><input type="submit" class="submit" value="<:pass_ok:>" /></p>
+    
 </form>
 </div>

@@ -1,0 +1,164 @@
+// Pas de clear sur les li sinon Chosen s'affiche mal
+.formulaire_spip {
+    form > ul {
+        display: block;
+        background: #FFF;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #d7ccbf;
+    }
+    ul { 
+        li {
+            padding: 0;
+            position: relative;
+        }
+    }
+    
+    .explication {
+        background: url(images/aide.png) no-repeat;
+    }
+
+    fieldset {
+        position: relative;
+        h3 {
+            font-size: 100%;
+            span {
+                display: block;
+                background: #00a272 url(images/loupe_form.png) no-repeat 10px 10px;
+                height: 30px;
+                font-family: helvetica;
+                font-weight: bold;
+                font-size: pem(11);
+                text-transform: uppercase;
+                color: #FFF;
+                padding-left: 24px;
+                padding-top: 10px;
+            }
+        }
+
+        &> ul {
+            display: block;
+            background: #f8f0d1;
+            border-top: 2px solid #9c9e9f;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 10px;
+            
+            input.text {
+                width: 100%;
+                border: none;
+            }
+        }
+    }
+
+    .chzn-container-multi .chzn-choices .search-field input {
+        height: 20px;
+    }    
+    
+    #recherche_libre {
+        display: block;
+        background: #FFF;
+        padding: 20px;
+        border-bottom: 2px solid #d7ccbf;
+        margin: 0;
+        margin-bottom: 20px;
+        
+        .submit_haut {
+            padding-left: 40px;
+        }
+
+        input.submit {
+            display: block;
+            border: none;
+            background: url(images/bouton_recherche_haut.png) no-repeat 0 0;
+            width: 255px;
+            height: 99px;
+            margin-right: 20px !important;
+        }
+    }
+    
+    label {
+        font-size: 100%;
+    }
+    
+    ul {
+        li.search-choice {
+            clear: none;
+        }
+        li.saisie_checkbox {
+            display: table;
+            div.choix {
+                float: left;
+                width: 33%;
+                font-size: pem(10);
+            }
+        }
+
+        li.fieldset_ages {
+            clear: none;
+            float: left;
+            width: 47%;
+        }
+        li.fieldset_periodes {
+            clear: none;
+            float: right;
+            width: 47%;
+        }
+
+        li.fieldset_activite ul {
+            display: table;
+            li {
+                display: block;
+                clear: none;
+                width: 50%;
+                float: left;
+                
+                &.editer_soutien, 
+                &.editer_multiactivite, 
+                &.editer_sejour {
+                    padding-left: 20px;
+                    float: right;
+                    div.choix {
+                        width: 100px;
+                    }
+                }
+                &.editer_sportive {
+                    margin-right: 1px;
+                }
+            }
+        }
+
+        li.fieldset_handicap {
+            width: 50%;
+            float: left;
+            clear: none;
+            
+            h3 {
+                margin-left: -20px;
+                padding-left: 20px;
+                background: url(images/handicap.png) no-repeat 0 0;
+            }
+
+            div.choix {
+                width: 100%;
+            }
+        }
+
+        li.submit_bouton {
+            display: block;
+            clear: none;
+            width: 50%;
+            height: 136px;
+            float: left;
+            
+            input.submit {
+                display: block;
+                border: none;
+                background: url(images/bouton_recherche_bas.png) no-repeat 0 0;
+                width: 302px;
+                height: 136px;
+                margin-top: -30px;
+            }
+        }
+    }
+}

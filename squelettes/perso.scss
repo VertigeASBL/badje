@@ -112,6 +112,24 @@ body {
             margin-top: 15px;
         }
     }
+    
+    #sidebar {
+        
+        .cadre {
+            background: #FFF;
+            border-bottom: 2px solid #d7ccbf;
+            padding: 10px;
+
+
+            .sub-cadre {
+                background: #f8f0d1;
+                border-bottom: 2px solid #d7ccbf;
+            }
+        }
+
+
+
+    }
 
     #pied {
         background: #fcbf00;
