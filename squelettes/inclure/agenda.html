@@ -8,9 +8,8 @@
         <BOUCLE_organisme_agenda(BADJE_ORGANISMES){id_activite}>
             [<h3>(#NOM_ORGANISME)</h3>]
             [<p class="pediode">(#PERIODE|afficher_periode)</p>]
-            [<p>(#DESCRIPTIF|couper{100})</p>]
-
-            <a href="#URL_ACTIVITE" title="#NOM_ORGANISME" class="bouton_badge"><:savoir_plus:></a>
+            [<p class="descriptif">(#DESCRIPTIF|couper{100})</p>]
+            [<a href="(#URL_ACTIVITE)" title="#NOM_ORGANISME" class="bouton_badge"><:savoir_plus:></a>]
         </BOUCLE_organisme_agenda>
     </div>
 </BOUCLE_agenda>
