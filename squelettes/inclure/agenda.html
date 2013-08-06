@@ -1,10 +1,10 @@
 <B_agenda>
 <div class="row">
 <BOUCLE_agenda(BADJE_ACTIVITES) {id_mot = 1} {0,1}>
-    <div class="large-4 columns">
-        #LOGO_ACTIVITE
+    <div class="large-5 columns">
+        [(#LOGO_ACTIVITE|image_passe_partout{112, 200}|image_recadre{112,200,center})]
     </div>
-    <div class="agenda_texte large-8 columns">
+    <div class="agenda_texte large-7 columns">
         <BOUCLE_organisme_agenda(BADJE_ORGANISMES){id_activite}>
             [<h3>(#NOM_ORGANISME)</h3>]
             [<p class="pediode">(#PERIODE|afficher_periode)</p>]
