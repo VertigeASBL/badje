@@ -43,7 +43,15 @@ body {
 
 // On créé une classe générique pour les boutons badge
 .bouton_badge {
+    display: table-cell;
+    vertical-align: middle;
+    background: url(images/bouton.png) no-repeat center;
+    width: 122px;
+    height: 19px;
     
+    text-align: center;
+    font-size: pem(9);
+    color: #FFF;
 }
 
 #page {
