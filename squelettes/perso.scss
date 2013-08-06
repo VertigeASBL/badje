@@ -126,76 +126,170 @@ body {
         }
     }
     
-    #sidebar {
+    #conteneur {
+        overflow: visible;
         
-        .cadre {
-            background: #FFF;
-            border-bottom: 2px solid #d7ccbf;
-            padding: 10px;
-            margin-bottom: 10px;
-            width: 300px;
-            float: right;
-
-            .sub-cadre {
-                background: #f8f0d1;
-                border-bottom: 2px solid #d7ccbf;
-                
-                &.no_border {
-                    border: none;
-                }
-
-                .row {
-                    margin: 0;
-                }
-                .agenda_texte {
-                    padding-left: 20px;
-                    background: url(images/agenda.png) no-repeat 95% 5%;
-                    
-                    h3 {
-                        margin-top: 20px;
-                        font-size: pem(18);
-                        color: #ce0058;
-                    }
-
-                    p {
-                        font-size: pem(10);
-                        
-                        &.pediode {
-                            font-weight: bold;
-                        }
-                        &.descriptif {
-                            margin-bottom: 5px;
-                        }
-                    }
-                }
-
-                .borchure {
-                    background: url(images/brochure.png) no-repeat 95% 5%;
-                    .spip_documents {
-                        margin: 0;
-                        padding-top: 10px;
-                    }
-                }
-
-                .annee_scolaire {
-                    position: relative;
-                    background: url(images/bg_annee_scolaire.png) no-repeat center;
-                    width: 280px;
-                    height: 156px;
-                    
-                    .left_illu {
-                        position: absolute;
-                        background: url(images/left_illu.png) no-repeat center;
-                        width: 116px;
-                        height: 105px;
-                    }
-                }
+        #contenu-principal {
+            h1 {
+                display: table-cell;
+                vertical-align: middle;
+                font-weight: bold;
+                font-size: pem(16);
+                color: #FFF;
+                background: #ce0058;
+                width: 700px;
+                height: 30px;
+                padding-left: 40px;
             }
         }
 
+        #sidebar {
 
+            .cadre {
+                background: #FFF;
+                border-bottom: 2px solid #d7ccbf;
+                padding: 10px;
+                margin-bottom: 10px;
+                width: 300px;
+                float: right;
 
+                .sub-cadre {
+                    background: #f8f0d1;
+                    border-bottom: 2px solid #d7ccbf;
+                    &.no_border {
+                        border: none;
+                    }
+
+                    .row {
+                        margin: 0;
+                        height: 200px;
+                        
+                        .large-5 {
+                            width: 40%;
+                        }
+                    }
+                    .agenda_texte {
+                        padding-left: 20px;
+                        background: url(images/agenda.png) no-repeat 95% 5%;
+
+                        h3 {
+                            margin-top: 20px;
+                            font-size: pem(18);
+                            color: #ce0058;
+                        }
+
+                        p {
+                            font-size: pem(10);
+
+                            &.pediode {
+                                font-weight: bold;
+                            }
+                            &.descriptif {
+                                margin-bottom: 5px;
+                            }
+                        }
+                    }
+
+                    .borchure {
+                        background: url(images/brochure.png) no-repeat 95% 5%;
+                        .spip_documents {
+                            margin: 0;
+                            padding-top: 10px;
+                        }
+                    }
+
+                    .annee_scolaire {
+                        position: relative;
+                        background: url(images/bg_annee_scolaire.png) no-repeat center;
+                        width: 280px;
+                        height: 156px;
+
+                        .left_illu {
+                            position: absolute;
+                            background: url(images/left_illu.png) no-repeat center;
+                            width: 116px;
+                            height: 105px;
+
+                            top: 10px;
+                            left: -28px;
+                        }
+                        
+                        .go {
+                            position: absolute;
+                            background: url(images/illu_go.png) no-repeat center;
+                            width: 52px;
+                            height: 22px;
+                            
+                            top: 10px;
+                            right: 20px;
+                        }
+
+                        .texte {
+                            position: absolute;
+                            background: url(images/scolaire_texte.png) no-repeat center;
+                            width: 210px;
+                            height: 60px;
+                            
+                            top: 75px;
+                            left: 56px;
+                        }
+
+                        .right_illu {
+                            position: absolute;
+                            background: url(images/right_illu.png) no-repeat center;
+                            width: 119px;
+                            height: 83px;
+
+                            top: 98px;
+                            right: -37px;
+                        }
+                    }
+                }
+            }
+
+            .spip_logos {
+                float: right;
+            }
+        }
+
+        #sidebar-art {
+            h2 {
+                color: #FFF;
+                font-size: pem(12);
+                font-family: PaperJohnnyEinhalbRegular;
+                width: 260px;
+                height: 30px;
+                text-align: center;
+                
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            ul#article-rub {
+                list-style: none;
+                
+                li {
+                    margin-left: 12px;
+                    margin-top: 1px;
+                    padding-left: 30px;
+                    background: #97d5d4;
+                    width: 238px;
+                    height: 28px;
+                    
+                    a {
+                        color: #FFF;
+                        font-size: pem(12);
+                        font-family: PaperJohnnyEinhalbRegular;
+                    }
+                }
+            }
+
+            .nouvelle_recherche {
+                margin-top: 20px;
+            }
+        }
     }
+
 
     #pied {
         background: #fcbf00;
