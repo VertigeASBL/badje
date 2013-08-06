@@ -140,6 +140,10 @@ body {
                 background: #f8f0d1;
                 border-bottom: 2px solid #d7ccbf;
                 
+                &.no_border {
+                    border: none;
+                }
+
                 .row {
                     margin: 0;
                 }
@@ -170,6 +174,20 @@ body {
                     .spip_documents {
                         margin: 0;
                         padding-top: 10px;
+                    }
+                }
+
+                .annee_scolaire {
+                    position: relative;
+                    background: url(images/bg_annee_scolaire.png) no-repeat center;
+                    width: 280px;
+                    height: 156px;
+                    
+                    .left_illu {
+                        position: absolute;
+                        background: url(images/left_illu.png) no-repeat center;
+                        width: 116px;
+                        height: 105px;
                     }
                 }
             }
