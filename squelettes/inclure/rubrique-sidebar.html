@@ -1,0 +1,21 @@
+[(#REM) Ce fichier contine la sidebar en cas de rubrique ]
+<B_Menu_rubrique>
+
+[(#REM) On va chercher le titre de la rubrique ]
+<BOUCLE_titre_rub(RUBRIQUES){id_rubrique}>
+    <h2 class="turquoise">#TITRE</h2>
+</BOUCLE_titre_rub>
+
+<ul id="article-rub">
+    <BOUCLE_Menu_rubrique(ARTICLES){id_rubrique}>
+        [<li><a href="#URL_ARTICLE" titele="#TITRE">(#TITRE)</a></li>]
+    </BOUCLE_Menu_rubrique>
+</ul>
+</B_Menu_rubrique>
+
+[(#REM) On va chercher le logo de l'article ]
+[(#LOGO_ARTICLE|image_passe_partout{260, 170}|image_recadre{260,170,center})]
+
+[<a href="#URL_SITE_SPIP" title="Nouvelle Recherche">
+    (#CHEMIN{images/nouvelle_recherche.png}|balise_img{Nouvelle recherche, nouvelle_recherche})
+</a>]
