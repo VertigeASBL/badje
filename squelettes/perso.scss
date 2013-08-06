@@ -41,6 +41,11 @@ body {
     padding: 0;
 }
 
+// On créé une classe générique pour les boutons badge
+.bouton_badge {
+    
+}
+
 #page {
     width: 980px;
     border: none;
@@ -125,6 +130,28 @@ body {
             .sub-cadre {
                 background: #f8f0d1;
                 border-bottom: 2px solid #d7ccbf;
+                
+                .row {
+                    margin: 0;
+                }
+                .agenda_texte {
+                    padding-left: 20px;
+                    background: url(images/agenda.png) no-repeat 95% 5%;
+                    
+                    h3 {
+                        margin-top: 20px;
+                        font-size: pem(18);
+                        color: #ce0058;
+                    }
+
+                    p {
+                        font-size: pem(10);
+                        
+                        &.pediode {
+                            font-weight: bold;
+                        }
+                    }
+                }
             }
         }
 
