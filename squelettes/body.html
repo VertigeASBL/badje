@@ -26,8 +26,16 @@
     
     
     <div id="conteneur" class="row">
+        
+        [(#REM) Dans un article, on place la sidebar rubrique ]
+        [(#ENV{type}|=={article}|oui)
+            <div id="sidebar-art" class="large-4 columns">
+                <INCLURE{fond=inclure/rubrique-sidebar, env}>
+            </div>
+        ]
+
         [(#REM) Contenu principal ]
-        <div class="large-8 columns">
+        <div id="contenu-principal" class="large-8 columns">
             <INCLURE{fond=contenu/#ENV{type},env}>
         </div>
         
