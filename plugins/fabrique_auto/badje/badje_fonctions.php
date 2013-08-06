@@ -13,11 +13,16 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 
 /*
- * Un fichier de fonctions permet de définir des éléments
- * systématiquement chargés lors du calcul des squelettes.
- *
- * Il peut par exemple définir des filtres, critères, balises, …
- * 
- */
+*   Fonction qui permet d'afficher la pédiode d'une activité sous forme de chaine de caractère plus maléable.
+*/
+function afficher_periode($periode_string, $glue = ', ') {
+
+    // En premier lieu, on va récupèrer nos données dans un tableau.
+    $periode_string = explode(',', $periode_string);
+
+    // On renvoie le nouveau formatage.
+    return implode($glue, $periode_string);
+
+}
 
 ?>
