@@ -142,6 +142,7 @@ body {
                 width: 700px;
                 height: 30px;
                 padding-left: 40px;
+                text-transform: uppercase;
             }
 
             .texte-principal {
@@ -269,6 +270,7 @@ body {
                 width: 260px;
                 height: 30px;
                 text-align: center;
+                text-transform: uppercase;
                 
                 display: table-cell;
                 vertical-align: middle;
@@ -290,6 +292,7 @@ body {
                     }
 
                     a {
+                        text-transform: uppercase;
                         color: #FFF;
                         font-size: pem(12);
                         font-family: PaperJohnnyEinhalbRegular;
