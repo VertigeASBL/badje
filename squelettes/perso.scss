@@ -55,6 +55,10 @@ body {
     color: #FFF;
 }
 
+img, object, embed {
+    max-width: none;
+}
+
 #page {
     width: 980px;
     border: none;
@@ -129,13 +133,13 @@ body {
     
     #conteneur {
         overflow: visible;
+        margin-top: 55px;
         
         #contenu-principal {
-            padding-left: 20px;
+            padding-left: 35px;
             
             h1 {
-                display: table-cell;
-                vertical-align: middle;
+                display: table;
                 font-weight: bold;
                 font-size: pem(16);
                 color: #FFF;
@@ -144,6 +148,11 @@ body {
                 height: 30px;
                 padding-left: 40px;
                 text-transform: uppercase;
+                
+                span {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
             }
 
             .texte-principal {
@@ -271,6 +280,7 @@ body {
 
         #sidebar-art {
             h2 {
+                display: table;
                 color: #FFF;
                 font-size: pem(12);
                 font-family: PaperJohnnyEinhalbRegular;
@@ -279,8 +289,11 @@ body {
                 text-align: center;
                 text-transform: uppercase;
                 
-                display: table-cell;
-                vertical-align: middle;
+
+                span {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
             }
 
             ul#article-rub {
@@ -291,9 +304,14 @@ body {
                     margin-top: 1px;
                     padding-left: 30px;
                     background: #97d5d4;
-                    width: 220px;
+                    width: 238px;
                     height: 28px;
                     
+                    &.on {
+                        font-weight: normal;
+                        background: #00ada9;
+                    }
+
                     &:hover {
                         background: #00ada9;
                     }
