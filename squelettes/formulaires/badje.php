@@ -96,14 +96,14 @@ function formulaires_badje_charger_dist() {
         array(
             'saisie' => 'fieldset',
             'options' => array(
-                'nom' => 'lieux', 
+                'nom' => 'code_postal', 
                 'label' => 'Lieux',
                 'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
                 ),
             'saisies' => array(
                 array('saisie' => 'checkbox',
                     'options' => array(
-                        'nom' => 'lieux', 
+                        'nom' => 'code_postal', 
                         'datas' => $commune
                         )
                     )
@@ -134,7 +134,7 @@ function formulaires_badje_charger_dist() {
         array(
             'saisie' => 'fieldset',
             'options' => array(
-                'nom' => 'periodes',
+                'nom' => 'periode',
                 'label' => 'Périodes'
                 ),
             'saisies' => array(
@@ -222,26 +222,40 @@ function formulaires_badje_charger_dist() {
                 )
             )
     );
-
+    
+    // On charge les formulaire dans le contexte.
     $contexte = array(
             'form_saisie_recherche' => $form_saisie_recherche,
             'form_saisie_options' => $form_saisie_options
     );
+
+    // On charge aussi dans le contexte les données d'un éventuel formulaire envoyé.
+    $contexte['recherche'] = _request('recherche');
+    $contexte['code_postal'] = _request('code_postal');
+    $contexte['ages'] = _request('ages');
+    $contexte['periode'] = _request('periodes');
+    $contexte['creative'] = _request('creative');
+    $contexte['multiactivite'] = _request('multiactivite');
+    $contexte['soutien'] = _request('soutien');
+    $contexte['sportive'] = _request('sportive');
+    $contexte['accueil_handicap'] = _request('accueil_handicap');
+
+    $contexte['action'] = generer_url_public('recherche-badje');
+
     return $contexte;
 }
 
 function formulaires_badje_verifier_dist() {
     $erreurs = array();
-    if (!_request('')) {
+    /*if (!_request('')) {
             $erreurs['message_erreur'] = '';
             $erreurs['NomErreur'] = '';
-    }
+    }*/
     return $erreurs;
 }
 
 function formulaires_badje_traiter_dist() {
-    $data = _request('data');
-
+    
     /* message */
     return array(
             'editable' => true,
