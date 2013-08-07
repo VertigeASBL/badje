@@ -134,14 +134,14 @@ function formulaires_badje_charger_dist() {
         array(
             'saisie' => 'fieldset',
             'options' => array(
-                'nom' => 'periode',
+                'nom' => 'periodes',
                 'label' => 'Périodes'
                 ),
             'saisies' => array(
                 array(
                     'saisie' => 'checkbox',
                     'options' => array(
-                        'nom' => 'periodes',
+                        'nom' => 'periode',
                         'datas' => $periodes
                         )
                     )
@@ -256,6 +256,13 @@ function formulaires_badje_verifier_dist() {
 
 function formulaires_badje_traiter_dist() {
     
+    // On traite l'age de envoyer
+    if (_request('ages')) {
+        // Cela va créer les #ENV correspondant utilisable dans les boucles.
+        set_request('age_min', min(_request('ages')));
+        set_request('age_max', max(_request('ages')));
+    }
+
     /* message */
     return array(
             'editable' => true,

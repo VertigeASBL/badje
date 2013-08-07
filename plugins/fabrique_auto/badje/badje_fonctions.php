@@ -22,7 +22,10 @@ function afficher_periode($periode_string, $glue = ', ') {
 
     // On renvoie le nouveau formatage.
     return implode($glue, $periode_string);
+}
 
+function get_array_periode($periode_string) {
+    return explode(',', $periode_string);
 }
 
 ?>

@@ -1,8 +1,28 @@
+
+[(#REM) On boucle avec les filtres que l'on peu mettre ]
 <B_recherche>
-<BOUCLE_recherche(BADJE_ACTIVITES){recherche}{code_postal ?IN #ENV{code_postal}}>
-    #NOM
-    #DESCRIPTIF
-    #CODE_POSTAL
+<BOUCLE_recherche(BADJE_ACTIVITES)  {recherche ?}
+                                    {code_postal ?IN #ENV{code_postal}}
+                                    {age_min ?<= #ENV{age_min}}
+                                    {age_max ?>= #ENV{age_max}}>
+    [(#SET{tableau_periode, #PERIODE|get_array_periode})]
+    #SET{afficher, non}
+    <BOUCLE_search_periode(DATA){source table, #GET{tableau_periode}} {si #ENV{periode}|oui}>
+        [(#ENV{periode}|find{#VALEUR}|oui)
+            #SET{afficher, oui}
+        ]
+    </BOUCLE_search_periode>
+    #SET{afficher, oui}
+    <//B_search_periode>
+
+    [(#GET{afficher}|=={oui}|oui)
+        #NOM
+        #DESCRIPTIF
+        #CODE_POSTAL
+        <br />#PERIODE
+        <br>#AGE_MIN to #AGE_MAX
+    ]
+    
     <br />
     <br />
     <br />
