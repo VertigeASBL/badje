@@ -4,7 +4,9 @@
                                     {code_postal ?IN #ENV{code_postal}}
                                     {age_min ?<= #ENV{age_min}}
                                     {age_max ?>= #ENV{age_max}}
-                                    {id_type_activite ?IN #ENV{id_type_activite}}>
+                                    {id_type_activite ?IN #ENV{id_type_activite}}
+                                    {accueil_handicap ?= on}
+                                    {accessibilite_handicap ?= on}>
     
     [(#REM) On va créer un tableau avec la période de l'activité. ]
     [(#SET{tableau_periode, #PERIODE|get_array_periode})]
@@ -30,12 +32,8 @@
         #CODE_POSTAL
         <br />#PERIODE
         <br>#AGE_MIN to #AGE_MAX
-        
-        <BOUCLE_type_activite(BADJE_TYPE_ACTIVITES){id_type_activite IN #ID_TYPE_ACTIVITE}>
-            #TYPE_ACTIVITE
-        </BOUCLE_type_activite>
-        
-        <br />
+        <br>#ACCUEIL_HANDICAP
+        <br />#ACCESSIBILITE_HANDICAP
         <br />
         <br />
     ]

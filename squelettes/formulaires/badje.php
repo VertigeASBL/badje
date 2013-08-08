@@ -217,7 +217,7 @@ function formulaires_badje_charger_dist() {
                 array(
                     'saisie' => 'checkbox',
                     'options' => array(
-                        'nom' => 'acces_handicap',
+                        'nom' => 'accessibilite_handicap',
                         'datas' => array('oui' => 'Accessible aux enfants à mobilité réduite')
                         )
                     )
@@ -242,6 +242,7 @@ function formulaires_badje_charger_dist() {
     $contexte['sportive'] = _request('sportive');
     $contexte['accueil_handicap'] = _request('accueil_handicap');
 
+    // On change l'action pour envoyer les donnée sur une autre page.
     $contexte['action'] = generer_url_public('recherche-badje');
 
     return $contexte;
@@ -274,7 +275,7 @@ function formulaires_badje_traiter_dist() {
         // On l'ajoute au tableau des types d'acivité.
         $id_type_activite[] = $id_multiactivite;
     }
-    
+
     // On traite les tableaux d'activité.
     if (_request('creative') or _request('sportive'))
         $id_type_activite = array_merge($id_type_activite, _request('creative'), _request('sportive'));
@@ -282,6 +283,10 @@ function formulaires_badje_traiter_dist() {
     // On passe l'id_type_activite dans le #ENV
     if (!empty($id_type_activite)) 
         set_request('id_type_activite', $id_type_activite);
+
+    // On passe les champs handicap dans le #ENV
+    if (_request('accueil_handicap')) set_request('accueil_handicap', 'on');
+    if (_request('accessibilite_handicap')) set_request('accessibilite_handicap', 'on');
 
     /* message */
     return array(
