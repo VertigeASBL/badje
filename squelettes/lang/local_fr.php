@@ -3,6 +3,8 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 $GLOBALS[$GLOBALS['idx_lang']] = array(
     // A
+    'activite_trouve' => 'Activité trouvée',
+    'activites_trouves' => 'Activités trouvées',
     // B
     // C
     // D
