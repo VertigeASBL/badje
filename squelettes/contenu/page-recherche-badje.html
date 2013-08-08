@@ -1,6 +1,15 @@
 [(#REM) On boucle avec les filtres que l'on peu mettre ]
 <B_recherche>
 <h1>[#GRAND_TOTAL (#GRAND_TOTAL|singulier_ou_pluriel{<:activite_trouve:>, <:activites_trouves:>})]</h1>
+
+<div class="onglet">
+    <ul>
+        <li><:tri:></li>
+        <li><:commune:></li>
+        <li><:type:></li>
+    </ul>
+</div>
+<div class="container-recherche">
 <BOUCLE_recherche(BADJE_ACTIVITES)  {recherche ?}
                                     {code_postal ?IN #ENV{code_postal}}
                                     {age_min ?<= #ENV{age_min}}
@@ -27,9 +36,24 @@
     <//B_search_periode>
 
     [(#REM) On affiche les données. ]
-    [(#GET{afficher}|=={oui}|oui)
-        
-    ]
+    <B_organisme_activite>
+    <BOUCLE_organisme_activite(BADJE_ORGANISMES){si #GET{afficher}|=={oui}}{id_activite}>
+        <h3>#NOM_ORGANISME</h3>
+        <div class="cadre-recherche">
+            <ul>
+                <li>#ADRESSE</li>
+                <li>#CODE_POSTAL #LOCALITE</li>
+                <li>#TELEPHONE / #GSM / #FAX</li>
+                <li>[(#PERIODE|afficher_periode{ - })]</li>
+                <li>de #AGE_MIN à #AGE_MAX | #PRIX</li>
+            </ul>
+            
+        </div>
+    </BOUCLE_organisme_activite>
+    </B_organisme_activite>
+
 </BOUCLE_recherche>
+</div>
+
 </B_recherche>
 <//B_recherche>

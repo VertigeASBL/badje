@@ -7,9 +7,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'activites_trouves' => 'Activités trouvées',
     // B
     // C
+    'commune' => 'Commune',
     // D
     // E
-    'savoir_plus' => 'En savoir plus'
+    'savoir_plus' => 'En savoir plus',
     // F
     // G
     // H
@@ -24,6 +25,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     // R
     // S
     // T
+    'type' => 'Type'
     // U
     // V
     // W
