@@ -24,6 +24,9 @@ function afficher_periode($periode_string, $glue = ', ') {
     return implode($glue, $periode_string);
 }
 
+/*
+*   Cette fonction est utiliser pour transormer #PERIODE en tableau utilisable.
+*/
 function get_array_periode($periode_string) {
     return explode(',', $periode_string);
 }
