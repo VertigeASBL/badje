@@ -265,6 +265,24 @@ function formulaires_badje_traiter_dist() {
         set_request('age_max', max(_request('ages')));
     }
 
+    $id_type_activite = array();
+    // On traite les multiactivités
+    if (_request('multiactivite')) {
+        // D'abord, pour être sur d'avoir le bon id, on le récupère.
+        $id_multiactivite = sql_getfetsel('id_type_activite', 'spip_badje_type_activites', 'type_activite='.sql_quote('Multiactivités'));
+        
+        // On l'ajoute au tableau des types d'acivité.
+        $id_type_activite[] = $id_multiactivite;
+    }
+    
+    // On traite les tableaux d'activité.
+    if (_request('creative') or _request('sportive'))
+        $id_type_activite = array_merge($id_type_activite, _request('creative'), _request('sportive'));
+    
+    // On passe l'id_type_activite dans le #ENV
+    if (!empty($id_type_activite)) 
+        set_request('id_type_activite', $id_type_activite);
+
     /* message */
     return array(
             'editable' => true,
