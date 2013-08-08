@@ -9,6 +9,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     // C
     'commune' => 'Commune',
     // D
+    'detail' => 'de détails',
     // E
     'savoir_plus' => 'En savoir plus',
     // F
