@@ -7,6 +7,8 @@
 *    http://p.henix.be/
 */
 
+include_spip('base/abstract_sql');
+
 function formulaires_badje_charger_dist() {
     /*
     *   Ce tableau va défini la structure du le formulaire.
