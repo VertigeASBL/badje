@@ -5,16 +5,25 @@
                                     {code_postal ?IN #ENV{code_postal}}
                                     {age_min ?<= #ENV{age_min}}
                                     {age_max ?>= #ENV{age_max}}>
+    
+    [(#REM) On va créer un tableau avec la période de l'activité. ]
     [(#SET{tableau_periode, #PERIODE|get_array_periode})]
-    #SET{afficher, non}
+
+    [(#REM) 
+        On fait une boucle sur ce tableau et on test chaque valeur. 
+        On test aussi qu'une période à bien été envoyée.
+    ]
     <BOUCLE_search_periode(DATA){source table, #GET{tableau_periode}} {si #ENV{periode}|oui}>
         [(#ENV{periode}|find{#VALEUR}|oui)
             #SET{afficher, oui}
         ]
     </BOUCLE_search_periode>
+
+    [(#REM) Si aucune période n'a été envoyée, on affiche toujours les données. ]
     #SET{afficher, oui}
     <//B_search_periode>
 
+    [(#REM) On affiche les données. ]
     [(#GET{afficher}|=={oui}|oui)
         #NOM
         #DESCRIPTIF
