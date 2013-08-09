@@ -4,7 +4,7 @@
 
 <B_mode_emplois>
 <div class="mode_emplois">
-    <BOUCLE_mode_emplois(ARTICLES){id_article = 12}>
+    <BOUCLE_mode_emplois(ARTICLES){id_article = 12} {si #ENV{id_activite}|non}>
         [<h3><span>(#TITRE)</span></h3>]
         <div class="cadre_mode_emplois">
             #TEXTE
@@ -12,9 +12,14 @@
     </BOUCLE_mode_emplois>
 </div>
 </B_mode_emplois>
+    <B_activite_info>
+    <div class="mode_emplois">
+        <BOUCLE_activite_info(BADJE_ACTIVITES){id_activite}>
+            #PRIX
+        </BOUCLE_activite_info>
+    </div>
+    </B_activite_info>
 <//B_mode_emplois>
-
-<INCLURE{fond=inclure/detail_activite, env}>
 
 [<a href="#URL_SITE_SPIP" title="Nouvelle Recherche">
     (#CHEMIN{images/nouvelle_recherche.png}|balise_img{Nouvelle recherche, nouvelle_recherche})
