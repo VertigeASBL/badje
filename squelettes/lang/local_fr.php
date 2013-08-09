@@ -20,13 +20,16 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     // L
     // N
     // M
+    'mode_emplois' => 'Mode d\'emplois',
     // O
     // P
     // Q
     // R
     // S
+    'sauvegarder' => 'Sauvegarder',
     // T
-    'type' => 'Type'
+    'type' => 'Type',
+    'tri_commune' => 'trier par commune.'
     // U
     // V
     // W
