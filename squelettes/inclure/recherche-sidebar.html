@@ -21,7 +21,7 @@
         <BOUCLE_activite_info(BADJE_ACTIVITES){id_activite}>
             [(#REM) On va chercher aussi les informations sur l'organisme ]
             <BOUCLE_orga(BADJE_ORGANISMES){id_activite}>
-                [<h3><span>(#NOM_ORGANISME)</span></h3>]
+                <h3><span>#NOM_ORGANISME</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
                 <div class="cadre_mode_emplois">
                     <ul>
                         <li class="bold">#ADRESSE</li>
