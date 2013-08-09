@@ -1,7 +1,9 @@
+[(#REM) On affiche le lien vers le panier de la personne ]
 [<a href="#URL_PAGE{ma-selection}" title="ma séléction">
 (#CHEMIN{images/ma_selection.png}|balise_img{Ma séléction, ma_selection})
 </a>]
 
+[(#REM) On boucle pour aller chercher le mode d'emplois, si aucune activité n'est envoyer pour des détail. ]
 <B_mode_emplois>
 <div class="mode_emplois">
     <BOUCLE_mode_emplois(ARTICLES){id_article = 12} {si #ENV{id_activite}|non}>
@@ -12,10 +14,26 @@
     </BOUCLE_mode_emplois>
 </div>
 </B_mode_emplois>
+    
+    [(#REM) Si #ENV contient un id_activite on boucle pour retrouver les informations de l'activité. ]
     <B_activite_info>
     <div class="mode_emplois">
         <BOUCLE_activite_info(BADJE_ACTIVITES){id_activite}>
-            #PRIX
+            [(#REM) On va chercher aussi les informations sur l'organisme ]
+            <BOUCLE_orga(BADJE_ORGANISMES){id_activite}>
+                [<h3><span>(#NOM_ORGANISME)</span></h3>]
+                <div class="cadre_mode_emplois">
+                    <ul>
+                        <li class="bold">#ADRESSE</li>
+                        <li class="bold">#CODE_POSTAL #LOCALITE</li>
+                        <li class="bold">#TELEPHONE [/ (#GSM)] [/ (#FAX)]</li>
+                        <li>[(#PERIODE|afficher_periode{' - '})]</li>
+                        <li>de #AGE_MIN à #AGE_MAX | #PRIX</li>
+                    </ul>
+
+                    #DESCRIPTIF
+                </div>
+            </BOUCLE_orga>
         </BOUCLE_activite_info>
     </div>
     </B_activite_info>
