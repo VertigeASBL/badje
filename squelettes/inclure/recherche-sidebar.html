@@ -1,0 +1,17 @@
+[(#CHEMIN{images/ma_selection.png}|balise_img{Ma séléction, ma_selection})]
+
+<B_mode_emplois>
+<div class="mode_emplois">
+    <BOUCLE_mode_emplois(ARTICLES){id_article = 12}>
+        [<h3><span>(#TITRE)</span></h3>]
+        <div class="cadre_mode_emplois">
+            #TEXTE
+        </div>
+    </BOUCLE_mode_emplois>
+</div>
+</B_mode_emplois>
+<//B_mode_emplois>
+
+[<a href="#URL_SITE_SPIP" title="Nouvelle Recherche">
+    (#CHEMIN{images/nouvelle_recherche.png}|balise_img{Nouvelle recherche, nouvelle_recherche})
+</a>]
