@@ -21,6 +21,15 @@ function formulaires_cadi_verifier_dist($id_activite) {
             $erreurs['NomErreur'] = '';
     }*/
     $erreurs = array();
+
+    // On récupère le cadi actuel de la personne
+    $cadi_actuel = session_get('cadi');
+
+    // S'il existe et que l'activité est déjà dans le tableau, on passe dans le contexte une instruction pour ne pas afficher le formulaire.
+    if (is_array($cadi_actuel) and in_array($id_activite, $cadi_actuel)) {
+        $erreurs['message_erreur'] = 'Déjà dans le cadi';
+    }
+
     return $erreurs;
 }
 
