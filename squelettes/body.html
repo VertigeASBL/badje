@@ -40,8 +40,13 @@
 
         [(#REM) Contenu principal ]
         <div id="contenu-principal" class="[(#ENV{type}|=={article}|oui) large-9 marge]
-                                            [(#ENV{type}|=={article}|non|et{#ENV{composition}|!={recherche-badje}|oui}) large-8 ]
-                                            [(#ENV{composition}|=={recherche-badje}|oui) large-7 ]
+                                            
+                                            [(#ENV{type}|=={article}|non
+                                            |et{#ENV{composition}|!={recherche-badje}|oui}
+                                            |et{#ENV{composition}|!={ma-selection}|oui}) large-8 ]
+                                            
+                                            [(#ENV{composition}|=={recherche-badje}|oui
+                                            |ou{#ENV{composition}|=={ma-selection}|oui}) large-7 ]
                                             columns">
             <INCLURE{fond=contenu/#ENV{type},env}>
         </div>
@@ -54,7 +59,8 @@
         ]
 
         [(#REM) Sur la page de recherche, on affiche recherche-sidebar ]
-        [(#ENV{composition}|=={recherche-badje}|oui)
+        [(#ENV{composition}|=={recherche-badje}|oui
+            |ou{#ENV{composition}|=={ma-selection}|oui})
             <div id="sidebar-recherche" class="large-5 columns">
                 <INCLURE{fond=inclure/recherche-sidebar, env}>
             </div>
