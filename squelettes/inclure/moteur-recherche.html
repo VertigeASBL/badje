@@ -1,0 +1,65 @@
+[(#REM) On boucle avec les filtres que l'on peu mettre ]
+<B_recherche>
+<h1 class="moteur_titre">[#GRAND_TOTAL (#GRAND_TOTAL|singulier_ou_pluriel{<:activite_trouve:>, <:activites_trouves:>})]</h1>
+
+<div class="onglet">
+    <ul>
+        <li><:tri:></li>
+        <li>
+            <a href="[(#SELF|parametre_url{tri, commune})]" title="<:tri_commune:>" class="ajax"><:commune:></a>
+        </li>
+        <li><:type:></li>
+    </ul>
+</div>
+<div class="container-recherche">
+<BOUCLE_recherche(BADJE_ACTIVITES spip_badje_organismes_liens spip_badje_organismes)  {recherche ?}
+                                    {code_postal ?IN #ENV{code_postal}}
+                                    {age_min ?<= #ENV{age_min}}
+                                    {age_max ?>= #ENV{age_max}}
+                                    {id_type_activite ?IN #ENV{id_type_activite}}
+                                    {accueil_handicap ?= on}
+                                    {accessibilite_handicap ?= on}
+                                    {par spip_badje_organismes.localite}>
+    
+    [(#REM) On va créer un tableau avec la période de l'activité. ]
+    [(#SET{tableau_periode, #PERIODE|get_array_periode})]
+
+    [(#REM) 
+        On fait une boucle sur ce tableau et on test chaque valeur. 
+        On test aussi qu'une période à bien été envoyée.
+    ]
+    <BOUCLE_search_periode(DATA){source table, #GET{tableau_periode}} {si #ENV{periode}|oui}>
+        [(#ENV{periode}|find{#VALEUR}|oui)
+            #SET{afficher, oui}
+        ]
+    </BOUCLE_search_periode>
+
+    [(#REM) Si aucune période n'a été envoyée, on affiche toujours les données. ]
+    #SET{afficher, oui}
+    <//B_search_periode>
+    
+    [(#REM) On affiche les données. ]
+    [(#GET{afficher}|=={oui}|oui)
+        
+        [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
+        [(#GET{save_localite}|!={#LOCALITE}|oui) <h2><span>#LOCALITE</span></h2> ]
+        [(#SET{save_localite, #LOCALITE})]
+
+        <h3><span>#NOM_ORGANISME</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
+        <div class="cadre-recherche">
+            <ul>
+                <li class="bold">#ADRESSE</li>
+                <li class="bold">#CODE_POSTAL #LOCALITE</li>
+                <li class="bold">#TELEPHONE [/ (#GSM)] [/ (#FAX)]</li>
+                <li>[(#PERIODE|afficher_periode{' - '})]</li>
+                <li>de #AGE_MIN à #AGE_MAX | #PRIX</li>
+            </ul>
+            
+            <a href="#URL_ACTIVITE" title="#NOM_ORGANISME" class="plus_detail">[(#CHEMIN{images/plus_detail.png}|balise_img{plus de détails, plus_detail})]<:detail:></a>
+        </div>
+    ]
+</BOUCLE_recherche>
+</div>
+
+</B_recherche>
+<//B_recherche>

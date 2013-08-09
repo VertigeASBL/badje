@@ -143,7 +143,9 @@ img, object, embed {
         margin-top: 55px;
         
         #contenu-principal {
-            padding-left: 35px;
+            &.marge {
+                padding-left: 35px;
+            }
             
             h1 {
                 display: table;
@@ -174,6 +176,23 @@ img, object, embed {
                     list-style-position: inside;
                 }
             }
+            
+            h1.moteur_titre {
+                background: transparent;
+                padding-left: 0;
+                font-weight: bold;
+                font-size: pem(20);
+                color: #87362b;
+            }
+
+            .onglet {
+                ul {
+                    list-style: none;
+                    li {
+                        display: inline-block;
+                    }
+                }
+            }
 
             .container-recherche {
                 width: 600px;
@@ -181,7 +200,6 @@ img, object, embed {
                 background: #FFF;
                 padding: 20px;
                 overflow-y: scroll;
-                
                 
                 h2 {
                     background: url(images/bg_commune.png) no-repeat center;
@@ -208,12 +226,24 @@ img, object, embed {
                     font-size: pem(16);
                     color: #FFF;
                     padding-left: 28px;
+                    position: relative;
                     
                     span {
                         width: 560px;
                         height: 35px;
                         display: table-cell;
                         vertical-align: middle;
+                    }
+
+                    .formulaire_cadi {
+                        position: absolute;
+                        top: 8px;
+                        right: 30px;
+
+                        input {
+                            background: url(images/cadi.png) no-repeat center;
+                            border: none;
+                        }
                     }
                 }
                 .cadre-recherche {
@@ -408,6 +438,76 @@ img, object, embed {
             .nouvelle_recherche {
                 margin-top: 20px;
             }
+        }
+
+        #sidebar-recherche {
+            
+            .ma_selection {
+                margin-left: 95px;
+            }
+
+            h3 {
+                float: right;
+                margin-top: 40px;
+                background: #00a272 url(images/gears.png) no-repeat right;
+                font-size: pem(16);
+                font-weight: bold;
+                color: #FFF;
+                
+                width: 360px;
+                height: 30px;
+                
+                padding-left: 20px;
+                text-transform: none;
+                
+                span {
+                    display: table-cell;
+                    vertical-align: middle;
+                    width: 360px;
+                    height: 30px;
+                }
+            }
+
+            .cadre_mode_emplois {
+                margin-left: 59px;
+                margin-right: 10px;
+                padding-top: 20px;
+                padding-left: 10px;
+                padding-right: 10px;
+                background: #FFF;
+                border-top: 2px solid #d7ccbf;
+                float: right;
+                
+                h4 {
+                    font-size: pem(15);
+                    font-weight: bold;
+                    text-transform: none;
+                    margin-bottom: 15px;
+                }
+                
+                p {
+                    font-size: pem(13);
+                }
+
+                table.spip {
+                    td {
+                        vertical-align: middle;
+                    }
+                    
+                    tr.row_even, tr.row_odd {
+                        background: transparent;
+                    }
+                    span.spip_documents {
+                        margin: 0;
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+
+            .nouvelle_recherche {
+                margin-left: 69px;
+                margin-top: 15px;
+            } 
         }
     }
 
