@@ -1,0 +1,24 @@
+<B_ma_selection>
+<div class="container-recherche">
+<BOUCLE_ma_selection(BADJE_ACTIVITES spip_badje_organismes_liens spip_badje_organismes){id_activite IN #SESSION{cadi}} {par spip_badje_organismes.localite}>
+    [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
+    [(#GET{save_localite}|!={#LOCALITE}|oui) <h2><span>#LOCALITE</span></h2> ]
+    [(#SET{save_localite, #LOCALITE})]
+
+    <h3><span>#NOM_ORGANISME</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
+    <div class="cadre-recherche">
+        <ul>
+            <li class="bold">#ADRESSE</li>
+            <li class="bold">#CODE_POSTAL #LOCALITE</li>
+            <li class="bold">#TELEPHONE [/ (#GSM)] [/ (#FAX)]</li>
+            <li>[(#PERIODE|afficher_periode{' - '})]</li>
+            <li>de #AGE_MIN à #AGE_MAX | #PRIX</li>
+        </ul>
+        
+        <a href="#URL_ACTIVITE" title="#NOM_ORGANISME" class="plus_detail">[(#CHEMIN{images/plus_detail.png}|balise_img{plus de détails, plus_detail})]<:detail:></a>
+    </div>
+</BOUCLE_ma_selection>
+</div>
+</B_ma_selection>
+Pas d'élément dans le cadi !
+<//B_ma_selection>
