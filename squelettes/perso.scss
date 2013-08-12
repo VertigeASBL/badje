@@ -190,6 +190,10 @@ img, object, embed {
                     list-style: none;
                     li {
                         display: inline-block;
+                        
+                        &.retour_recherche {
+                            float: right;
+                        }
                     }
                 }
             }

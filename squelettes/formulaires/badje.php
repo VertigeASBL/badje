@@ -8,8 +8,30 @@
 */
 
 include_spip('base/abstract_sql');
+include_spip('inc/session');
 
-function formulaires_badje_charger_dist() {
+
+/*
+*   une fonction pour récupérer facilement le contexte de la recherche.
+*/
+function get_contexte_recherche($contexte) {
+    
+    $contexte['recherche'] = _request('recherche');
+    $contexte['code_postal'] = _request('code_postal');
+    $contexte['ages'] = _request('ages');
+    $contexte['periode'] = _request('periode');
+    $contexte['creative'] = _request('creative');
+    $contexte['multiactivite'] = _request('multiactivite');
+    $contexte['soutien'] = _request('soutien');
+    $contexte['sportive'] = _request('sportive');
+    $contexte['accueil_handicap'] = _request('accueil_handicap');
+    $contexte['accueil_handicap'] = _request('accueil_handicap');
+    
+    return $contexte;
+}
+
+
+function formulaires_badje_charger_dist($retour_recherche = null) {
     /*
     *   Ce tableau va défini la structure du le formulaire.
     */
@@ -231,16 +253,11 @@ function formulaires_badje_charger_dist() {
             'form_saisie_options' => $form_saisie_options
     );
 
-    // On charge aussi dans le contexte les données d'un éventuel formulaire envoyé.
-    $contexte['recherche'] = _request('recherche');
-    $contexte['code_postal'] = _request('code_postal');
-    $contexte['ages'] = _request('ages');
-    $contexte['periode'] = _request('periodes');
-    $contexte['creative'] = _request('creative');
-    $contexte['multiactivite'] = _request('multiactivite');
-    $contexte['soutien'] = _request('soutien');
-    $contexte['sportive'] = _request('sportive');
-    $contexte['accueil_handicap'] = _request('accueil_handicap');
+    if ($retour_recherche and is_array(session_get('recherche_contexte'))) $contexte = array_merge($contexte, session_get('recherche_contexte') );
+    else {
+        // On charge aussi dans le contexte les données d'un éventuel formulaire envoyé.
+        $contexte = get_contexte_recherche($contexte);
+    }
 
     // On change l'action pour envoyer les donnée sur une autre page.
     $contexte['action'] = generer_url_public('recherche-badje');
@@ -248,7 +265,7 @@ function formulaires_badje_charger_dist() {
     return $contexte;
 }
 
-function formulaires_badje_verifier_dist() {
+function formulaires_badje_verifier_dist($retour_recherche) {
     $erreurs = array();
     /*if (!_request('')) {
             $erreurs['message_erreur'] = '';
@@ -257,7 +274,7 @@ function formulaires_badje_verifier_dist() {
     return $erreurs;
 }
 
-function formulaires_badje_traiter_dist() {
+function formulaires_badje_traiter_dist($retour_recherche) {
     
     // On traite l'age de envoyer
     if (_request('ages')) {
@@ -277,8 +294,10 @@ function formulaires_badje_traiter_dist() {
     }
 
     // On traite les tableaux d'activité.
-    if (_request('creative') or _request('sportive'))
-        $id_type_activite = array_merge($id_type_activite, _request('creative'), _request('sportive'));
+    if (_request('creative'))
+        $id_type_activite = array_merge($id_type_activite, _request('creative'));
+    if (_request('sportive'))
+        $id_type_activite = array_merge($id_type_activite, _request('sportive'));
     
     // On passe l'id_type_activite dans le #ENV
     if (!empty($id_type_activite)) 
@@ -287,6 +306,12 @@ function formulaires_badje_traiter_dist() {
     // On passe les champs handicap dans le #ENV
     if (_request('accueil_handicap')) set_request('accueil_handicap', 'on');
     if (_request('accessibilite_handicap')) set_request('accessibilite_handicap', 'on');
+
+    // On va récupérer le contexte de la recherche pour pouvoir l'injecter dans la session.
+    $contexte = get_contexte_recherche($contexte);
+
+    // On va sauvegarder le contexte dans la session SPIP pour pouvoir récupérer la recherche par la suite.
+    session_set('recherche_contexte', $contexte);
 
     /* message */
     return array(
