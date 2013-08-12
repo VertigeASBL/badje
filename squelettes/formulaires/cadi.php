@@ -1,4 +1,6 @@
 <?php
+include_spip('inc/session');
+
 function formulaires_cadi_charger_dist($id_activite) {
     
     // On récupère le cadi actuel de la personne
