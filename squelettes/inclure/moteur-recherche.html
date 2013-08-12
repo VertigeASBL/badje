@@ -1,4 +1,7 @@
-[(#REM) On boucle avec les filtres que l'on peu mettre ]
+[(#REM) 
+    Moteur de recherche de Badje, la boucle est le principal élément qui constitue ce moteur.
+    Dans le cas de string virgule comme la période on filtre les résultat après la séléction par la boucle.
+]
 <B_recherche>
 <h1 class="moteur_titre">[#GRAND_TOTAL (#GRAND_TOTAL|singulier_ou_pluriel{<:activite_trouve:>, <:activites_trouves:>})]</h1>
 
@@ -9,9 +12,11 @@
             <a href="[(#SELF|parametre_url{tri, commune})]" title="<:tri_commune:>" class="ajax"><:commune:></a>
         </li>
         <li><:type:></li>
+        <li class="retour_recherche"><a href="[(#URL_SITE_SPIP|parametre_url{retour_recherche, 1})]" title="<:retour_recherche:>"><:retour_recherche:></a></li>
     </ul>
 </div>
 <div class="container-recherche">
+[(#REM) On boucle avec les filtres que l'on peu mettre ]
 <BOUCLE_recherche(BADJE_ACTIVITES spip_badje_organismes_liens spip_badje_organismes)  {recherche ?}
                                     {code_postal ?IN #ENV{code_postal}}
                                     {age_min ?<= #ENV{age_min}}
