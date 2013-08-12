@@ -180,8 +180,8 @@ function objet_inserer($objet, $id_parent=null, $set=null) {
 
 	if (isset($desc['field']['statut'])){
 		if (isset($desc['statut_textes_instituer'])){
-			$reset = array_keys($desc['statut_textes_instituer']);
-            $champs['statut'] = reset($reset);
+			$cles_statut = array_keys($desc['statut_textes_instituer']); 
+			$champs['statut'] = reset($cles_statut);
 		}
 		else
 			$champs['statut'] = 'prepa';

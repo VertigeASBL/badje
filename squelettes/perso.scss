@@ -467,39 +467,58 @@ img, object, embed {
                     height: 30px;
                 }
             }
-
-            .cadre_mode_emplois {
-                margin-left: 59px;
-                margin-right: 10px;
-                padding-top: 20px;
-                padding-left: 10px;
-                padding-right: 10px;
-                background: #FFF;
-                border-top: 2px solid #d7ccbf;
-                float: right;
-                
-                h4 {
-                    font-size: pem(15);
-                    font-weight: bold;
-                    text-transform: none;
-                    margin-bottom: 15px;
+            .mode_emplois {
+                h3 {
+                    position: relative;
                 }
-                
-                p {
-                    font-size: pem(13);
+                .formulaire_cadi {
+                    position: absolute;
+                    top: 8px;
+                    right: 30px;
+
+                    input {
+                        background: url(images/cadi.png) no-repeat center;
+                        border: none;
+                    }
                 }
 
-                table.spip {
-                    td {
-                        vertical-align: middle;
+                .cadre_mode_emplois {
+                    margin-left: 59px;
+                    margin-right: 10px;
+                    padding-top: 20px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    background: #FFF;
+                    border-top: 2px solid #d7ccbf;
+                    float: right;
+                    
+                    h4 {
+                        font-size: pem(15);
+                        font-weight: bold;
+                        text-transform: none;
+                        margin-bottom: 15px;
                     }
                     
-                    tr.row_even, tr.row_odd {
-                        background: transparent;
+                    p {
+                        font-size: pem(13);
                     }
-                    span.spip_documents {
-                        margin: 0;
-                        margin-bottom: 15px;
+                    
+                    ul, ol {
+                        list-style: none;
+                    }
+
+                    table.spip {
+                        td {
+                            vertical-align: middle;
+                        }
+                        
+                        tr.row_even, tr.row_odd {
+                            background: transparent;
+                        }
+                        span.spip_documents {
+                            margin: 0;
+                            margin-bottom: 15px;
+                        }
                     }
                 }
             }
