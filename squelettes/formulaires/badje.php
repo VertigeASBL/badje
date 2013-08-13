@@ -22,11 +22,16 @@ function get_contexte_recherche($contexte) {
     $contexte['periode'] = _request('periode');
     $contexte['creative'] = _request('creative');
     $contexte['multiactivite'] = _request('multiactivite');
+    $contexte['sejour'] = _request('sejour');
     $contexte['soutien'] = _request('soutien');
     $contexte['sportive'] = _request('sportive');
     $contexte['accueil_handicap'] = _request('accueil_handicap');
-    $contexte['accueil_handicap'] = _request('accueil_handicap');
+    $contexte['accessibilite_handicap'] = _request('accessibilite_handicap');
     
+    // On revient à oui au lieu du ON de la base de donnée.
+    if ($contexte['accueil_handicap'] == 'on') $contexte['accueil_handicap'] = 'oui';
+    if ($contexte['accessibilite_handicap'] == 'on') $contexte['accessibilite_handicap'] = 'oui';
+
     return $contexte;
 }
 
