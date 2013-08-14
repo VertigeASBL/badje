@@ -106,9 +106,16 @@
             width: 47%;
         }
 
-        li.fieldset_activite ul {
-            display: table;
-            li {
+        .li.search-field {
+            clear: none;
+        }
+
+        li.fieldset_activite {
+            fieldset > ul {
+                display: table;
+            }
+
+            li.editer {
                 display: block;
                 clear: none;
                 width: 50%;
@@ -162,4 +169,9 @@
             }
         }
     }
+}
+
+/* Quelques modifications de Chosen */
+.chzn-container-multi .chzn-results {
+    width: 100%;
 }
