@@ -1,5 +1,6 @@
-<B_ma_selection>
 <div class="container-recherche">
+<B_ma_selection>
+
 <BOUCLE_ma_selection(BADJE_ACTIVITES spip_badje_organismes_liens spip_badje_organismes){id_activite IN #SESSION{cadi}} {par spip_badje_organismes.localite}>
     [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
     [(#GET{save_localite}|!={#LOCALITE}|oui) <h2><span>#LOCALITE</span></h2> ]
@@ -7,7 +8,8 @@
 
     <INCLURE{fond=inclure/cadre_activite, env, id_activite}>
 </BOUCLE_ma_selection>
-</div>
+
 </B_ma_selection>
 <p>Pas d'élément dans le cadi !</p>
 <//B_ma_selection>
+</div>
