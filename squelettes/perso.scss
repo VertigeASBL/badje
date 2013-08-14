@@ -186,13 +186,46 @@ img, object, embed {
             }
 
             .onglet {
+                width: 600px;
                 ul {
                     list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    
                     li {
                         display: inline-block;
+                        padding: 0;
+                        margin: 0;
+                        padding-top: 5px;
+                        padding-left: 18px;
+                        padding-right: 18px;
+                        padding-bottom: 8px;
+                        text-transform: uppercase;
+                        font-size: pem(12);
                         
+                        a {
+                            color: #000;
+                        }
+
+                        &.tri_commune {
+                            background: #FFF;
+                        }
+
                         &.retour_recherche {
                             float: right;
+                            background: #0064ae;
+                            padding-left: 5px;
+                            padding-right: 5px;
+                            
+                            img {
+                                margin-right: 3px;
+                            }
+
+                            a {
+                                color: #FFF;
+                                text-decoration: none;
+                                font-size: pem(10);
+                            }
                         }
                     }
                 }
