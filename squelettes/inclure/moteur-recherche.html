@@ -8,14 +8,19 @@
 <div class="onglet">
     <ul>
         <li><:tri:></li>
-        <li>
+        <li class="tri_commune">
             <a href="[(#SELF|parametre_url{tri, commune})]" title="<:tri_commune:>" class="ajax"><:commune:></a>
         </li>
-        <li><:type:></li>
-        <li class="retour_recherche"><a href="[(#URL_SITE_SPIP|parametre_url{retour_recherche, 1})]" title="<:retour_recherche:>"><:retour_recherche:></a></li>
+        <li class="tri_type">
+            <a href="[(#SELF|parametre_url{tri, type})]" title="<:tri_commune:>" class="ajax"><:type:></a>
+        </li>
+        <li class="retour_recherche"><a href="[(#URL_SITE_SPIP|parametre_url{retour_recherche, 1})]" title="<:retour_recherche:>">[(#CHEMIN{images/loupe_retour.png}|balise_img{loupe_retour, loupe_retour})]<:retour_recherche:></a></li>
     </ul>
 </div>
 <div class="container-recherche">
+
+<!-- TODO: trier selon les communes, mais regrouper les activités par organismes. -->
+<!-- TODO: Gestion de "toutes les communes". -->
 [(#REM) On boucle avec les filtres que l'on peu mettre ]
 <BOUCLE_recherche(BADJE_ACTIVITES spip_badje_organismes_liens spip_badje_organismes)  {recherche ?}
                                     {code_postal ?IN #ENV{code_postal}}
@@ -55,6 +60,8 @@
 </BOUCLE_recherche>
 </div>
 </B_recherche>
+<div class="container-recherche">
 <p><:aucun_resultat:></p>
 <a href="[(#URL_SITE_SPIP|parametre_url{retour_recherche, 1})]" title="<:retour_recherche:>"><:retour_recherche:></a>
+</div>
 <//B_recherche>
