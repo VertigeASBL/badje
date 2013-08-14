@@ -3,11 +3,13 @@
 <B_menu_principal>
 <ul class="menu-principal">
     <BOUCLE_menu_principal(RUBRIQUES){id_parent = 1}>
+
+    #SET{drop, drop#COMPTEUR_BOUCLE}
     <li class="[(#COMPTEUR_BOUCLE|alterner{vert, turquoise, rouge, bleu, orange, brun})]">
-        [<a href="#URL_RUBRIQUE" title="[(#TITRE|attribut_html)]">(#TITRE)</a>]
+        [<a href="#URL_RUBRIQUE" title="[(#TITRE|attribut_html)]" data-dropdown="#GET{drop}">(#TITRE)</a>]
         [(#REM) sous menu, on affiche les articles ]
         <B_sous_menu>
-        <ul class="sous_menu">
+        <ul id="#GET{drop}" class="f-dropdown content" data-dropdown-content>
             <BOUCLE_sous_menu(ARTICLES){id_rubrique}>
                 <li>#TITRE</li>
             </BOUCLE_sous_menu>
