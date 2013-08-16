@@ -90,7 +90,7 @@ img, object, embed {
         ul.menu-principal {
             list-style: none;
             
-            li {
+            &> li {
                 width: 207px;
                 height: 28px;
                 padding-left: 28px;
@@ -586,4 +586,45 @@ img, object, embed {
             padding-left: 20px;
         }
     }
+}
+
+/* surcharge du dropdown foundation */
+.f-dropdown:before {
+    border-color: transparent;
+    border-style: none;
+    right: -12px;
+    left: auto;
+    top: 10px;
+}
+
+.f-dropdown:after {
+    border-color: transparent;
+    border-style: none;
+    right: -12px;
+    left: auto;
+    top: 10px;
+}
+
+.f-dropdown, .f-dropdown.content {
+    border: none;
+    padding: 0;
+}
+
+.f-dropdown li {
+    width: 100%;
+    a {
+        color: #FFF;
+        font-family: PaperJohnnyEinhalbRegular;
+        font-size: pem(12);
+        padding-left: 25px;
+        padding-right: 38px;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.f-dropdown li:hover, .f-dropdown li:focus {
+    background: url(images/bg_select.png);
 }
