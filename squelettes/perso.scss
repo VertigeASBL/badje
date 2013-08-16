@@ -21,21 +21,79 @@ body {
 // On va créer tout un jeu de couleur pour le menu
 .vert {
     background: #adb451;
+    
+    .f-dropdown .fleche {
+        position: absolute;
+        display: block;
+        background: url(images/f_vert.png) no-repeat center;
+        width: 8px;
+        height: 12px;
+        right: -8px;
+        top: 15px;
+    }
 }
 .turquoise {
     background: #00ada9;
+    
+    .f-dropdown .fleche {
+        position: absolute;
+        display: block;
+        background: url(images/f_turquoise.png) no-repeat center;
+        width: 8px;
+        height: 12px;
+        right: -8px;
+        top: 15px;
+    }
 }
 .rouge {
     background: #a80231;
+    .f-dropdown .fleche {
+        position: absolute;
+        display: block;
+        background: url(images/f_rouge.png) no-repeat center;
+        width: 8px;
+        height: 12px;
+        right: -8px;
+        top: 15px;
+    }
 }
 .bleu {
     background: #6983ab;
+
+    .f-dropdown .fleche {
+        position: absolute;
+        display: block;
+        background: url(images/f_bleu.png) no-repeat center;
+        width: 8px;
+        height: 12px;
+        right: -8px;
+        top: 15px;
+    }
 }
 .orange {
     background: #ee8016;
+    .f-dropdown .fleche {
+        position: absolute;
+        display: block;
+        background: url(images/f_orange.png) no-repeat center;
+        width: 8px;
+        height: 12px;
+        right: -8px;
+        top: 15px;
+    }
 }
 .brun {
     background: #716750;
+
+    .f-dropdown .fleche {
+        position: absolute;
+        display: block;
+        background: url(images/f_brun.png) no-repeat center;
+        width: 8px;
+        height: 12px;
+        right: -8px;
+        top: 15px;
+    }
 }
 
 // On vire les marges de foundation elles ne sont pas utile ici
