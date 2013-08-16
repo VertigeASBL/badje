@@ -21,17 +21,19 @@
     <script>
     // Cette fonction va modifier la façon dont s'ouvre les menu dropdown de foundation
     var opened = function () {
+        // On récupère la couleur du parent, ce sera la couleur de la boite
         var bg_color = $(this).parent().css("background-color");
 
+        // On modifie le css qui a déjà été modifié par foundation
         $(this).css({
             top: $(this).position().top-30,
             left: $(this).position().left-200,
             backgroundColor: bg_color
         });
     }
-
+    
     jQuery(document).ready(function($) {
-        $(document).foundation('dropdown', {is_hover: true, opened: opened});
+        $(document).foundation('tooltips dropdown', {is_hover: true, opened: opened});
     });
     </script>
 ]
