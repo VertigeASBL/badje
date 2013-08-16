@@ -646,6 +646,11 @@ img, object, embed {
     }
 }
 
+/* surcharge de tips de foundation */
+.has-tip, .has-tip:hover {
+    border: none;
+}
+
 /* surcharge du dropdown foundation */
 .f-dropdown:before {
     border-color: transparent;
