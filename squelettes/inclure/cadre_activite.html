@@ -1,12 +1,16 @@
 [(#REM) Ce fichier sert a mettre en page les activites de manière générique ]
 
-<BOUCLE_cadre_activite(BADJE_ACTIVITES spip_badje_organismes_liens spip_badje_organismes){id_activite}{par spip_badje_organismes.localite}>
-    <h3><span>#NOM_ORGANISME</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
+<BOUCLE_cadre_activite(BADJE_ACTIVITES){id_activite}>
+    <h3><span>#NOM</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
     <div class="cadre-recherche">
         <ul>
             <li class="bold">#ADRESSE</li>
-            <li class="bold">#CODE_POSTAL #LOCALITE</li>
+            <li class="bold">#CODE_POSTAL #COMMUNE</li>
+            
+            <BOUCLE_organisme_cadre(BADJE_ORGANISMES){id_activite}>
             <li class="bold">#TELEPHONE [/ (#GSM)] [/ (#FAX)]</li>
+            </BOUCLE_organisme_cadre>
+            
             <li>[(#PERIODE|afficher_periode{' - '})]</li>
             <li>de #AGE_MIN à #AGE_MAX | #PRIX</li>
         </ul>
