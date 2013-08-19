@@ -65,11 +65,11 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
     $commune = array('all' => 'Toutes les communes');
     
     // On récupère les donnée de la base de donnée des organiseme
-    $organisme_commune = sql_allfetsel('code_postal, localite', 'spip_badje_organismes', '', 'code_postal');
+    $organisme_commune = sql_allfetsel('code_postal, commune', 'spip_badje_activites', '', 'code_postal');
     
     // On boucle sur le retour de base de donnée pour l'ajouter à notre trableau
     foreach ($organisme_commune as $key => $value) {
-        $commune[$value['code_postal']] = $value['localite'].' '.$value['code_postal'];
+        $commune[$value['code_postal']] = $value['commune'].' '.$value['code_postal'];
     }
 
     // Liste des ages pour les enfants.
@@ -281,6 +281,45 @@ function formulaires_badje_verifier_dist($retour_recherche) {
 
 function formulaires_badje_traiter_dist($retour_recherche) {
     
+    // On initialise le where de la requête SQL
+    $where = '';
+
+    // On traite la recherche libre:
+    if (_request('recherche')) {
+        // on LIKE dans les champs de textes.
+        $recherche = _request('recherche');
+        $where .= "(a.nom LIKE '%$recherche%' OR a.descriptif LIKE '%$recherche%')";
+    }
+
+    // On traite le tableau des communes qui est sous forme de code postal.
+    if (_request('code_postal')) {
+        // On en fait une belle chaine de caractère et on passe le tout dans un IN sql.
+        $code_postal = implode(',', _request('code_postal'));
+        $where .= " AND a.code_postal IN ($code_postal)";
+    }
+
+    // On traite le tableau des ages
+    if (_request('ages')) {
+
+        // On récupère l'age minimum et maximum du tableau
+        $age_min = min(_request('ages'));
+        $age_max = max(_request('ages'));
+
+        // On ajoute le paramètre de recherche dans le where.
+        $where .= " AND age_min <= $age_min AND ages_max >= $age_max";
+
+    }
+
+    // On va chercher la liste des organismes
+    $badje_organisme = sql_allfetsel(
+        '*', 
+        'spip_badje_activites AS a
+        INNER JOIN spip_badje_organismes_liens AS l ON l.id_objet = a.id_activite
+        INNER JOIN spip_badje_organismes AS o ON l.id_organisme = o.id_organisme', 
+        $where);
+
+    var_dump($badje_organisme);
+
     // On traite l'age de envoyer
     if (_request('ages')) {
         // Cela va créer les #ENV correspondant utilisable dans les boucles.
@@ -311,6 +350,10 @@ function formulaires_badje_traiter_dist($retour_recherche) {
     // On passe les champs handicap dans le #ENV
     if (_request('accueil_handicap')) set_request('accueil_handicap', 'on');
     if (_request('accessibilite_handicap')) set_request('accessibilite_handicap', 'on');
+
+    // On va hacker le système de recherche, celui de SPIP ne convient pas.
+    set_request('nom', _request('recherche'));
+    set_request('descriptif', _request('recherche'));
 
     // On va récupérer le contexte de la recherche pour pouvoir l'injecter dans la session.
     $contexte = get_contexte_recherche($contexte);
