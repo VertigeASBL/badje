@@ -21,15 +21,18 @@
 
 <!-- TODO: trier selon les communes, mais regrouper les activités par organismes. -->
 <!-- TODO: Gestion de "toutes les communes". -->
+
 [(#REM) On boucle avec les filtres que l'on peu mettre ]
-<BOUCLE_recherche(BADJE_ACTIVITES spip_badje_organismes_liens spip_badje_organismes)  {recherche ?}
+<BOUCLE_recherche(BADJE_ACTIVITES) 
+                                    {nom ?LIKE %(#ENV{nom})%}
                                     {code_postal ?IN #ENV{code_postal}}
                                     {age_min ?<= #ENV{age_min}}
                                     {age_max ?>= #ENV{age_max}}
                                     {id_type_activite ?IN #ENV{id_type_activite}}
                                     {accueil_handicap ?= on}
                                     {accessibilite_handicap ?= on}
-                                    {par spip_badje_organismes.localite}>
+                                    {par commune}
+                                    >
     
     [(#REM) On va créer un tableau avec la période de l'activité. ]
     [(#SET{tableau_periode, #PERIODE|get_array_periode})]
@@ -52,8 +55,8 @@
     [(#GET{afficher}|=={oui}|oui)
         
         [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
-        [(#GET{save_localite}|!={#LOCALITE}|oui) <h2><span>#LOCALITE</span></h2> ]
-        [(#SET{save_localite, #LOCALITE})]
+        [(#GET{save_localite}|!={#COMMUNE}|oui) <h2><span>#COMMUNE</span></h2> ]
+        [(#SET{save_localite, #COMMUNE})]
 
         <INCLURE{fond=inclure/cadre_activite, env, id_activite}>
     ]
