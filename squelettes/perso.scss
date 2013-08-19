@@ -691,3 +691,9 @@ img, object, embed {
 .f-dropdown li:hover, .f-dropdown li:focus {
     background: url(images/bg_select.png);
 }
+
+/* Mettre la barre d'outil SPIP à gauche pour ne pas gèner le menu */
+body .spip-admin-bloc, body .spip-admin-float {
+    right: auto;
+    left: 205px;
+}
