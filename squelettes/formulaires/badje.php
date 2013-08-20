@@ -301,7 +301,8 @@ function formulaires_badje_traiter_dist($retour_recherche) {
     if (_request('code_postal')) {
         // On en fait une belle chaine de caractère et on passe le tout dans un IN sql.
         $code_postal = implode(',', _request('code_postal'));
-        $where[] = "a.code_postal IN ($code_postal)";
+        if ($code_postal != 'all')
+            $where[] = "a.code_postal IN ($code_postal)";
     }
 
     // On traite le tableau des ages
@@ -407,6 +408,7 @@ function formulaires_badje_traiter_dist($retour_recherche) {
         // Ici on filtre le tableau
         $badje_recherche = array_filter($badje_recherche, 'filtrer_periode');
     }
+
     // On passe tout ça aux squelettes SPIP
     set_request('badje_recherche', $badje_recherche);
 
