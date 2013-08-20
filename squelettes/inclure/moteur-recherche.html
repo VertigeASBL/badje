@@ -8,11 +8,11 @@
 <div class="onglet">
     <ul>
         <li><:tri:></li>
-        <li class="tri_commune">
-            <a href="[(#SELF|parametre_url{tri, commune})]" title="<:tri_commune:>" class="ajax"><:commune:></a>
+        <li[(#ENV{tri}|non|ou{#ENV{tri}|=={commune}|oui}) class="tri"]>
+            <a href="[(#SELF|parametre_url{tri, commune})]" title="<:tri_commune:>"><:commune:></a>
         </li>
-        <li class="tri_type">
-            <a href="[(#SELF|parametre_url{tri, type})]" title="<:tri_commune:>" class="ajax"><:type:></a>
+        <li[(#ENV{tri}|=={type}|oui) class="tri"]>
+            <a href="[(#SELF|parametre_url{tri, type})]" title="<:tri_commune:>"><:type:></a>
         </li>
         <li class="retour_recherche"><a href="[(#URL_SITE_SPIP|parametre_url{retour_recherche, 1})]" title="<:retour_recherche:>">[(#CHEMIN{images/loupe_retour.png}|balise_img{loupe_retour, loupe_retour})]<:retour_recherche:></a></li>
     </ul>
@@ -24,12 +24,24 @@
 
 [(#REM) On boucle sur le résultat de la recherche ]
 <BOUCLE_recherche(DATA){source table, #ENV{badje_recherche}}>
-
-    [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
-    [(#GET{save_localite}|!={#VALEUR{commune}}|oui) 
-        <h2><span>#VALEUR{commune}</span></h2> 
+    
+    [(#REM) Tri par commune ]
+    [(#ENV{tri}|non|ou{#ENV{tri}|=={commune}|oui})
+        [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
+        [(#GET{save_tri}|!={#VALEUR{commune}}|oui) 
+            <h2><span>#VALEUR{commune}</span></h2> 
+        ]
+        [(#SET{save_tri, #VALEUR{commune}})]
     ]
-    [(#SET{save_localite, #VALEUR{commune}})]
+
+    [(#REM) Tri par type d'activité. ]
+    [(#ENV{tri}|=={type}|oui)
+        [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
+        [(#GET{save_tri}|!={#VALEUR{type_activite}}|oui) 
+            <h2><span>#VALEUR{type_activite}</span></h2> 
+        ]
+        [(#SET{save_tri, #VALEUR{type_activite}})]
+    ]
     
     <INCLURE{fond=inclure/cadre_activite, env, id_activite=#VALEUR{id_activite}}>
 
