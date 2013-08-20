@@ -1,3 +1,4 @@
+<!-- TODO: Faire fonctionner le moteur sans aucun paramètre. -->
 [(#REM) 
     Moteur de recherche de Badje. La fonction traiter du fomulaire construit la requête SQL qui s'occupe de ce moteur.
     Dans le cas de string virgule comme la période on filtre les résultat après la séléction par la boucle.
@@ -24,7 +25,6 @@
 
 [(#REM) On boucle sur le résultat de la recherche ]
 <BOUCLE_recherche(DATA){source table, #ENV{badje_recherche}}>
-    
     [(#REM) Tri par commune ]
     [(#ENV{tri}|non|ou{#ENV{tri}|=={commune}|oui})
         [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
