@@ -24,34 +24,15 @@
 
 [(#REM) On boucle sur le résultat de la recherche ]
 <BOUCLE_recherche(DATA){source table, #ENV{badje_recherche}}>
-    [(#REM) On va créer un tableau avec la période de l'activité. ]
-    [(#SET{tableau_periode, #VALEUR{periode}|get_array_periode})]
 
-    [(#REM) 
-        On fait une boucle sur ce tableau et on test chaque valeur. 
-        On test aussi qu'une période à bien été envoyée.
+    [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
+    [(#GET{save_localite}|!={#VALEUR{commune}}|oui) 
+        <h2><span>#VALEUR{commune}</span></h2> 
     ]
-    <BOUCLE_search_periode(DATA){source table, #GET{tableau_periode}} {si #ENV{periode}|oui}>
-        [(#ENV{periode}|find{#VALEUR}|oui)
-            #SET{afficher, oui}
-        ]
-    </BOUCLE_search_periode>
+    [(#SET{save_localite, #VALEUR{commune}})]
+    
+    <INCLURE{fond=inclure/cadre_activite, env, id_activite=#VALEUR{id_activite}}>
 
-    [(#REM) Si aucune période n'a été envoyée, on affiche toujours les données. ]
-    #SET{afficher, oui}
-    <//B_search_periode>
-
-    [(#REM) On affiche les données. ]
-    [(#GET{afficher}|=={oui}|oui)
-        
-        [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
-        [(#GET{save_localite}|!={#VALEUR{commune}}|oui) 
-            <h2><span>#VALEUR{commune}</span></h2> 
-        ]
-        [(#SET{save_localite, #VALEUR{commune}})]
-        
-        <INCLURE{fond=inclure/cadre_activite, env, id_activite=#VALEUR{id_activite}}>
-    ]
 </BOUCLE_recherche>
 </div>
 </B_recherche>

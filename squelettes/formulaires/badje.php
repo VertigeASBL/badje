@@ -375,6 +375,19 @@ function formulaires_badje_traiter_dist($retour_recherche) {
         INNER JOIN spip_badje_type_activites_liens AS tl
                         ON tl.id_objet = a.id_activite AND tl.objet = 'activite'",
         $where, 'a.commune, o.id_organisme');
+    
+    // On va filtrer le tableau ici
+    function filtrer_periode($periode) {
+
+        $periode_db = get_array_periode($periode['periode']);
+        $periode_envoye = _request('periode');
+        
+        foreach ($periode_envoye as $value) {
+            if (in_array($value, $periode_db)) return true;
+        }
+        return false;
+    }
+    $badje_recherche = array_filter($badje_recherche, 'filtrer_periode');
 
     // On passe tout ça aux squelettes SPIP
     set_request('badje_recherche', $badje_recherche);
