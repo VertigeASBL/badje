@@ -366,7 +366,7 @@ function formulaires_badje_traiter_dist($retour_recherche) {
 
     // On va chercher la liste des activités qui corresponde à la recherche
     $badje_recherche = sql_allfetsel(
-        'id_activite, id_organisme, a.periode', 
+        'a.id_activite, o.id_organisme, a.periode, a.commune', 
         "spip_badje_activites AS a
         INNER JOIN spip_badje_organismes_liens AS l 
                         ON l.id_objet = a.id_activite AND l.objet = 'activite'
