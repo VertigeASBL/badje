@@ -364,18 +364,31 @@ function formulaires_badje_traiter_dist($retour_recherche) {
         $where[] = "accessibilite_handicap = 'on'";
     }
 
+
+    // Fonction de tri, par défaut on trie sur les communes
+    if (_request('tri') == 'type') {
+        $orderby = 'ta.id_type_activite';
+        $groupby = '';
+    }
+    else {
+        $orderby = 'a.commune, o.id_organisme';
+        $groupby = 'id_activite';
+    }
+
     // On va chercher la liste des activités qui corresponde à la recherche
     $badje_recherche = sql_allfetsel(
-        'a.id_activite, a.periode, a.commune', 
+        'a.id_activite, a.periode, a.commune, ta.type_activite', 
         "spip_badje_activites AS a
         INNER JOIN spip_badje_organismes_liens AS l 
                         ON l.id_objet = a.id_activite AND l.objet = 'activite'
         INNER JOIN spip_badje_organismes AS o 
                         ON l.id_organisme = o.id_organisme
         INNER JOIN spip_badje_type_activites_liens AS tl
-                        ON tl.id_objet = a.id_activite AND tl.objet = 'activite'",
-        $where, 'a.commune, o.id_organisme');
-    
+                        ON tl.id_objet = a.id_activite AND tl.objet = 'activite'
+        INNER JOIN spip_badje_type_activites AS ta 
+                        ON tl.id_type_activite = ta.id_type_activite",
+        $where, $groupby, $orderby);
+
     // On va filtrer le tableau ici
     if (_request('periode')) {
         function filtrer_periode($periode) {
