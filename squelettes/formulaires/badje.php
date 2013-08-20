@@ -63,7 +63,9 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
     *   Les recherches ce feront ainsi sur le code postal qui est une donnée plus fiable que le nom de la commune.
     */
     $commune = array('all' => 'Toutes les communes');
-    
+    /*
+        TODO: Commenue par order alphabètique et mettre (bxl ville sur haren, laeken et neder)
+    */
     // On récupère les donnée de la base de donnée des organiseme
     $organisme_commune = sql_allfetsel('code_postal, commune', 'spip_badje_activites', '', 'code_postal');
     
@@ -94,6 +96,10 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
         'Printemps' => 'Printemps', 
         'Août' => 'Août'
     );
+
+    /*
+        TODO: tenter de mettre les flèches du design.
+    */
 
     // liste des Activités créatives
     $activite_creative = array();
@@ -282,20 +288,20 @@ function formulaires_badje_verifier_dist($retour_recherche) {
 function formulaires_badje_traiter_dist($retour_recherche) {
     
     // On initialise le where de la requête SQL
-    $where = '';
+    $where = array();
 
     // On traite la recherche libre:
     if (_request('recherche')) {
         // on LIKE dans les champs de textes.
         $recherche = _request('recherche');
-        $where .= "(a.nom LIKE '%$recherche%' OR a.descriptif LIKE '%$recherche%')";
+        $where[] = "(a.nom LIKE '%$recherche%' OR a.descriptif LIKE '%$recherche%')";
     }
 
     // On traite le tableau des communes qui est sous forme de code postal.
     if (_request('code_postal')) {
         // On en fait une belle chaine de caractère et on passe le tout dans un IN sql.
         $code_postal = implode(',', _request('code_postal'));
-        $where .= " AND a.code_postal IN ($code_postal)";
+        $where[] = "a.code_postal IN ($code_postal)";
     }
 
     // On traite le tableau des ages
@@ -306,27 +312,11 @@ function formulaires_badje_traiter_dist($retour_recherche) {
         $age_max = max(_request('ages'));
 
         // On ajoute le paramètre de recherche dans le where.
-        $where .= " AND age_min <= $age_min AND ages_max >= $age_max";
-
+        $where[] = "age_min <= $age_min AND age_max >= $age_max";
     }
 
-    // On va chercher la liste des organismes
-    $badje_organisme = sql_allfetsel(
-        '*', 
-        'spip_badje_activites AS a
-        INNER JOIN spip_badje_organismes_liens AS l ON l.id_objet = a.id_activite
-        INNER JOIN spip_badje_organismes AS o ON l.id_organisme = o.id_organisme', 
-        $where);
-
-    var_dump($badje_organisme);
-
-    // On traite l'age de envoyer
-    if (_request('ages')) {
-        // Cela va créer les #ENV correspondant utilisable dans les boucles.
-        set_request('age_min', min(_request('ages')));
-        set_request('age_max', max(_request('ages')));
-    }
-
+    // On va traiter les types d'activités.
+    // On initialise un tableau vide pour contiendra les id_type_activité.
     $id_type_activite = array();
     // On traite les multiactivités
     if (_request('multiactivite')) {
@@ -337,23 +327,57 @@ function formulaires_badje_traiter_dist($retour_recherche) {
         $id_type_activite[] = $id_multiactivite;
     }
 
+    // On traite la case de soutient scolaire.
+    if (_request('soutien')) {
+        // D'abord, pour être sur d'avoir le bon id, on le récupère.
+        $id_soutien = sql_getfetsel('id_type_activite', 'spip_badje_type_activites', 'type_activite='.sql_quote('Soutien scolaire'));
+        
+        // On l'ajoute au tableau des types d'acivité.
+        $id_type_activite[] = $id_soutien;
+    }
+
     // On traite les tableaux d'activité.
     if (_request('creative'))
         $id_type_activite = array_merge($id_type_activite, _request('creative'));
     if (_request('sportive'))
         $id_type_activite = array_merge($id_type_activite, _request('sportive'));
     
-    // On passe l'id_type_activite dans le #ENV
-    if (!empty($id_type_activite)) 
-        set_request('id_type_activite', $id_type_activite);
+    // On va ajouter le SQL pour filtrer selon le type d'activité.
+    if (!empty($id_type_activite)) {
+        // On implode pour que ce entre dans le IN
+        $id_type_activite = implode(',', $id_type_activite);
+        $where[] = "tl.id_type_activite IN ($id_type_activite)";
+    }
 
-    // On passe les champs handicap dans le #ENV
-    if (_request('accueil_handicap')) set_request('accueil_handicap', 'on');
-    if (_request('accessibilite_handicap')) set_request('accessibilite_handicap', 'on');
+    // On traite la case séjour
+    if (_request('sejour')) {
+        $where[] = "a.logement LIKE '%Séjour%'";
+    }
 
-    // On va hacker le système de recherche, celui de SPIP ne convient pas.
-    set_request('nom', _request('recherche'));
-    set_request('descriptif', _request('recherche'));
+    // Case "Accueil des enfants en situation de handicap"
+    if (_request('accueil_handicap')) {
+        $where[] = "accueil_handicap = 'on'";
+    }
+
+    // case "Accessible aux enfants à mobilité réduite"
+    if (_request('accessibilite_handicap')) {
+        $where[] = "accessibilite_handicap = 'on'";
+    }
+
+    // On va chercher la liste des activités qui corresponde à la recherche
+    $badje_recherche = sql_allfetsel(
+        'id_activite, id_organisme, a.periode', 
+        "spip_badje_activites AS a
+        INNER JOIN spip_badje_organismes_liens AS l 
+                        ON l.id_objet = a.id_activite AND l.objet = 'activite'
+        INNER JOIN spip_badje_organismes AS o 
+                        ON l.id_organisme = o.id_organisme
+        INNER JOIN spip_badje_type_activites_liens AS tl
+                        ON tl.id_objet = a.id_activite AND tl.objet = 'activite'",
+        $where, 'o.id_organisme');
+
+    // On passe tout ça aux squelettes SPIP
+    set_request('badje_recherche', $badje_recherche);
 
     // On va récupérer le contexte de la recherche pour pouvoir l'injecter dans la session.
     $contexte = get_contexte_recherche($contexte);
