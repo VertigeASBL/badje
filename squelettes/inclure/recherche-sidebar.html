@@ -24,14 +24,28 @@
                 <h3><span>#NOM_ORGANISME</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
                 <div class="cadre_mode_emplois">
                     <ul>
-                        <li class="bold">#ADRESSE</li>
+                        <li class="bold">[(#ADRESSE|ucfirst)]</li>
                         <li class="bold">#CODE_POSTAL #LOCALITE</li>
                         <li class="bold">#TELEPHONE [/ (#GSM)] [/ (#FAX)]</li>
-                        <li>[(#PERIODE|afficher_periode{' - '})]</li>
-                        <li>de #AGE_MIN à #AGE_MAX | #PRIX</li>
+                        [<li>(#EMAIL)</li>]
+                        [<li class="site_internet">
+                            <a href="[(#SITE_INTERNET|add_http)]" title="[(#NOM_ORGANISME|attribut_html)]" target="_blank">
+                                (#SITE_INTERNET)
+                            </a>
+                        </li>]
+                        <li>
+                            <BOUCLE_type_activite_cadre(BADJE_TYPE_ACTIVITES){id_activite}>
+                                [[(#COMPTEUR_BOUCLE|!={1}|oui)-] 
+                                    (#TYPE_ACTIVITE)
+                                ]
+                            </BOUCLE_type_activite_cadre></li>
+
+                        [<li>(#DESCRIPTIF)</li>]
+                        <li class="age">de #AGE_MIN à #AGE_MAX ans | #PRIX</li>
+                        [<li>(#PERIODE|afficher_periode{' - '})</li>]
                     </ul>
 
-                    #DESCRIPTIF
+                    
                 </div>
             </BOUCLE_orga>
         </BOUCLE_activite_info>
