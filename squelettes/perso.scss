@@ -602,18 +602,25 @@ img, object, embed {
                     ul, ol {
                         list-style: none;
                         
+                        // Mise en page du détail d'une activité.
                         li.site_internet {
                             a {
                                 background: #f7eecc;
                                 color: #000000;
                             }
                         }
-
                         li.age {
                             span {
                                 background: #f7eecc;
                             }
                         }
+                        li.description {
+                            margin-top: 15px;
+                            p {
+                                margin-bottom: 0;
+                            }
+                        }
+
                     }
 
                     table.spip {
