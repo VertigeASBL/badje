@@ -391,16 +391,20 @@ function formulaires_badje_traiter_dist($retour_recherche) {
 
     // On va filtrer le tableau ici
     if (_request('periode')) {
+        // fonction de filtre.
         function filtrer_periode($periode) {
-
+            // récupérer les données de periode
             $periode_db = get_array_periode($periode['periode']);
             $periode_envoye = _request('periode');
             
+            // On cherche une periode valide
             foreach ($periode_envoye as $value) {
                 if (in_array($value, $periode_db)) return true;
             }
+            // Aucune période trouvée, on va supprimer la ligne du tableau
             return false;
         }
+        // Ici on filtre le tableau
         $badje_recherche = array_filter($badje_recherche, 'filtrer_periode');
     }
     // On passe tout ça aux squelettes SPIP
