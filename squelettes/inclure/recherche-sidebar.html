@@ -14,7 +14,6 @@
     </BOUCLE_mode_emplois>
 </div>
 </B_mode_emplois>
-    
     [(#REM) Si #ENV contient un id_activite on boucle pour retrouver les informations de l'activité. ]
     <B_activite_info>
     <div class="mode_emplois">
@@ -24,8 +23,8 @@
                 <h3><span>#NOM_ORGANISME</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
                 <div class="cadre_mode_emplois">
                     <ul>
-                        <li class="bold">[(#ADRESSE|ucfirst)]</li>
-                        <li class="bold">#CODE_POSTAL #LOCALITE</li>
+                        <li class="bold">[(#_activite_info:ADRESSE|ucfirst)]</li>
+                        <li class="bold">#_activite_info:CODE_POSTAL #_activite_info:COMMUNE</li>
                         <li class="bold">#TELEPHONE [/ (#GSM)] [/ (#FAX)]</li>
                         [<li>(#EMAIL)</li>]
                         [<li class="site_internet">
