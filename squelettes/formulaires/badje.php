@@ -374,7 +374,7 @@ function formulaires_badje_traiter_dist($retour_recherche) {
                         ON l.id_organisme = o.id_organisme
         INNER JOIN spip_badje_type_activites_liens AS tl
                         ON tl.id_objet = a.id_activite AND tl.objet = 'activite'",
-        $where, 'o.id_organisme');
+        $where, 'a.commune, o.id_organisme');
 
     // On passe tout ça aux squelettes SPIP
     set_request('badje_recherche', $badje_recherche);
