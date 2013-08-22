@@ -19,6 +19,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     // I
     // J
     // L
+    'localite' => 'Localite',
     // N
     // M
     'mode_emplois' => 'Mode d\'emplois',
