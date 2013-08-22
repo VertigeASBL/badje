@@ -2,7 +2,7 @@
 
 /**
  *  Fichier généré par la Fabrique de plugin v5
- *   le 2013-07-24 12:07:39
+ *   le 2013-08-22 14:11:59
  *
  *  Ce fichier de sauvegarde peut servir à recréer
  *  votre plugin avec le plugin «Fabrique» qui a servi à le créer.
@@ -345,6 +345,10 @@ Août,Août})]',
         0 => 'menu_edition',
         1 => 'outils_rapides',
       ),
+      'saisies' => 
+      array (
+        0 => 'objets',
+      ),
     ),
     1 => 
     array (
@@ -554,6 +558,10 @@ Août,Août})]',
         0 => 'menu_edition',
         1 => 'outils_rapides',
       ),
+      'saisies' => 
+      array (
+        0 => 'objets',
+      ),
     ),
     2 => 
     array (
@@ -626,6 +634,10 @@ Août,Août})]',
       array (
         0 => 'menu_edition',
         1 => 'outils_rapides',
+      ),
+      'saisies' => 
+      array (
+        0 => 'objets',
       ),
     ),
     3 => 
@@ -700,6 +712,10 @@ Août,Août})]',
       array (
         0 => 'menu_edition',
         1 => 'outils_rapides',
+      ),
+      'saisies' => 
+      array (
+        0 => 'objets',
       ),
     ),
   ),

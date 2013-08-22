@@ -1,0 +1,20 @@
+<BOUCLE_test_multiple(CONDITION){si #ENV{multiple}|=={on}|oui}>
+	[(#SET{valeur,[(#ENV*{valeur}|is_array|?{[(#ENV*{valeur})],[(#ENV*{valeur}|explode{','})]})]})]
+	<B_badje_activites_selectionnes>
+	<ul>
+	<BOUCLE_badje_activites_selectionnes(BADJE_ACTIVITES){id_activite IN #GET*{valeur}}
+		{par num nom, nom}{statut?}{tout}>
+		<li class="choix">#NOM (#ID_ACTIVITE)</li>
+	</BOUCLE_badje_activites_selectionnes>
+	</ul>
+	</B_badje_activites_selectionnes>
+   	[(#ENV*{sans_reponse}|propre)]
+	<//B_badje_activites_selectionnes>
+</BOUCLE_test_multiple>
+	<BOUCLE_activite_selectionne(BADJE_ACTIVITES){id_activite=#ENV{valeur}}
+		{par num nom, nom}{statut?}{tout}>
+	  	<p>#NOM (#ID_ACTIVITE)</p>
+	</BOUCLE_activite_selectionne>
+   	[(#ENV*{sans_reponse}|propre)]
+	<//B_activite_selectionne>
+<//B_test_multiple>

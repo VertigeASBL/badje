@@ -1,0 +1,20 @@
+<BOUCLE_test_multiple(CONDITION){si #ENV{multiple}|=={on}|oui}>
+	[(#SET{valeur,[(#ENV*{valeur}|is_array|?{[(#ENV*{valeur})],[(#ENV*{valeur}|explode{','})]})]})]
+	<B_badje_organismes_selectionnes>
+	<ul>
+	<BOUCLE_badje_organismes_selectionnes(BADJE_ORGANISMES){id_organisme IN #GET*{valeur}}
+		{par num nom_organisme, nom_organisme}{tout}>
+		<li class="choix">#NOM_ORGANISME (#ID_ORGANISME)</li>
+	</BOUCLE_badje_organismes_selectionnes>
+	</ul>
+	</B_badje_organismes_selectionnes>
+   	[(#ENV*{sans_reponse}|propre)]
+	<//B_badje_organismes_selectionnes>
+</BOUCLE_test_multiple>
+	<BOUCLE_organisme_selectionne(BADJE_ORGANISMES){id_organisme=#ENV{valeur}}
+		{par num nom_organisme, nom_organisme}{tout}>
+	  	<p>#NOM_ORGANISME (#ID_ORGANISME)</p>
+	</BOUCLE_organisme_selectionne>
+   	[(#ENV*{sans_reponse}|propre)]
+	<//B_organisme_selectionne>
+<//B_test_multiple>

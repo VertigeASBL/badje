@@ -1,0 +1,13 @@
+[(#ENV{multiple}|oui)
+	[(#SET{valeur,[(#ENV*{valeur}|is_array|?{[(#ENV*{valeur})],[(#ENV*{valeur}|explode{','})]})]})]
+]
+<select name="#ENV{nom}[(#ENV{multiple}|?{\[\]})]" id="champ_[(#ENV{nom}|saisie_nom2classe)]"[ class="(#ENV{class})"][(#ENV{multiple}|oui) multiple="multiple" size="#ENV{size,10}"][ disabled="(#ENV{disable})"]>
+	[(#ENV{cacher_option_intro}|ou{#ENV{multiple}}|non)
+		<option value="">[(#ENV{option_intro})]</option>]
+	<BOUCLE_badje_groupe_activitie(BADJE_GROUPE_ACTIVITIE){par num nom_groupe, nom_groupe}{recherche?}{tout}>
+		[(#ENV{multiple}|oui)
+		<option value="#ID_GROUPE_ACTIVITE"[(#ID_GROUPE_ACTIVITE|in_array{#ENV{valeur_forcee,#GET{valeur,#ENV{defaut,#ARRAY}}}}|oui) selected="selected"]>#NOM_GROUPE</option>]
+		[(#ENV{multiple}|non)
+		<option value="#ID_GROUPE_ACTIVITE"[(#ID_GROUPE_ACTIVITE|=={#ENV{valeur_forcee,#ENV{valeur,#ENV{defaut}}}}|oui) selected="selected"]>#NOM_GROUPE</option>]
+	</BOUCLE_badje_groupe_activitie>
+</select>

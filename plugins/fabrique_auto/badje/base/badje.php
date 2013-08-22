@@ -75,7 +75,7 @@ function badje_declarer_tables_objets_sql($tables) {
 		'champs_editables'  => array('nom', 'descriptif', 'adresse', 'commune', 'code_postal', 'prix', 'accueil_handicap', 'accessibilite_handicap', 'logement', 'garderie', 'repas_chaud', 'periode', 'age_min', 'age_max'),
 		'champs_versionnes' => array('nom', 'descriptif', 'adresse', 'commune', 'code_postal', 'prix', 'accueil_handicap', 'accessibilite_handicap', 'logement', 'garderie', 'repas_chaud', 'periode', 'age_min', 'age_max'),
 		'rechercher_champs' => array("nom" => 8, "descriptif" => 6, "adresse" => 8, "commune" => 8, "code_postal" => 6, "accessibilite_handicap" => 2, "repas_chaud" => 2, "periode" => 1, "age_min" => 6),
-		'tables_jointures'  => array('spip_badje_type_activites_liens'),
+		'tables_jointures'  => array(),
 		'statut_textes_instituer' => array(
 			'prepa'    => 'texte_statut_en_cours_redaction',
 			'prop'     => 'texte_statut_propose_evaluation',

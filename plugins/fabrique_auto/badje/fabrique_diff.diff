@@ -1,27 +1,89 @@
+Only in ../plugins/fabrique_auto/.backup/badje/: .DS_Store
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/badje_fonctions.php ../plugins/fabrique_auto/badje/badje_fonctions.php
+16,54c16,21
+< *   Fonction qui permet d'afficher la pédiode d'une activité sous forme de chaine de caractère plus maléable.
+< */
+< function afficher_periode($periode_string, $glue = ', ') {
+<
+<     // En premier lieu, on va récupèrer nos données dans un tableau.
+<     $periode_string = explode(',', $periode_string);
+<
+<     // On renvoie le nouveau formatage.
+<     return implode($glue, $periode_string);
+< }
+<
+< /*
+< *   Cette fonction est utiliser pour transormer #PERIODE en tableau utilisable.
+< */
+< function get_array_periode($periode_string) {
+<     return explode(',', $periode_string);
+< }
+<
+< /*
+< *   Fonction qui ajoute http:// devant un lien s'il n'y a rien.
+< */
+< function add_http($url) {
+<     if (!preg_match("/^(http|https|ftp):/", $url))
+<         return $url = 'http://'.$url;
+< }
+<
+<
+< /*
+< *   Certains champs sont des des tableaux que l'ont dois assembler avant de les ajouter à la base de donnée.
+< */
+< function implode_champs() {
+<
+<     // On traite le champ logement
+<     if (_request('logement'))
+<         set_request('logement', implode(',', _request('logement')));
+<     // On traite le champ période
+<     if (_request('periode'))
+<         set_request('periode', implode(',', _request('periode')));
+< }
+---
+>  * Un fichier de fonctions permet de définir des éléments
+>  * systématiquement chargés lors du calcul des squelettes.
+>  *
+>  * Il peut par exemple définir des filtres, critères, balises, …
+>  *
+>  */
 diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/badje_pipelines.php ../plugins/fabrique_auto/badje/badje_pipelines.php
 46c46
-< 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
+< 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
 ---
-> 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
+> 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
 54c54
-< 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
+< 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
 ---
-> 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
+> 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
 62c62
-< 	if (!$e['edition'] AND in_array($e['type'], array('badje_type_activite'))) {
+< 	if (!$e['edition'] AND in_array($e['type'], array('type_activite'))) {
 ---
-> 	if (!$e['edition'] AND in_array($e['type'], array('type_activite'))) {
+> 	if (!$e['edition'] AND in_array($e['type'], array('badje_type_activite'))) {
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/base/badje.php ../plugins/fabrique_auto/badje/base/badje.php
+78c78
+< 		'tables_jointures'  => array('spip_badje_type_activites_liens'),
+---
+> 		'tables_jointures'  => array(),
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/formulaires/editer_activite.html ../plugins/fabrique_auto/badje/formulaires/editer_activite.html
+49,54c49,54
+< 				datas=[(#ARRAY{
+< Automne,Automne,
+< Hiver,Hiver,
+< Détente,Détente,
+< Printemps,Printemps,
+< Juillet,Juillet,
+---
+> 				datas=[(#ARRAY{
+> Automne,automne,
+> Hiver,Hiver,
+> Détente,Détente,
+> Printemps,Printemps,
+> Juillet,Juillet,
 diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/paquet.xml ../plugins/fabrique_auto/badje/paquet.xml
 12c12
-< 		Paquet genere le 2013-07-24 12:04:40
+< 		Paquet genere le 2013-07-24 12:07:39
 ---
-> 		Paquet genere le 2013-07-24 12:07:39
-Only in ../plugins/fabrique_auto/.backup/badje/prive/objets: infos
-Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: activite.html
-Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: badje_activites.html
-Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: badje_groupe_activitie.html
-Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: badje_organismes.html
-Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: badje_type_activites.html
-Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: groupe_activite.html
-Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: organisme.html
-Only in ../plugins/fabrique_auto/.backup/badje/prive/squelettes/contenu: type_activite.html
+> 		Paquet genere le 2013-08-22 14:11:59
+Only in ../plugins/fabrique_auto/badje/: saisies
+Only in ../plugins/fabrique_auto/badje/: saisies-vues
