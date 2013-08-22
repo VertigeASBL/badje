@@ -117,7 +117,22 @@ function formulaires_editer_activite_atl_verifier_dist($id_activite='new', $reto
  */
 function formulaires_editer_activite_atl_traiter_dist($id_activite='new', $retour='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
 	
-    return formulaires_editer_objet_traiter('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
+    // On traite le fomulaire et dans le res on récupère l'id_activité
+    $res = formulaires_editer_objet_traiter('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
+
+    // On va lier l'organisme
+    objet_associer(
+        array('organisme' => _request('id_organisme')), 
+        array('activite' => $res['id_activite'])
+        );
+
+    // On va lier les types d'activité.
+    objet_associer(
+        array('type_activite' => _request('type_activite')), 
+        array('activite' => $res['id_activite'])
+        );
+
+    return $res;
 }
 
 
