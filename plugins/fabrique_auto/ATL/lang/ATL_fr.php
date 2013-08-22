@@ -9,6 +9,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'ATL_titre' => 'Badje ATL',
     'adresse' => 'Adresse',
     'activites' => 'Activités',
+    'ajouter_organisme' => 'Ajouter un Organisme',
+    'ajouter_activite' => 'Ajouter une activité',
     'aucune_activite' => 'Aucune activité pour cet organisme',
     'age' => 'Age',
     // D
@@ -20,6 +22,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     // N
     'nom' => 'Nom',
     'nb_activite' => 'Nbre d\'activite',
+    // R
+    'retour_orga' => 'Retour aux Organismes',
+    'retour_orga1' => 'Retour aux activités',
     // T
     'type_activites' => 'Type d\'activité',
 );
