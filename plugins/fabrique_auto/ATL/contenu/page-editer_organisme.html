@@ -1,4 +1,5 @@
 <div class="section-container auto" data-section>
+    [(#REM) Section qui permet de modifier  ]
     <section>
         <p class="title" data-section-title>
             <a href="#panel1"><:ATL:general:></a>
@@ -12,7 +13,36 @@
             <a href="#panel2"><:ATL:activites:></a>
         </p>
         <div class="content" data-section-content>
-            ICI les activite
+            <B_activite_organisme>
+            <table>
+                <thead>
+                    <tr>
+                        <th><:ATL:activite:></th>
+                        <th><:ATL:adresse:></th>
+                        <th><:ATL:localite:></th>
+                        <th><:ATL:age:></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <BOUCLE_activite_organisme(BADJE_ACTIVITES spip_badje_organismes_liens){id_organisme}>
+                        <tr>
+                            <td>#NOM</td>
+                            <td>#ADRESSE</td>
+                            <td>#COMMUNE</td>
+                            <td>De #AGE_MIN à #AGE_MAX ans</td>
+                            <td>
+                                [(#REM) Partie admin ]
+                                [<a href="[(#URL_PAGE{editer_activite}|parametre_url{id_activite, #ID_ACTIVITE})]">(#CHEMIN{images/admin_editer.png}|balise_img{Editer})</a>]
+                                [(#CHEMIN{images/admin_supprimer.png}|balise_img{Supprimer})]
+                            </td>
+                        </tr>
+                    </BOUCLE_activite_organisme>
+                </tbody>
+            </table>
+            </B_activite_organisme>
+            <p><:ATL:aucune_activite:></p>
+            <//B_activite_organisme>
         </div>
     </section>
 </div>
