@@ -21,7 +21,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'nom' => 'Nom',
     'nb_activite' => 'Nbre d\'activite',
     // T
-    'badje_type_activites' => 'Type d\'activité',
+    'type_activites' => 'Type d\'activité',
 );
 
 ?>
