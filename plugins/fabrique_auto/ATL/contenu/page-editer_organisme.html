@@ -13,6 +13,7 @@
             <a href="#panel2"><:ATL:activites:></a>
         </p>
         <div class="content" data-section-content>
+            <a href="#URL_PAGE{editer_activite, id_organisme=#ID_ORGANISME}" class="button small radius">Ajouter une activite</a>
             <B_activite_organisme>
             <table>
                 <thead>
@@ -33,7 +34,7 @@
                             <td>De #AGE_MIN à #AGE_MAX ans</td>
                             <td>
                                 [(#REM) Partie admin ]
-                                [<a href="[(#URL_PAGE{editer_activite}|parametre_url{id_activite, #ID_ACTIVITE})]">(#CHEMIN{images/admin_editer.png}|balise_img{Editer})</a>]
+                                [<a href="[(#URL_PAGE{editer_activiter,id_activite=#ID_ACTIVITE})]">(#CHEMIN{images/admin_editer.png}|balise_img{Editer})</a>]
                                 [(#CHEMIN{images/admin_supprimer.png}|balise_img{Supprimer})]
                             </td>
                         </tr>
