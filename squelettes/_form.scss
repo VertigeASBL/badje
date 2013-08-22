@@ -1,5 +1,10 @@
+label {
+    font-size: 1em;
+}
+
 // Pas de clear sur les li sinon Chosen s'affiche mal
 .formulaire_spip {
+    
     form > ul {
         display: block;
         background: #FFF;
@@ -76,10 +81,6 @@
             height: 99px;
             margin-right: 20px !important;
         }
-    }
-    
-    label {
-        font-size: 100%;
     }
     
     ul {
@@ -168,6 +169,13 @@
                 margin-top: -30px;
             }
         }
+    }
+
+    input[type="file"],
+    input[type="checkbox"],
+    input[type="radio"],
+    select {
+        margin-bottom: 0;
     }
 }
 
