@@ -39,4 +39,18 @@ function add_http($url) {
         return $url = 'http://'.$url;    
 }
 
+
+/*
+*   Certains champs sont des des tableaux que l'ont dois assembler avant de les ajouter à la base de donnée.
+*/
+function implode_champs() {
+    var_dump(_request('logement'));
+    // On traite le champ logement
+    if (_request('logement')) 
+        set_request('logement', implode(',', _request('logement')));
+    // On traite le champ période
+    if (_request('periode')) 
+        set_request('periode', implode(',', _request('periode')));
+}
+
 ?>
