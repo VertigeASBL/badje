@@ -1,7 +1,43 @@
 [(#REM) Cette page est l'admin pour les contributeurs "ATL". Elles peuvent mettre à jour la base de donnée ici. ]
 
-[(#REM) Etape 1 on va lister les organismes ]
+[(#REM) Quelques liens utile ]
+<a href="#URL_LOGOUT" class="button small radius"><:ATL:deconnexion:></a>
+<a href="#URL_PAGE{editer_organisme}#panel1" class="button small radius ajax"><:ATL:ajouter_organisme:></a>
+<B_organisme>
 
-<INCLURE{fond=inclure/liste_organisme, env}>
-
-<a href="#URL_LOGOUT"><:deconnexion:></a>
+[(#REM) lister les organismes dans un tableau ]
+<table>
+    <thead>
+        <tr>
+            <th><:ATL:nom:></th>
+            <th><:ATL:adresse:></th>
+            <th><:ATL:localite:></th>
+            <th><:ATL:nb_activite:></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <BOUCLE_organisme(BADJE_ORGANISMES){par nom_organisme}>
+        <tr>
+            <td>#NOM_ORGANISME</td>
+            <td>#ADRESSE</td>
+            <td>#LOCALITE</td>
+            <td>
+                [(#REM) On va récupérer le nombre d'activité de l'organisme ]
+                <BOUCLE_nb_activite(BADJE_ACTIVITES spip_badje_organismes_liens){id_organisme}></BOUCLE_nb_activite>
+                #TOTAL_BOUCLE
+                <//B_nb_activite>
+            </td>
+            <td class="">
+                [(#REM) Partie admin ]
+                [<a href="[(#URL_PAGE{editer_organisme, id_organisme=#ID_ORGANISME#panel1})]" class="ajax">
+                    (#CHEMIN{images/admin_editer.png}|balise_img{Editer})
+                </a>]
+                [(#CHEMIN{images/admin_supprimer.png}|balise_img{Supprimer})]
+            </td>
+        </tr>
+    </BOUCLE_organisme>
+    </tbody>
+</table>
+</B_organisme>
+<//B_organisme>
