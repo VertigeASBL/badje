@@ -1,6 +1,8 @@
 <BOUCLE_organisme(BADJE_ORGANISMES){id_organisme}>
-
-<h1 class="admin">#NOM_ORGANISME</h1>
+    <h1 class="admin">#NOM_ORGANISME</h1>
+</BOUCLE_organisme>
+    <h1 class="admin"><:organisme:icone_creer_organisme:></h1>
+<//B_organisme>
 
 <a href="#URL_PAGE{admin}" class="button small radius"><:ATL:retour_orga:></a>
 
@@ -14,13 +16,14 @@
           #FORMULAIRE_EDITER_ORGANISME_ATL{#ENV{id_organisme}, #URL_PAGE{editer_organisme, id_organisme=#ENV{id_organisme}#panel1}}
         </div>
     </section>
+    
+    <B_activite_organisme>
     <section>
         <p class="title" data-section-title>
             <a href="#panel2"><:ATL:activites:></a>
         </p>
         <div class="content" data-section-content data-slug="panel2">
             <a href="#URL_PAGE{editer_activite, id_organisme=#ID_ORGANISME}" class="button small radius"><:ATL:ajouter_activite:></a>
-            <B_activite_organisme>
             <table>
                 <thead>
                     <tr>
@@ -49,10 +52,23 @@
                     </BOUCLE_activite_organisme>
                 </tbody>
             </table>
-            </B_activite_organisme>
-            <p><:ATL:aucune_activite:></p>
-            <//B_activite_organisme>
+            
         </div>
     </section>
+    </B_activite_organisme>
+        
+        [(#ENV{id_organisme}|oui)
+            <section>
+                <p class="title" data-section-title>
+                    <a href="#panel2"><:ATL:activites:></a>
+                </p>
+                <div class="content" data-section-content data-slug="panel2">
+                    <a href="#URL_PAGE{editer_activite, id_organisme=#ID_ORGANISME}" class="button small radius">
+                        <:ATL:ajouter_activite:>
+                    </a>
+                    <p><:ATL:aucune_activite:></p>
+                </div>
+            </section>
+        ]
+    <//B_activite_organisme>
 </div>
-</BOUCLE_organisme>
