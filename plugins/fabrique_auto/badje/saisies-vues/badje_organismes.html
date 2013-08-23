@@ -3,7 +3,7 @@
 	<B_badje_organismes_selectionnes>
 	<ul>
 	<BOUCLE_badje_organismes_selectionnes(BADJE_ORGANISMES){id_organisme IN #GET*{valeur}}
-		{par num nom_organisme, nom_organisme}{tout}>
+		{par num nom_organisme, nom_organisme}{statut?}{tout}>
 		<li class="choix">#NOM_ORGANISME (#ID_ORGANISME)</li>
 	</BOUCLE_badje_organismes_selectionnes>
 	</ul>
@@ -12,7 +12,7 @@
 	<//B_badje_organismes_selectionnes>
 </BOUCLE_test_multiple>
 	<BOUCLE_organisme_selectionne(BADJE_ORGANISMES){id_organisme=#ENV{valeur}}
-		{par num nom_organisme, nom_organisme}{tout}>
+		{par num nom_organisme, nom_organisme}{statut?}{tout}>
 	  	<p>#NOM_ORGANISME (#ID_ORGANISME)</p>
 	</BOUCLE_organisme_selectionne>
    	[(#ENV*{sans_reponse}|propre)]

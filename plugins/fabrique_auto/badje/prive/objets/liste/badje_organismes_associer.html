@@ -23,7 +23,7 @@ a mis a jour la valeur avec la page reelle]
 </caption>]
 	<thead>
 		#SET{p,''}
-		<BOUCLE_lettre(BADJE_ORGANISMES){tout}{!id_organisme IN #GET{exclus}}{where?}{recherche?}
+		<BOUCLE_lettre(BADJE_ORGANISMES){tout}{!id_organisme IN #GET{exclus}}{where?}{recherche?}{statut?}
 			{tri #ENV{par,multi nom_organisme},#GET{defaut_tri}}{id_organisme==#GET{afficher_lettres}|?{'.*','A'}}>[
 		(#NOM_ORGANISME**|extraire_multi|initiale|unique|oui)
 		[(#SET{p,#GET{p}|concat{
@@ -38,14 +38,16 @@ a mis a jour la valeur avec la page reelle]
 		[<tr><td colspan="3"><p class='pagination'>(#GET{p})</p></td></tr>]
 	
 		<tr class='first_row'>
+			<th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th> 
 			<th class='nom_organisme' scope='col'>[(#TRI{multi nom_organisme,<:organisme:label_nom_organisme:>,ajax})]</th>
 			<th class='action' scope='col'></th>
 		</tr>
 	</thead>
 	<tbody>
-	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){!id_organisme IN #GET{exclus}}{where?}{recherche?}
+	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){!id_organisme IN #GET{exclus}}{where?}{recherche?}{statut?}
 		{tri #ENV{par,multi nom_organisme},#GET{defaut_tri}}{pagination #ENV{nb,10} bada}>
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})][ (#EXPOSE|unique)][ (#NOM_ORGANISME**|extraire_multi|initiale|=={#ENV{i}}|?{on}|unique)]">
+			<td class='statut'>[(#STATUT|puce_statut{organisme})]</td> 
 			<td class='nom_organisme'>[(#LOGO_ORGANISME|image_reduire{20,20})]<a href="[(#ID_ORGANISME|generer_url_entite{organisme})]">#NOM_ORGANISME</a></td>
 			<td class='action'>
 				<button class="button link add" name="ajouter_lien\[organisme-#ID_ORGANISME-#OBJET-#ID_OBJET\]" value="+"><:organisme:ajouter_lien_organisme:> [(#CHEMIN_IMAGE{ajouter-12.png}|balise_img{'+'})]</button>

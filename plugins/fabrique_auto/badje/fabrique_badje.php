@@ -2,7 +2,7 @@
 
 /**
  *  Fichier généré par la Fabrique de plugin v5
- *   le 2013-08-22 14:11:59
+ *   le 2013-08-23 10:15:40
  *
  *  Ce fichier de sauvegarde peut servir à recréer
  *  votre plugin avec le plugin «Fabrique» qui a servi à le créer.
@@ -332,6 +332,12 @@ Août,Août})]',
       'roles' => '',
       'auteurs_liens' => 'on',
       'vue_auteurs_liens' => 'on',
+      'echafaudages' => 
+      array (
+        0 => 'prive/squelettes/contenu/objets.html',
+        1 => 'prive/objets/infos/objet.html',
+        2 => 'prive/squelettes/contenu/objet.html',
+      ),
       'autorisations' => 
       array (
         'objet_creer' => '',
@@ -516,7 +522,7 @@ Août,Août})]',
       ),
       'champ_titre' => 'nom_organisme',
       'champ_date' => '',
-      'statut' => '',
+      'statut' => 'on',
       'chaines' => 
       array (
         'titre_objets' => 'Organismes',
@@ -545,6 +551,12 @@ Août,Août})]',
       'roles' => '',
       'auteurs_liens' => 'on',
       'vue_auteurs_liens' => 'on',
+      'echafaudages' => 
+      array (
+        0 => 'prive/squelettes/contenu/objets.html',
+        1 => 'prive/objets/infos/objet.html',
+        2 => 'prive/squelettes/contenu/objet.html',
+      ),
       'autorisations' => 
       array (
         'objet_creer' => '',
@@ -622,6 +634,12 @@ Août,Août})]',
       'roles' => '',
       'auteurs_liens' => '',
       'vue_auteurs_liens' => '',
+      'echafaudages' => 
+      array (
+        0 => 'prive/squelettes/contenu/objets.html',
+        1 => 'prive/objets/infos/objet.html',
+        2 => 'prive/squelettes/contenu/objet.html',
+      ),
       'autorisations' => 
       array (
         'objet_creer' => '',
@@ -700,6 +718,12 @@ Août,Août})]',
       'roles' => '',
       'auteurs_liens' => '',
       'vue_auteurs_liens' => '',
+      'echafaudages' => 
+      array (
+        0 => 'prive/squelettes/contenu/objets.html',
+        1 => 'prive/objets/infos/objet.html',
+        2 => 'prive/squelettes/contenu/objet.html',
+      ),
       'autorisations' => 
       array (
         'objet_creer' => '',

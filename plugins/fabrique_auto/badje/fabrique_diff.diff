@@ -1,4 +1,3 @@
-Only in ../plugins/fabrique_auto/.backup/badje/: .DS_Store
 diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/badje_fonctions.php ../plugins/fabrique_auto/badje/badje_fonctions.php
 16,54c16,21
 < *   Fonction qui permet d'afficher la pédiode d'une activité sous forme de chaine de caractère plus maléable.
@@ -47,43 +46,130 @@ diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabriq
 >  * Il peut par exemple définir des filtres, critères, balises, …
 >  *
 >  */
-diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/badje_pipelines.php ../plugins/fabrique_auto/badje/badje_pipelines.php
-46c46
-< 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
----
-> 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
-54c54
-< 	if (!$e['edition'] AND in_array($e['type'], array('activite'))) {
----
-> 	if (!$e['edition'] AND in_array($e['type'], array('badje_activite'))) {
-62c62
-< 	if (!$e['edition'] AND in_array($e['type'], array('type_activite'))) {
----
-> 	if (!$e['edition'] AND in_array($e['type'], array('badje_type_activite'))) {
 diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/base/badje.php ../plugins/fabrique_auto/badje/base/badje.php
-78c78
-< 		'tables_jointures'  => array('spip_badje_type_activites_liens'),
+116c116
+<             "statut"             => "varchar(20)  DEFAULT '0' NOT NULL",
 ---
-> 		'tables_jointures'  => array(),
-diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/formulaires/editer_activite.html ../plugins/fabrique_auto/badje/formulaires/editer_activite.html
-49,54c49,54
-< 				datas=[(#ARRAY{
-< Automne,Automne,
-< Hiver,Hiver,
-< Détente,Détente,
-< Printemps,Printemps,
-< Juillet,Juillet,
+> 			"statut"             => "varchar(20)  DEFAULT '0' NOT NULL",
+121c121
+<             "KEY statut"         => "statut",
 ---
-> 				datas=[(#ARRAY{
-> Automne,automne,
-> Hiver,Hiver,
-> Détente,Détente,
-> Printemps,Printemps,
-> Juillet,Juillet,
+> 			"KEY statut"         => "statut",
+129,145c129,147
+<         'statut_textes_instituer' => array(
+<             'prepa'    => 'texte_statut_en_cours_redaction',
+<             'prop'     => 'texte_statut_propose_evaluation',
+<             'publie'   => 'texte_statut_publie',
+<             'refuse'   => 'texte_statut_refuse',
+<             'poubelle' => 'texte_statut_poubelle',
+<         ),
+<         'statut'=> array(
+<             array(
+<                 'champ'     => 'statut',
+<                 'publie'    => 'publie',
+<                 'previsu'   => 'publie,prop,prepa',
+<                 'post_date' => 'date',
+<                 'exception' => array('statut','tout')
+<             )
+<         ),
+<         'texte_changer_statut' => 'activite:texte_changer_statut_activite',
+---
+> 		'statut_textes_instituer' => array(
+> 			'prepa'    => 'texte_statut_en_cours_redaction',
+> 			'prop'     => 'texte_statut_propose_evaluation',
+> 			'publie'   => 'texte_statut_publie',
+> 			'refuse'   => 'texte_statut_refuse',
+> 			'poubelle' => 'texte_statut_poubelle',
+> 		),
+> 		'statut'=> array(
+> 			array(
+> 				'champ'     => 'statut',
+> 				'publie'    => 'publie',
+> 				'previsu'   => 'publie,prop,prepa',
+> 				'post_date' => 'date',
+> 				'exception' => array('statut','tout')
+> 			)
+> 		),
+> 		'texte_changer_statut' => 'organisme:texte_changer_statut_organisme',
+>
+>
 diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/paquet.xml ../plugins/fabrique_auto/badje/paquet.xml
-12c12
-< 		Paquet genere le 2013-07-24 12:07:39
+4c4
+< 	version="1.0.1"
 ---
-> 		Paquet genere le 2013-08-22 14:11:59
-Only in ../plugins/fabrique_auto/badje/: saisies
-Only in ../plugins/fabrique_auto/badje/: saisies-vues
+> 	version="1.0.0"
+9c9
+< 	schema="1.0.1"
+---
+> 	schema="1.0.0"
+12c12
+< 		Paquet genere le 2013-08-22 14:11:59
+---
+> 		Paquet genere le 2013-08-23 10:15:40
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/prive/objets/contenu/organisme.html ../plugins/fabrique_auto/badje/prive/objets/contenu/organisme.html
+1c1
+< <BOUCLE_organisme(BADJE_ORGANISMES){id_organisme}>
+---
+> <BOUCLE_organisme(BADJE_ORGANISMES){id_organisme}{statut?}>
+Only in ../plugins/fabrique_auto/badje/prive/objets: infos
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/prive/objets/liste/badje_organismes.html ../plugins/fabrique_auto/badje/prive/objets/liste/badje_organismes.html
+12a13
+> 			<th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th>
+14c15
+<
+---
+> 			<th class='id' scope='col'>[(#TRI{id_organisme,<:info_numero_abbreviation:>,ajax})]</th>
+18c19
+< 	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){pagination #ENV{nb,10}}>
+---
+> 	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){id_mot?}{auteurs_liens.id_auteur?}{where?}{statut?}{recherche?}{tri #ENV{par,num nom_organisme},#GET{defaut_tri}}{par nom_organisme}{pagination #ENV{nb,10}}>
+20a22
+> 			<td class='statut'>[(#STATUT|puce_statut{organisme,#ID_ORGANISME})]</td>
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/prive/objets/liste/badje_organismes_associer.html ../plugins/fabrique_auto/badje/prive/objets/liste/badje_organismes_associer.html
+26c26
+< 		<BOUCLE_lettre(BADJE_ORGANISMES){tout}{!id_organisme IN #GET{exclus}}{where?}{recherche?}
+---
+> 		<BOUCLE_lettre(BADJE_ORGANISMES){tout}{!id_organisme IN #GET{exclus}}{where?}{recherche?}{statut?}
+40a41
+> 			<th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th>
+46c47
+< 	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){!id_organisme IN #GET{exclus}}{where?}{recherche?}
+---
+> 	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){!id_organisme IN #GET{exclus}}{where?}{recherche?}{statut?}
+48a50
+> 			<td class='statut'>[(#STATUT|puce_statut{organisme})]</td>
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/prive/objets/liste/badje_organismes_lies.html ../plugins/fabrique_auto/badje/prive/objets/liste/badje_organismes_lies.html
+19c19
+< 		<BOUCLE_lettre(BADJE_ORGANISMES){tout}{id_organisme IN #GET{selection}}{where?}
+---
+> 		<BOUCLE_lettre(BADJE_ORGANISMES){tout}{id_organisme IN #GET{selection}}{where?}{statut?}
+33a34
+> 			<th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th>
+39c40
+< 	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){id_organisme IN #GET{selection}}
+---
+> 	<BOUCLE_liste_badje_organismes(BADJE_ORGANISMES){id_organisme IN #GET{selection}}{statut?}
+41a43
+> 			<td class='statut'>[(#STATUT|puce_statut{organisme})]</td>
+Only in ../plugins/fabrique_auto/badje/prive/squelettes/contenu: activite.html
+Only in ../plugins/fabrique_auto/badje/prive/squelettes/contenu: badje_activites.html
+Only in ../plugins/fabrique_auto/badje/prive/squelettes/contenu: badje_groupe_activitie.html
+Only in ../plugins/fabrique_auto/badje/prive/squelettes/contenu: badje_organismes.html
+Only in ../plugins/fabrique_auto/badje/prive/squelettes/contenu: badje_type_activites.html
+Only in ../plugins/fabrique_auto/badje/prive/squelettes/contenu: groupe_activite.html
+Only in ../plugins/fabrique_auto/badje/prive/squelettes/contenu: organisme.html
+Only in ../plugins/fabrique_auto/badje/prive/squelettes/contenu: type_activite.html
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/saisies/badje_organismes.html ../plugins/fabrique_auto/badje/saisies/badje_organismes.html
+7c7
+< 	<BOUCLE_badje_organismes(BADJE_ORGANISMES){par num nom_organisme, nom_organisme}{recherche?}{tout}>
+---
+> 	<BOUCLE_badje_organismes(BADJE_ORGANISMES){par num nom_organisme, nom_organisme}{statut?}{recherche?}{tout}>
+diff -r -x . -x .. -x fabrique_diff.diff -x fabrique_badje.php ../plugins/fabrique_auto/.backup/badje/saisies-vues/badje_organismes.html ../plugins/fabrique_auto/badje/saisies-vues/badje_organismes.html
+6c6
+< 		{par num nom_organisme, nom_organisme}{tout}>
+---
+> 		{par num nom_organisme, nom_organisme}{statut?}{tout}>
+15c15
+< 		{par num nom_organisme, nom_organisme}{tout}>
+---
+> 		{par num nom_organisme, nom_organisme}{statut?}{tout}>

@@ -1,0 +1,28 @@
+<BOUCLE_activite(BADJE_ACTIVITES){id_activite=#ENV{id}}{statut?}>
+<div class='infos'>
+[(#SET{texte_objet,<:activite:titre_activite:>})]
+<div class='numero'><:titre_cadre_numero_objet{objet=#GET{texte_objet}}:><p>#ID_ACTIVITE</p></div>
+
+[(#FORMULAIRE_INSTITUER_OBJET{badje_activites,#ID_ACTIVITE})]
+
+[(#REM)
+
+	Bouton voir en ligne
+
+]
+<BOUCLE_publie(BADJE_ACTIVITES){id_activite}>
+	[(#VAL{redirect}
+		|generer_url_action{type=badje_activites&id=#ID_ACTIVITE}
+		|parametre_url{var_mode,calcul}
+		|icone_horizontale{<:icone_voir_en_ligne:>,racine})]
+</BOUCLE_publie>
+	[(#AUTORISER{previsualiser,badje_activites,#ID_ACTIVITE,'',#ARRAY{statut,#STATUT}})
+		[(#VAL{redirect}
+			|generer_url_action{type=badje_activites&id=#ID_ACTIVITE}
+			|parametre_url{var_mode,preview}
+			|icone_horizontale{<:previsualiser:>,preview})]
+	]
+<//B_publie>
+
+</div>
+</BOUCLE_activite>

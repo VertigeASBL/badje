@@ -1,0 +1,28 @@
+<BOUCLE_organisme(BADJE_ORGANISMES){id_organisme=#ENV{id}}{statut?}>
+<div class='infos'>
+[(#SET{texte_objet,<:organisme:titre_organisme:>})]
+<div class='numero'><:titre_cadre_numero_objet{objet=#GET{texte_objet}}:><p>#ID_ORGANISME</p></div>
+
+[(#FORMULAIRE_INSTITUER_OBJET{badje_organismes,#ID_ORGANISME})]
+
+[(#REM)
+
+	Bouton voir en ligne
+
+]
+<BOUCLE_publie(BADJE_ORGANISMES){id_organisme}>
+	[(#VAL{redirect}
+		|generer_url_action{type=badje_organismes&id=#ID_ORGANISME}
+		|parametre_url{var_mode,calcul}
+		|icone_horizontale{<:icone_voir_en_ligne:>,racine})]
+</BOUCLE_publie>
+	[(#AUTORISER{previsualiser,badje_organismes,#ID_ORGANISME,'',#ARRAY{statut,#STATUT}})
+		[(#VAL{redirect}
+			|generer_url_action{type=badje_organismes&id=#ID_ORGANISME}
+			|parametre_url{var_mode,preview}
+			|icone_horizontale{<:previsualiser:>,preview})]
+	]
+<//B_publie>
+
+</div>
+</BOUCLE_organisme>

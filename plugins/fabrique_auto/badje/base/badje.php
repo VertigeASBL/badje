@@ -113,10 +113,12 @@ function badje_declarer_tables_objets_sql($tables) {
 			"email"              => "text NOT NULL DEFAULT ''",
 			"site_internet"      => "text NOT NULL DEFAULT ''",
 			"one"                => "text NOT NULL DEFAULT ''",
+			"statut"             => "varchar(20)  DEFAULT '0' NOT NULL", 
 			"maj"                => "TIMESTAMP"
 		),
 		'key' => array(
 			"PRIMARY KEY"        => "id_organisme",
+			"KEY statut"         => "statut", 
 		),
 		'titre' => "nom_organisme AS titre, '' AS lang",
 		 #'date' => "",
@@ -124,6 +126,23 @@ function badje_declarer_tables_objets_sql($tables) {
 		'champs_versionnes' => array('nom_organisme', 'adresse', 'code_postal', 'localite', 'telephone', 'gsm', 'fax', 'email', 'site_internet', 'one'),
 		'rechercher_champs' => array("nom_organisme" => 8, "adresse" => 4, "code_postal" => 4, "localite" => 6, "telephone" => 2, "gsm" => 2, "fax" => 1, "site_internet" => 4),
 		'tables_jointures'  => array('spip_badje_organismes_liens'),
+		'statut_textes_instituer' => array(
+			'prepa'    => 'texte_statut_en_cours_redaction',
+			'prop'     => 'texte_statut_propose_evaluation',
+			'publie'   => 'texte_statut_publie',
+			'refuse'   => 'texte_statut_refuse',
+			'poubelle' => 'texte_statut_poubelle',
+		),
+		'statut'=> array(
+			array(
+				'champ'     => 'statut',
+				'publie'    => 'publie',
+				'previsu'   => 'publie,prop,prepa',
+				'post_date' => 'date', 
+				'exception' => array('statut','tout')
+			)
+		),
+		'texte_changer_statut' => 'organisme:texte_changer_statut_organisme', 
 		
 
 	);
