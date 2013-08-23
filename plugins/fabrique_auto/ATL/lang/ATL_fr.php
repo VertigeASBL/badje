@@ -15,6 +15,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'age' => 'Age',
     // D
     'deconnexion' => 'Déconnexion',
+    // E
+    'export' => 'Exporter les organismes',
     // G
     'general' => 'Général',
     // L
