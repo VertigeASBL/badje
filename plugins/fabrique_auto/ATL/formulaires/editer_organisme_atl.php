@@ -125,7 +125,11 @@ function formulaires_editer_organisme_atl_verifier_dist($id_organisme='new', $re
  */
 function formulaires_editer_organisme_atl_traiter_dist($id_organisme='new', $retour='', $associer_objet='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
 	$res = formulaires_editer_objet_traiter('organisme',$id_organisme,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
- 
+    
+    // On publie tout de suite l'organisme
+    include_spip('action/editer_objet');
+    objet_instituer('organisme', $res['id_organisme'], array('statut' => 'publie'));
+
 	// Un lien a prendre en compte ?
 	if ($associer_objet AND $id_organisme = $res['id_organisme']) {
 		list($objet, $id_objet) = explode('|', $associer_objet);
