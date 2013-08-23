@@ -18,8 +18,11 @@
 	<auteur lien='http://www.vertige.org'>vertige</auteur>
 
 	<licence>GNU/GPL</licence>
+    <necessite nom="badje" compatibilite="[1.0.0;]" />
 
-	<!--
+    <pipeline nom="insert_head" inclure="ATL_pipelines.php" />
+	
+    <!--
 		Exemple de commandes
 		* dependances
 		<necessite nom="saisies" compatibilite="[1.21.0;]" />
@@ -37,7 +40,4 @@
 		* parents d'onglets... configuration, plugins, statistiques, ... 
 		<onglet nom="ATL" titre="ATL:ATL_titre" parent="configuration" icone="images/ATL-24.png" />
 	-->
-
-
-
 </paquet>

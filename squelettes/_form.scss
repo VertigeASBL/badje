@@ -183,3 +183,25 @@ label {
 .chzn-container-multi .chzn-results {
     width: 100%;
 }
+
+.supprimer {
+    background: url(images/admin_supprimer.png) no-repeat center;
+    width: 16px;
+    height: 16px;
+    border: none;
+}
+
+td.admin {
+    width: 60px;
+    a, input {
+        float: left;
+    }
+}
+
+#page #conteneur #contenu-principal h1.admin {
+    background: transparent;
+    font-size: pem(24);
+    color: #000;
+    padding-left: 0;
+    padding-bottom: 10px;
+}

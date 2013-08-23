@@ -28,12 +28,12 @@
                 #TOTAL_BOUCLE
                 <//B_nb_activite>
             </td>
-            <td class="">
+            <td class="admin">
                 [(#REM) Partie admin ]
                 [<a href="[(#URL_PAGE{editer_organisme, id_organisme=#ID_ORGANISME#panel1})]" class="ajax">
                     (#CHEMIN{images/admin_editer.png}|balise_img{Editer})
                 </a>]
-                [(#CHEMIN{images/admin_supprimer.png}|balise_img{Supprimer})]
+                #FORMULAIRE_SUPPRIMER_OBJET{#ID_ORGANISME, organisme}
             </td>
         </tr>
     </BOUCLE_organisme>

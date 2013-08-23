@@ -1,3 +1,7 @@
+<BOUCLE_organisme(BADJE_ORGANISMES){id_organisme}>
+
+<h1 class="admin">#NOM_ORGANISME</h1>
+
 <a href="#URL_PAGE{admin}" class="button small radius"><:ATL:retour_orga:></a>
 
 <div class="section-container auto" data-section data-options="deep_linking: true">
@@ -39,7 +43,7 @@
                                 [<a href="[(#URL_PAGE{editer_activite,id_activite=#ID_ACTIVITE&id_organisme=#ID_ORGANISME})]">
                                     (#CHEMIN{images/admin_editer.png}|balise_img{Editer})
                                 </a>]
-                                [(#CHEMIN{images/admin_supprimer.png}|balise_img{Supprimer})]
+                                #FORMULAIRE_SUPPRIMER_OBJET{#ID_ACTIVITE, activite}
                             </td>
                         </tr>
                     </BOUCLE_activite_organisme>
@@ -51,3 +55,4 @@
         </div>
     </section>
 </div>
+</BOUCLE_organisme>
