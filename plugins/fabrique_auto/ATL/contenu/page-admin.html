@@ -1,12 +1,18 @@
 [(#REM) Cette page est l'admin pour les contributeurs "ATL". Elles peuvent mettre à jour la base de donnée ici. ]
 
 [(#REM) Quelques liens utile ]
-<a href="#URL_LOGOUT" class="button small alert radius"><:ATL:deconnexion:></a>
-<a href="#URL_PAGE{editer_organisme}#panel1" class="button small radius"><:ATL:ajouter_organisme:></a>
+<div class="admin_menu">
+    <a href="#URL_PAGE{editer_organisme}#panel1" class="button small radius">
+        <:ATL:ajouter_organisme:>
+    </a>
+    
+    #FORMULAIRE_EXPORTER_ORGANISME
+    
+    <a href="#URL_LOGOUT" class="button small alert radius">
+        <:ATL:deconnexion:>
+    </a>
+</div>
 <B_organisme>
-
-#FORMULAIRE_EXPORTER_ORGANISME
-
 [(#REM) lister les organismes dans un tableau ]
 <table>
     <thead>

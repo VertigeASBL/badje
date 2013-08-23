@@ -205,3 +205,11 @@ td.admin {
     padding-left: 0;
     padding-bottom: 10px;
 }
+
+.admin_menu {
+    text-align: right;
+    form {
+        display: inline-block;
+        margin: 0;
+    }
+}
