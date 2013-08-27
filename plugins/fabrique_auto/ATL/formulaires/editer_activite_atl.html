@@ -9,10 +9,12 @@
 		<ul>
 
 			[(#SAISIE{input, nom, obligatoire=oui,
-				label=<:activite:label_nom:>})]
+				label=<:activite:label_nom:>,
+                placeholder=<:activite:label_nom:>})]
 
 			[(#SAISIE{textarea, descriptif,
 				label=<:activite:label_descriptif:>,
+                
 				li_class=haut, class=inserer_barre_edition, rows=4})]
 
             [(#SAISIE{
@@ -20,41 +22,51 @@
                     type_activite,
                     obligatoire=oui,
                     explication=<:ATL:explication_type_activite:>,
-                    label=<:ATL:type_activites:>, 
+                    label=<:ATL:type_activites:>,
                     multiple=oui,
                     class=chosen})]
             
 			[(#SAISIE{input, adresse,
-				label=<:activite:label_adresse:>})]
+				label=<:activite:label_adresse:>,
+                placeholder=<:activite:label_adresse:>})]
 
 			[(#SAISIE{input, commune,
-				label=<:activite:label_commune:>})]
+				label=<:activite:label_commune:>,
+                placeholder=<:activite:label_commune:>})]
 
 			[(#SAISIE{input, code_postal,
-				label=<:activite:label_code_postal:>})]
+				label=<:activite:label_code_postal:>,
+                placeholder=<:activite:label_code_postal:>})]
 
 			[(#SAISIE{input, prix,
-				label=<:activite:label_prix:>})]
+				label=<:activite:label_prix:>,
+                placeholder=<:activite:label_prix:>})]
 
 			[(#SAISIE{oui_non, accueil_handicap,
-				label=<:activite:label_accueil_handicap:>})]
+				label=<:activite:label_accueil_handicap:>,
+                placeholder=<:activite:label_accueil_handicap:>})]
 
 			[(#SAISIE{oui_non, accessibilite_handicap,
 				label=<:activite:label_accessibilite_handicap:>,
-				explication=<:activite:explication_accessibilite_handicap:> })]
+                placeholder=<:activite:label_accessibilite_handicap:>,
+				explication=<:activite:explication_accessibilite_handicap:>})]
 
 			[(#SAISIE{checkbox, logement,
 				label=<:activite:label_logement:>,
+                placeholder=<:activite:label_logement:>,
 				datas=[(#ARRAY{Externat,Externat,Séjour,Séjour})]})]
 
 			[(#SAISIE{oui_non, garderie,
-				label=<:activite:label_garderie:>})]
+				label=<:activite:label_garderie:>,
+                placeholder=<:activite:label_garderie:>})]
 
 			[(#SAISIE{oui_non, repas_chaud,
-				label=<:activite:label_repas_chaud:>})]
+				label=<:activite:label_repas_chaud:>,
+                placeholder=<:activite:label_repas_chaud:>})]
 
 			[(#SAISIE{checkbox, periode,
 				label=<:activite:label_periode:>,
+                placeholder=<:activite:label_periode:>,
 				datas=[(#ARRAY{
 Automne,Automne, 
 Hiver,Hiver, 
@@ -64,10 +76,12 @@ Juillet,Juillet,
 Août,Août})]})]
 
 			[(#SAISIE{input, age_min,
-				label=<:activite:label_age_min:>})]
+				label=<:activite:label_age_min:>,
+                placeholder=<:activite:label_age_min:>})]
 
 			[(#SAISIE{input, age_max,
-				label=<:activite:label_age_max:>})]
+				label=<:activite:label_age_max:>,
+                placeholder=<:activite:label_age_max:>})]
 
 		</ul>
 		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
