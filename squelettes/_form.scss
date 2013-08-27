@@ -266,4 +266,16 @@ td.admin {
     #champ_descriptif {
         height: 250px;
     }
+
+    .editer_adresse {
+        width: 250px;
+        float: left;
+        clear: none;
+    }
+    .editer_code_postal, .editer_commune {
+        width: 150px;
+        float: left;
+        clear: none;
+        margin-left: 10px;
+    }
 }
