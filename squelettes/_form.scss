@@ -278,4 +278,14 @@ td.admin {
         clear: none;
         margin-left: 10px;
     }
+    
+    .editer_age_min,
+    .editer_age_max,
+    .editer_accueil_handicap,
+    .editer_accessibilite_handicap {
+        width: 290px;
+        margin-right: 10px;
+        clear: none;
+        float: left;
+    }
 }
