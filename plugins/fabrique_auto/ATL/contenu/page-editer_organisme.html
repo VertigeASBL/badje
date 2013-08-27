@@ -35,7 +35,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <BOUCLE_activite_organisme(BADJE_ACTIVITES spip_badje_organismes_liens){id_organisme}>
+                    <BOUCLE_activite_organisme(BADJE_ACTIVITES spip_badje_organismes_liens){nom ?LIKE %(#ENV{nom})%}{id_organisme}>
                         <tr>
                             <td>#NOM</td>
                             <td>#ADRESSE</td>

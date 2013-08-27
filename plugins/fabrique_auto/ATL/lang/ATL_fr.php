@@ -27,6 +27,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     // R
     'retour_orga' => 'Retour aux Organismes',
     'retour_orga1' => 'Retour aux activités',
+    'rechercher' => 'Rechercher',
     // T
     'type_activites' => 'Type d\'activité',
 );

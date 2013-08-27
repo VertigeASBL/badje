@@ -1,5 +1,7 @@
 [(#REM) Cette page est l'admin pour les contributeurs "ATL". Elles peuvent mettre à jour la base de donnée ici. ]
 
+#ENV{recherche_atl}
+
 [(#REM) Quelques liens utile ]
 <div class="admin_menu">
     <a href="#URL_PAGE{editer_organisme}#panel1" class="button small radius">
@@ -12,9 +14,12 @@
         <:ATL:deconnexion:>
     </a>
 </div>
+
+#FORMULAIRE_RECHERCHE_ATL{nom_organisme}
+
 <B_organisme>
 [(#REM) lister les organismes dans un tableau ]
-<table>
+<table class="clear">
     <thead>
         <tr>
             <th><:ATL:nom:></th>
@@ -25,7 +30,7 @@
         </tr>
     </thead>
     <tbody>
-    <BOUCLE_organisme(BADJE_ORGANISMES){par nom_organisme}>
+    <BOUCLE_organisme(BADJE_ORGANISMES){nom_organisme ?LIKE %(#ENV{nom_organisme})%}{par nom_organisme}>
         <tr>
             <td>#NOM_ORGANISME</td>
             <td>#ADRESSE</td>

@@ -1,0 +1,19 @@
+<div class="formulaire_spip formulaire_#FORM">
+
+[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+
+<form action="#ENV{action}" method="post">
+    #ACTION_FORMULAIRE{#ENV{action}}
+    <ul class="row">
+        [(#SAISIE{
+                input, 
+                #ENV{type_recherche},
+                placeholder=rechercher})]
+
+        <li class="li_submit">
+            <input type="submit" class="submit" value="<:ATL:rechercher:>" />
+        </li>
+    </ul>
+</form>
+</div>
