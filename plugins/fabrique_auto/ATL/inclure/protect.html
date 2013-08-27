@@ -1,0 +1,6 @@
+[(#REM) 
+    Ce fichier de protection va tester le statut de la personne.
+    Seul les admin (0minirezo) et les ALT peuvent accèder a une page protégé par ce fichier.
+]
+
+[(#AUTORISER{adminATL}|sinon_interdire_acces{#URL_PAGE{login}})] 
