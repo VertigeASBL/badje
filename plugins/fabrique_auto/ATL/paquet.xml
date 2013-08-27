@@ -22,7 +22,9 @@
     <necessite nom="spip_bonux" compatibilite="[3.0.5;]" />
 
     <pipeline nom="insert_head" inclure="ATL_pipelines.php" />
-	
+
+    <pipeline nom="autoriser" inclure="ATL_autorisations.php" /> 	
+    
     <!--
 		Exemple de commandes
 		* dependances
