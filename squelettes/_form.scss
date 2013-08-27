@@ -213,3 +213,57 @@ td.admin {
         margin: 0;
     }
 }
+
+// Formulaire de recherche ATL
+.formulaire_recherche_atl {
+    float: right;
+    width: 280px;
+    
+    input {
+        margin: 0;
+    }
+
+    &.formulaire_recherche_atl form > ul {
+        margin: 0;
+        padding: 5px;
+        
+        li {
+            clear: none;
+            float: left;
+        }
+        li.li_submit {
+            padding-top: 3px;
+            padding-left: 5px;
+        }
+    }
+}
+
+// Formulaire d'ajout d'organisme
+.formulaire_editer_organisme_atl {
+    .editer_adresse {
+        width: 250px;
+        float: left;
+        clear: none;
+    }
+    .editer_code_postal, .editer_localite {
+        width: 150px;
+        float: left;
+        clear: none;
+        margin-left: 10px;
+    }
+
+    .editer_telephone, .editer_gsm, .editer_fax {
+        width: 190px;
+        clear: none;
+        float: left;
+    }
+    .editer_gsm, .editer_fax {
+        margin-left: 10px;
+    }
+}
+
+.formulaire_editer_activite_atl {
+    #champ_descriptif {
+        height: 250px;
+    }
+}
