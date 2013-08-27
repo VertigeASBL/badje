@@ -19,12 +19,9 @@
     </ul>
 </div>
 <div class="container-recherche">
-
-<!-- TODO: trier selon les communes, mais regrouper les activités par organismes. -->
-<!-- TODO: Gestion de "toutes les communes". -->
-
+[<p class="pagination">(#PAGINATION)</p>]
 [(#REM) On boucle sur le résultat de la recherche ]
-<BOUCLE_recherche(DATA){source table, #ENV{badje_recherche}}>
+<BOUCLE_recherche(DATA){source table, #ENV{badje_recherche}}{pagination}>
     [(#REM) Tri par commune ]
     [(#ENV{tri}|non|ou{#ENV{tri}|=={commune}|oui})
         [(#REM) Affichage de la localité, mais une seul fois seulement ! ]
@@ -44,8 +41,8 @@
     ]
     
     <INCLURE{fond=inclure/cadre_activite, env, id_activite=#VALEUR{id_activite}}>
-
 </BOUCLE_recherche>
+[<p class="pagination">(#PAGINATION)</p>]
 </div>
 </B_recherche>
 <div class="container-recherche">
