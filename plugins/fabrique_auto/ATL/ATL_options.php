@@ -20,9 +20,4 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * tout comme son volume !
  * 
  */
-
-/*
-*   On créer un statut SPIP spécial pour les ATL
-*/
-$GLOBALS['liste_des_statuts'][] = 'ATL';
 ?>
