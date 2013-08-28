@@ -718,3 +718,6 @@ body .spip-admin-bloc, body .spip-admin-float {
     right: auto;
     left: 205px;
 }
+
+// Fix pour internet Explorer
+@import "ie-fix";
