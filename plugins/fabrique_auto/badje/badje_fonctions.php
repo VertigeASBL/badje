@@ -35,8 +35,8 @@ function get_array_periode($periode_string) {
 *   Fonction qui ajoute http:// devant un lien s'il n'y a rien.
 */
 function add_http($url) {
-    if (!preg_match("/^(http|https|ftp):/", $url)) 
-        return $url = 'http://'.$url;    
+    if (!preg_match("/^(http|https|ftp):/", $url) and $url) 
+        return $url = 'http://'.$url;X
 }
 
 
