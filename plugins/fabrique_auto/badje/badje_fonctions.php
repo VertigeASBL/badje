@@ -36,7 +36,7 @@ function get_array_periode($periode_string) {
 */
 function add_http($url) {
     if (!preg_match("/^(http|https|ftp):/", $url) and $url) 
-        return $url = 'http://'.$url;X
+        return $url = 'http://'.$url;
 }
 
 
