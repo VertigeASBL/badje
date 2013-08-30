@@ -15,7 +15,6 @@ jQuery(document).ready(function($) {
     // On va placer le CSS de position avec javascript, histoire que ceux qui n'ont pas Javascript ai quand même droit à l'aide.
     explication.css({
         'position': 'absolute',
-        'top': '0',
         'right': '20px',
         'width': '12px',
         'height': '12px'

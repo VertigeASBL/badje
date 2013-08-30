@@ -4,7 +4,9 @@ label {
 
 // Pas de clear sur les li sinon Chosen s'affiche mal
 .formulaire_spip {
-    
+    label {
+        font-size: pem(10);
+    }
     form > ul {
         display: block;
         background: #FFF;
@@ -13,15 +15,23 @@ label {
         border-bottom: 2px solid #d7ccbf;
     }
     ul { 
+        line-height: 1;
         li {
             padding: 0;
             position: relative;
         }
     }
     
+    .legend + .explication {
+        top: 10px;
+        
+    }
+
     .explication {
         background: url(images/aide.png) no-repeat;
         padding-left: 15px;
+        margin: 0;
+        top: 0;
     }
 
     fieldset {
@@ -92,7 +102,6 @@ label {
             div.choix {
                 float: left;
                 width: 33%;
-                font-size: pem(10);
             }
         }
 
