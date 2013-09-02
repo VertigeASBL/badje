@@ -133,7 +133,7 @@ img, object, embed {
         padding: 0;
         margin: 0;
         height: 180px;
-
+        margin-bottom: 57px;
         .header_bg {
             // background: transparent url(images/header.png) no-repeat center;
             width: 773px;
@@ -719,8 +719,8 @@ body .spip-admin-bloc, body .spip-admin-float {
     left: 205px;
 }
 
-// Fix pour internet Explorer
-@import "ie-fix";
-
 // Orbit badje
 @import "orbit";
+
+// Fix pour internet Explorer
+@import "ie-fix";
