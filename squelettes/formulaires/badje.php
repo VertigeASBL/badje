@@ -193,24 +193,25 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                         'saisie' => 'case',
                         'options' => array(
                             'nom' => 'creative_all',
-                            'label' => 'Activités créatives, ludiques et culturelles'
+                            'label_case' => 'Activités créatives, ludiques et culturelles'
                             )
                         ),
-                array(
-                    'saisie' => 'selection_multiple',
-                    'options' => array(
-                        'nom' => 'creative',
-                        'label' => 'Activités créatives, ludiques et culturelles',
-                        'class' => 'chosen',
-                        'datas' => $activite_creative
-                        )
-                    ),
                 array(
                     'saisie' => 'checkbox',
                     'options' => array(
                         'nom' => 'multiactivite',
                         'datas' => array('oui' => 'Multiactivités'),
                         'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
+                        )
+                    ),
+                array(
+                    'saisie' => 'selection_multiple',
+                    'options' => array(
+                        'nom' => 'creative',
+                        'label' => 'Activités créatives, ludiques et culturelles',
+                        'class' => 'chosen',
+                        'li_class' => 'clear',
+                        'datas' => $activite_creative
                         )
                     ),
                 array(
@@ -221,19 +222,20 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                         )
                     ),
                 array(
+                        'saisie' => 'case',
+                        'options' => array(
+                            'nom' => 'sportive_all',
+                            'label_case' => 'Activités sportives',
+                            'li_class' => 'clear'
+                            )
+                        ),
+                array(
                     'saisie' => 'checkbox',
                     'options' => array(
                         'nom' => 'sejour',
                         'datas' => array('oui' => 'Séjours')
                         )
                     ),
-                array(
-                        'saisie' => 'case',
-                        'options' => array(
-                            'nom' => 'sportive_all',
-                            'label' => 'Activités sportives'
-                            )
-                        ),
                 array(
                     'saisie' => 'selection_multiple',
                     'options' => array(
