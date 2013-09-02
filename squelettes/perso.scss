@@ -165,6 +165,10 @@ img, object, embed {
                     color: #FFF;
                     font-family: PaperJohnnyEinhalbRegular;
                     font-size: pem(12);
+                    
+                    &:hover {
+                        text-decoration: none;
+                    }
                 }
             }
         }
@@ -232,11 +236,22 @@ img, object, embed {
                 width: 680px;
                 border-top: 2px solid #9c9e9f;
                 margin-left: 10px;
-                
                 padding: 30px;
-                
+
+                h3 {
+                    font-size: pem(13);
+                    font-weight: bold;
+                }
+
                 ul, ol {
-                    list-style-position: inside;
+                    list-style-position: outside;
+                    margin-left: 20px;
+                    list-style-image: url(images/puce.png);
+                    font-size: pem(13);
+                }
+
+                p {
+                    font-size: pem(13);
                 }
             }
             
@@ -652,7 +667,10 @@ img, object, embed {
         border: none;
         border-bottom: 2px solid #d7ccbf;
         text-transform: uppercase;
-        
+        font-size: pem(12);
+        max-width: 100%;
+        margin: 0;
+
         .liens {
             text-align: left;
             a {
