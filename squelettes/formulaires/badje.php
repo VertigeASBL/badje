@@ -190,6 +190,13 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                 ),
             'saisies' => array(
                 array(
+                        'saisie' => 'case',
+                        'options' => array(
+                            'nom' => 'creative_all',
+                            'label' => 'Activités créatives, ludiques et culturelles'
+                            )
+                        ),
+                array(
                     'saisie' => 'selection_multiple',
                     'options' => array(
                         'nom' => 'creative',
@@ -220,6 +227,13 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                         'datas' => array('oui' => 'Séjours')
                         )
                     ),
+                array(
+                        'saisie' => 'case',
+                        'options' => array(
+                            'nom' => 'sportive_all',
+                            'label' => 'Activités sportives'
+                            )
+                        ),
                 array(
                     'saisie' => 'selection_multiple',
                     'options' => array(
