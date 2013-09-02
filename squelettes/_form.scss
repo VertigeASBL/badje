@@ -4,6 +4,11 @@ label {
 
 // Pas de clear sur les li sinon Chosen s'affiche mal
 .formulaire_spip {
+
+    li.clear {
+        clear: both;
+    }
+
     label {
         font-size: pem(10);
     }
@@ -133,6 +138,10 @@ label {
                 width: 50%;
                 float: left;
                 
+                &.clear {
+                    clear: both;
+                }
+
                 &.editer_soutien, 
                 &.editer_multiactivite, 
                 &.editer_sejour {
@@ -144,6 +153,10 @@ label {
                 }
                 &.editer_sportive {
                     margin-right: 1px;
+
+                    &.clear {
+                        clear: both;
+                    }
                 }
             }
         }
