@@ -1,9 +1,13 @@
 // Internet Explorer 7 et 8
 .lt-ie9 {
+    
+    // Je ne sais pas pourquoi, mais en virant c'est margin là, ça marche mieux sur IE7/8 le fichier htc semble fonctionner correctement.
     .columns {
         padding: 0;
         margin: 0;
     }
+
+    // Compatibilité Orbit
     .orbit-container {
         padding: 0;
         margin: 0;
@@ -19,7 +23,11 @@
     }
 }
 
+
+// Internet Explorer 7
 .lt-ie8 {
+
+    // Comptibilité de Orbit
     .orbit-container .orbit-slides-container > * .orbit-caption {
         padding-top: 0;
         padding-bottom: 0;
