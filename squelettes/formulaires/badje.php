@@ -22,6 +22,8 @@ function get_contexte_recherche($contexte) {
     $contexte['periode'] = _request('periode');
     $contexte['creative'] = _request('creative');
     $contexte['multiactivite'] = _request('multiactivite');
+    $contexte['creative_all'] = _request('creative_all');
+    $contexte['sportive_all'] = _request('sportive_all');
     $contexte['sejour'] = _request('sejour');
     $contexte['soutien'] = _request('soutien');
     $contexte['sportive'] = _request('sportive');
@@ -367,6 +369,14 @@ function formulaires_badje_traiter_dist($retour_recherche) {
         $where[] = "tl.id_type_activite IN ($id_type_activite)";
     }
 
+    // On traite la recherche par groupe d'activité.
+    if (_request('creative_all')) {
+        $where[] = 'grl.id_groupe_activite = 1';
+    }
+    if (_request('sportive_all')) {
+        $where[] = 'grl.id_groupe_activite = 2';
+    }
+
     // On traite la case séjour
     if (_request('sejour')) {
         $where[] = "a.logement LIKE '%Séjour%'";
@@ -404,7 +414,9 @@ function formulaires_badje_traiter_dist($retour_recherche) {
         INNER JOIN spip_badje_type_activites_liens AS tl
                         ON tl.id_objet = a.id_activite AND tl.objet = 'activite'
         INNER JOIN spip_badje_type_activites AS ta 
-                        ON tl.id_type_activite = ta.id_type_activite",
+                        ON tl.id_type_activite = ta.id_type_activite
+        INNER JOIN spip_badje_groupe_activitie_liens as grl
+                        ON grl.id_objet = ta.id_type_activite AND grl.objet = 'type_activite'",
         $where, $groupby, $orderby);
 
     // On va filtrer le tableau ici
