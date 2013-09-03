@@ -141,7 +141,7 @@ label {
             li.editer {
                 display: block;
                 clear: none;
-                width: 50%;
+                width: 260px;
                 float: left;
                 
                 &.clear {
@@ -151,7 +151,7 @@ label {
                 &.editer_soutien, 
                 &.editer_multiactivite, 
                 &.editer_sejour {
-                    padding-left: 50px;
+                    padding-left: 10px;
                     float: right;
                     div.choix {
                         width: 100px;
