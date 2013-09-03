@@ -36,4 +36,16 @@
             padding-top: 10px;
         }
     }
+    .formulaire_spip {
+        // On adapte la mise en page de la partie "type d'activité" sous IE7.
+        li.fieldset_activite {
+            ul {
+                height: 200px;
+                li.editer_creative {
+                    margin-top: 0px;
+                }
+            }
+            
+        }
+    }
 }
