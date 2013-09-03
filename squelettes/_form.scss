@@ -12,6 +12,12 @@ label {
     label {
         font-size: pem(10);
     }
+
+    // Taille des select multiple. Normalement on place Chosen dessus, mais ça ne marche pas sous IE7
+    select[multiple] {
+        height: 60px;
+    }
+
     form > ul {
         display: block;
         background: #FFF;
