@@ -145,7 +145,7 @@ label {
                 &.editer_soutien, 
                 &.editer_multiactivite, 
                 &.editer_sejour {
-                    padding-left: 20px;
+                    padding-left: 50px;
                     float: right;
                     div.choix {
                         width: 100px;
@@ -157,6 +157,10 @@ label {
                     &.clear {
                         clear: both;
                     }
+                }
+
+                &.editer_creative {
+                    margin-top: -10px;
                 }
             }
         }
