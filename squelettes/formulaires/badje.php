@@ -205,6 +205,13 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                         )
                     ),
                 array(
+                    'saisie' => 'checkbox',
+                    'options' => array(
+                        'nom' => 'sejour',
+                        'datas' => array('oui' => 'Séjours')
+                        )
+                    ),
+                array(
                     'saisie' => 'selection_multiple',
                     'options' => array(
                         'nom' => 'creative',
@@ -230,19 +237,13 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                             )
                         ),
                 array(
-                    'saisie' => 'checkbox',
-                    'options' => array(
-                        'nom' => 'sejour',
-                        'datas' => array('oui' => 'Séjours')
-                        )
-                    ),
-                array(
                     'saisie' => 'selection_multiple',
                     'options' => array(
                         'nom' => 'sportive',
                         'label' => 'Activités sportives',
                         'class' => 'chosen',
-                        'datas' => $activite_sportive
+                        'datas' => $activite_sportive,
+                        'li_class' => 'clear'
                         )
                     ),
                 ),
