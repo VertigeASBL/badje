@@ -6,6 +6,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'activite_trouve' => 'Activité trouvée',
     'activites_trouves' => 'Activités trouvées',
     'aucun_resultat' => 'Aucun résultat pour ces critères.',
+    'aide_age' => 'Cette recherche permet de trouver un lieu capable d’accueillir tous vos enfants en même temps.',
+    'aide_multiactivite' => "Cette catégorie regroupe les milieux d’accueil proposant une diversité d’activités de loisirs et de disciplines (sportives, créatives, culturelles…) aux enfants qu'ils accueillent.",
+    'aide_handicap' => 'En cochant ces cases, vous avez accès à la liste des milieux d’accueil ouverts et/ou accessibles à l’accueil d’enfants en situation de handicap.
+<br />Nous attirons aussi votre attention sur le fait que tous les milieux d’accueil déclarés ouverts à l’accueil d’enfants en situation de handicap ne sont pas pour autant en mesure d’accueillir tout enfant à tout moment.',
     // B
     // C
     'commune' => 'Commune',

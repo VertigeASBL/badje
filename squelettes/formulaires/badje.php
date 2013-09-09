@@ -161,7 +161,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                             'label' => 'Mes enfants ont',
                             'class' => 'chosen',
                             'datas' => $age_list,
-                            'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
+                            'explication' => _T('aide_age')
                             )
                         )
                 )
@@ -203,7 +203,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                     'options' => array(
                         'nom' => 'multiactivite',
                         'datas' => array('oui' => 'Multiactivités'),
-                        'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
+                        'explication' => _T('aide_multiactivite')
                         )
                     ),
                 array(
@@ -256,7 +256,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
             'options' => array(
                 'nom' => 'handicap',
                 'label' => 'Handicap',
-                'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
+                'explication' => _T('aide_handicap')
                 ),
             'saisies' => array(
                 array(
