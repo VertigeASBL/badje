@@ -253,6 +253,20 @@ img, object, embed {
                 p {
                     font-size: pem(13);
                 }
+
+                table.spip {
+                    tr.row_odd {
+                        background: transparent;
+                    }
+
+                    tr.row_even {
+                        background: transparent;
+                    }
+
+                    tr td {
+                        padding: 0.5625em;
+                    }
+                }
             }
             
             h1.moteur_titre {
