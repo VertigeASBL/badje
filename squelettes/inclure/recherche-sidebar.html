@@ -33,7 +33,7 @@
                             </a>
                         </li>]
                         <li>
-                            <BOUCLE_type_activite_cadre(BADJE_TYPE_ACTIVITES){id_activite} {'-'}>
+                            <BOUCLE_type_activite_cadre(BADJE_TYPE_ACTIVITES) {id_activite} {'-'}>
                                 [(#TYPE_ACTIVITE)]
                             </BOUCLE_type_activite_cadre></li>
 
@@ -44,6 +44,38 @@
                         [<li>(#PERIODE|afficher_periode{' - '})</li>]
                     </ul>
 
+                    <ul class="pictogramme">
+                        [(#ACCESSIBILITE_HANDICAP|oui) 
+                            <li>
+                                [(#CHEMIN{images/picto_handi.png}|http_img_pack{picto, '', "L'organisme accueille des enfants en situation de handicap. Attention, ces structures n'ont pas toujours les moyens d'accueillir tous les types de handicap."})]
+                            </li>
+                        ]
+
+                        [(#ACCUEIL_HANDICAP|oui) 
+                            <li>
+                                [(#CHEMIN{images/picto_accueil_handi.png}|http_img_pack{picto, '', "L'organisme accueille des enfants à mobilité réduite."})]
+                            </li>
+                        ]
+
+                        [(#GARDERIE|oui) 
+                            <li>
+                                [(#CHEMIN{images/picto_garderie.png}|http_img_pack{picto, '', "L'organisme accueille vos enfants en dehors des heures d'activités. La garderie est surveillée par une personne qualifiée."})]
+                            </li>
+                        ]
+
+                        [(#REPAS_CHAUD|oui) 
+                            <li>
+                                [(#CHEMIN{images/picto_repas.png}|http_img_pack{picto, '', "Le repas chaud, non obligatoire, est prévu par le milieu d’accueil."})]
+                            </li>
+                        ]
+
+                        [(#ONE|oui) 
+                            <li>
+                                [(#CHEMIN{images/picto_one.png}|http_img_pack{picto, '', "L'organisme est agréé Centre de vacances par la Communauté française, sous l'égide de l'Office de la Naissance et de l'Enfance."})]
+                            </li>
+                        ]
+
+                    </ul>
                     
                 </div>
             </BOUCLE_orga>
