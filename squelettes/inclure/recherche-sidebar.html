@@ -33,10 +33,8 @@
                             </a>
                         </li>]
                         <li>
-                            <BOUCLE_type_activite_cadre(BADJE_TYPE_ACTIVITES){id_activite}>
-                                [[(#COMPTEUR_BOUCLE|!={1}|oui)-] 
-                                    (#TYPE_ACTIVITE)
-                                ]
+                            <BOUCLE_type_activite_cadre(BADJE_TYPE_ACTIVITES){id_activite} {'-'}>
+                                [(#TYPE_ACTIVITE)]
                             </BOUCLE_type_activite_cadre></li>
 
                         [<li class="description">(#DESCRIPTIF)</li>]
