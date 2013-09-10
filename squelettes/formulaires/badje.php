@@ -64,7 +64,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
     *   On va créer un tableau code postal => commune.code_postal à passer dans le datas du champ lieux.
     *   Les recherches ce feront ainsi sur le code postal qui est une donnée plus fiable que le nom de la commune.
     */
-    $commune = array('all' => 'Toutes les communes');
+    $commune = array();
     /*
         TODO: Commenue par order alphabètique et mettre (bxl ville sur haren, laeken et neder)
     */
@@ -75,6 +75,12 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
     foreach ($organisme_commune as $key => $value) {
         $commune[$value['code_postal']] = $value['commune'].' '.$value['code_postal'];
     }
+
+    // Trier le tableau par ordre alpha
+    asort($commune);
+
+    // On ajoute la ligne 'tout les communes' à qui on a éparger le asort.
+    $commune = array_merge(array('all' => _T('all_commune')), $commune);
 
     // Liste des ages pour les enfants.
     $age_list = array(
