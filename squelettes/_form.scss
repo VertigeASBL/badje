@@ -241,6 +241,21 @@ td.admin {
 
 .admin_menu {
     text-align: right;
+    
+    ul.export_admin {
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        
+        li {
+            width: 200px;
+            
+            select {
+                height: 30px;
+            }
+        }
+
+    }
     form {
         display: inline-block;
         margin: 0;

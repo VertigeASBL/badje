@@ -17,7 +17,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'deconnexion' => 'Déconnexion',
     // E
     'explication_type_activite' => 'Choisissé un ou plusieurs type d\'activité',
-    'export' => 'Exporter les organismes',
+    'export' => 'Exporter les activités.',
     // G
     'general' => 'Général',
     // L

@@ -1,4 +1,11 @@
 <form action="#ENV{action}" method="post">
     #ACTION_FORMULAIRE{#ENV{action}}
+    <ul class="export_admin">
+        [(#SAISIE{
+            selection,
+            commune_export,
+            datas=#ENV{commune}})]
+    </ul>
+    
     <input type="submit" class="button small radius" value="<:ATL:export:>" />
 </form>
