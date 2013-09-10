@@ -48,7 +48,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
             'options' => array(
                 'nom' => 'Recherche_libre', 
                 'label' => 'Recherche Libre',
-                'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
+                'explication' => _T('aide_recherche_libre')
                 ),
             'saisies' => array(
                 array('saisie' =>'input',
@@ -71,7 +71,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
     // On récupère les donnée de la base de donnée des organiseme
     $organisme_commune = sql_allfetsel('code_postal, commune', 'spip_badje_activites', '', 'code_postal');
     
-    // On boucle sur le retour de base de donnée pour l'ajouter à notre trableau
+    // On boucle sur le retour de base de donnée pour l'ajouter à notre tableau
     foreach ($organisme_commune as $key => $value) {
         $commune[$value['code_postal']] = $value['commune'].' '.$value['code_postal'];
     }
