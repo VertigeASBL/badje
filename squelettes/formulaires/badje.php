@@ -10,6 +10,21 @@
 include_spip('base/abstract_sql');
 include_spip('inc/session');
 
+/*
+*   Fonction à Michel pour faire un array_merge qui ressemble à un array_merge
+*/
+function fusionner_tableaux ($a, $b) {
+    foreach ($b as $key => $el) {
+        if ((gettype($a[$key]) == 'array')
+            && (gettype($el)      == 'array')) {
+            $a[$key] = fusionner_tableaux($a[$key], $el);
+        } else {
+            $a[$key] = $el;
+        }
+    }
+    
+    return $a;
+}
 
 /*
 *   une fonction pour récupérer facilement le contexte de la recherche.
@@ -78,10 +93,10 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
 
     // Trier le tableau par ordre alpha
     asort($commune);
-
+    
     // On ajoute la ligne 'tout les communes' à qui on a éparger le asort.
-    $commune = array_merge(array('all' => _T('all_commune')), $commune);
-
+    $commune = fusionner_tableaux(array('all' => _T('all_commune')), $commune);
+    
     // Liste des ages pour les enfants.
     $age_list = array(
         1.5 => '1,5 ans',
