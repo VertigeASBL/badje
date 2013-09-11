@@ -38,7 +38,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
     'type' => 'Type',
     'tri' => 'Trié par',
     'tri_commune' => 'trier par commune.',
-    'all_commune' => 'Toutes les communes'
+    'all_commune' => 'Toutes les communes.'
     // U
     // V
     // W
