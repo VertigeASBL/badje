@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
         $(this).empty();
 
         // On place la class des tooltip de foundation.
-        $(this).addClass('has-tip tip-right');
+        $(this).addClass('has-tip tip-bottom');
 
         // Maintenant on ajoute les attributs.
         $(this).attr({
