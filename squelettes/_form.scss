@@ -26,6 +26,7 @@ label {
         margin-bottom: 0px;
         border-bottom: 2px solid #d7ccbf;
     }
+
     ul { 
         line-height: 1;
         li {
@@ -350,4 +351,9 @@ td.admin {
         clear: none;
         float: left;
     }
+}
+
+.page_contact .formulaire_spip label {
+    font-size: 100%;
+    margin-top: 10px;
 }
