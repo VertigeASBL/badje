@@ -3,7 +3,7 @@
     <h3><span>#NOM</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
     <div class="cadre-recherche">
         <ul>
-            <li class="bold">#ADRESSE</li>
+            [<li class="bold">(#ADRESSE|propre)</li>]
             <li class="bold">#CODE_POSTAL #COMMUNE</li>
             
             <BOUCLE_organisme_cadre(BADJE_ORGANISMES){id_activite}>
@@ -11,7 +11,7 @@
             </BOUCLE_organisme_cadre>
             
             <li>[(#PERIODE|afficher_periode{' - '})]</li>
-            <li>de #AGE_MIN à #AGE_MAX | #PRIX</li>
+            <li>de #AGE_MIN à #AGE_MAX ans | #PRIX</li>
         </ul>
         
         <a href="[(#SELF|parametre_url{id_activite, #ID_ACTIVITE})]" title="[(#NOM_ORGANISME|attribut_html)]" class="plus_detail">[(#CHEMIN{images/plus_detail.png}|balise_img{plus de détails, plus_detail})]<:detail:></a>
