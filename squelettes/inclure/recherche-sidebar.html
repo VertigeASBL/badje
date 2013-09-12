@@ -23,7 +23,7 @@
                 <h3><span>#NOM_ORGANISME</span> [(#FORMULAIRE_CADI{#ID_ACTIVITE})]</h3>
                 <div class="cadre_mode_emplois">
                     <ul>
-                        <li class="bold">[(#_activite_info:ADRESSE|ucfirst)]</li>
+                        <li class="bold">[(#_activite_info:ADRESSE|ucfirst|propre)]</li>
                         <li class="bold">#_activite_info:CODE_POSTAL #_activite_info:COMMUNE</li>
                         <li class="bold">#TELEPHONE [/ (#GSM)] [/ (#FAX)]</li>
                         [<li>(#EMAIL)</li>]
