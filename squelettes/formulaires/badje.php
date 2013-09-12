@@ -69,7 +69,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                 array('saisie' =>'input',
                     'options' => array(
                         'nom' => 'recherche', 
-                        'placeholder' => 'effectuer un recherche')
+                        'placeholder' => 'Effectuer un recherche')
                 )
             )
         )
@@ -105,7 +105,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
         );
     // maintenant ça suffit, on boucle pour ajouter les autres nombre
     $i = 3;
-    while ($i <= 12) {
+    while ($i <= 18) {
         $age_list[$i] = $i.' ans';
         $i++;
     }
@@ -143,7 +143,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
         'spip_badje_type_activites AS type
         INNER JOIN spip_badje_groupe_activitie_liens AS L ON L.id_objet = type.id_type_activite
         INNER JOIN spip_badje_groupe_activitie AS groupe ON L.id_groupe_activite = groupe.id_groupe_activite', 
-        'L.objet='.sql_quote('type_activite').' AND groupe.id_groupe_activite=1');
+        'L.objet='.sql_quote('type_activite').' AND groupe.id_groupe_activite=2');
     foreach ($activite_sportive_sql as $key => $value) {
         $activite_sportive[$value['id_type_activite']] = $value['type_activite'];
     }
@@ -156,7 +156,6 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
             'options' => array(
                 'nom' => 'code_postal', 
                 'label' => 'Lieux',
-                'explication' => 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Donec sed odio dui.'
                 ),
             'saisies' => array(
                 array('saisie' => 'checkbox',
@@ -238,7 +237,6 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                     'saisie' => 'selection_multiple',
                     'options' => array(
                         'nom' => 'creative',
-                        'label' => 'Activités créatives, ludiques et culturelles',
                         'class' => 'chosen',
                         'li_class' => 'clear',
                         'datas' => $activite_creative
@@ -263,7 +261,6 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                     'saisie' => 'selection_multiple',
                     'options' => array(
                         'nom' => 'sportive',
-                        'label' => 'Activités sportives',
                         'class' => 'chosen',
                         'datas' => $activite_sportive,
                         'li_class' => 'clear'
