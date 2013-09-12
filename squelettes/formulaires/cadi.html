@@ -10,3 +10,17 @@
     </form>
     </div>
 ]
+
+[(#ENV{in_cadi}|oui)
+    <div class="formulaire_spip formulaire_#FORM ajax">
+
+    [<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+    [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+
+    <form action="#ENV{action}" method="post">
+        #ACTION_FORMULAIRE{#ENV{action}}
+        <input type="hidden" name="delete" value="delete">
+        <input type="submit" class="delete" value="" />
+    </form>
+    </div>
+]

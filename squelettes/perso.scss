@@ -380,8 +380,13 @@ img, object, embed {
                         top: 8px;
                         right: 30px;
 
-                        input {
+                        input.submit {
                             background: url(images/cadi.png) no-repeat center;
+                            border: none;
+                        }
+
+                        input.delete {
+                            background: url(images/supprimer_cadi.png) no-repeat center;
                             border: none;
                         }
                     }
