@@ -21,6 +21,11 @@ body {
 // Classe général pour mettre en bold.
 .bold {
     font-weight: bold;
+    
+    p {
+        margin-bottom: 0;
+        font-weight: inherit;
+    }
 }
 
 // On va créer tout un jeu de couleur pour le menu
@@ -359,6 +364,8 @@ img, object, embed {
                     padding-right: 56px;
                     
                     position: relative;
+
+                    text-transform: none;
                     
                     span {
                         width: 560px;
@@ -629,7 +636,7 @@ img, object, embed {
                         margin-bottom: 15px;
                     }
                     
-                    p {
+                    .description p {
                         font-size: pem(13);
                     }
                     
@@ -759,6 +766,9 @@ img, object, embed {
 
 // Orbit badje
 @import "orbit";
+
+// Tooltips Badje
+@import "tooltips";
 
 // Fix pour internet Explorer
 @import "ie-fix";
