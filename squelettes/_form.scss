@@ -357,3 +357,19 @@ td.admin {
     font-size: 100%;
     margin-top: 10px;
 }
+
+.page_login, .page_admin {
+    .formulaire_spip label {
+        font-size: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    form > ul {
+        border: none;
+        
+        li {
+            list-style: none;
+        }
+    }
+}
