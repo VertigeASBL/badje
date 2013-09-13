@@ -4,6 +4,8 @@
 [(#ENV{url}|=={''}|?{#SET{prive,' '}})]
 [(#ENV{url}|match{^#EVAL{_DIR_RESTREINT_ABS}}|?{#SET{prive,' '}})]
 
-<div class="contenu-principal">
+<h1><span><:form_forum_identifiants:></span></h1>
+
+<div class="texte-principal">
 	[(#FORMULAIRE_LOGIN{#URL_PAGE{admin}})]
 </div>
