@@ -86,6 +86,8 @@ function formulaires_editer_activite_charger_dist($id_activite='new', $retour=''
  *     Tableau des erreurs
  */
 function formulaires_editer_activite_verifier_dist($id_activite='new', $retour='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
+
+    implode_champs();
 	return formulaires_editer_objet_verifier('activite',$id_activite, array('nom'));
 }
 
@@ -112,6 +114,7 @@ function formulaires_editer_activite_verifier_dist($id_activite='new', $retour='
  *     Retours des traitements
  */
 function formulaires_editer_activite_traiter_dist($id_activite='new', $retour='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
+
 	return formulaires_editer_objet_traiter('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
 }
 
