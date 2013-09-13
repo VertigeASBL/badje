@@ -414,7 +414,7 @@ function formulaires_badje_traiter_dist($retour_recherche) {
     // Fonction de tri, par défaut on trie sur les communes
     if (_request('tri') == 'type') {
         $orderby = 'ta.id_type_activite';
-        $groupby = '';
+        $groupby = 'ta.id_type_activite';
     }
     else {
         $orderby = 'a.commune, o.id_organisme';
@@ -423,7 +423,7 @@ function formulaires_badje_traiter_dist($retour_recherche) {
 
     // On va chercher la liste des activités qui corresponde à la recherche
     $badje_recherche = sql_allfetsel(
-        'a.id_activite, a.periode, a.commune, ta.type_activite', 
+        'a.id_activite, a.periode, a.commune, ta.type_activite, ta.id_type_activite', 
         "spip_badje_activites AS a
         INNER JOIN spip_badje_organismes_liens AS l 
                         ON l.id_objet = a.id_activite AND l.objet = 'activite'
