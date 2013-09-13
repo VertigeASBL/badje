@@ -52,7 +52,7 @@ function formulaires_exporter_organisme_traiter_dist() {
     // On va chercher la fonction de création de fichier CSV
     $exporter_csv = charger_fonction('exporter_csv', 'inc/', true);
     // On crée le fichier CSV
-    echo $exporter_csv('export_activite_'._request('commune_export'), $csv);
+    echo $exporter_csv('export_activite_'._request('commune_export'), $csv, ';');
     // On arrête tout, le fichier est envoyé a l'utilisateur.
     exit();
 
