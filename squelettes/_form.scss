@@ -227,9 +227,13 @@ label {
 }
 
 td.admin {
-    width: 60px;
+    width: 80px;
     a, input {
         float: left;
+        margin-right: 5px;
+    }
+    input {
+        margin-top: 5px;
     }
 }
 
@@ -339,9 +343,7 @@ td.admin {
         clear: none;
         float: left;
     }
-    .saisie_checkbox label {
-        font-size: 1.1em;
-    }
+    
     .editer_logement,
     .editer_garderie,
     .editer_repas_chaud {
