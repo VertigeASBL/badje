@@ -13,9 +13,17 @@
             [(#REM) Menu du site. ]
             <INCLURE{fond=inclure/menu-principal, env}>
 
-            [<div class="facebook">
-                (#CHEMIN{images/facebook.png}|balise_img{facebook, facebook_img})
-            </div>]
+            <div class="facebook">
+                <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+                    <div class="fb-like" data-width="450" data-layout="box_count" data-action="recommend" data-show-faces="true" data-send="true"></div>
+            </div>
         </div>
     </div>
     
