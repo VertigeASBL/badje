@@ -171,7 +171,8 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
             'saisie' => 'fieldset',
             'options' => array(
                 'nom' => 'ages',
-                'label' => 'Âges'
+                'label' => 'Âges',
+                'explication' => _T('aide_age')
                 ),
             'saisies' => array(
                     array(
@@ -180,8 +181,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                             'nom' => 'ages',
                             'label' => 'Mes enfants ont',
                             'class' => 'chosen',
-                            'datas' => $age_list,
-                            'explication' => _T('aide_age')
+                            'datas' => $age_list
                             )
                         )
                 )
