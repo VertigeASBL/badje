@@ -41,7 +41,6 @@
       $(this.scope)
         .on('click.fndtn.dropdown', '[data-dropdown]', function (e) {
           var settings = $.extend({}, self.settings, self.data_options($(this)));
-          e.preventDefault();
 
           if (!settings.is_hover) self.toggle($(this));
         })
