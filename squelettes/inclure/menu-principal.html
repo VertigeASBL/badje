@@ -11,7 +11,7 @@
         <B_sous_menu>
         <ul id="#GET{drop}" class="f-dropdown content" data-dropdown-content>
             <li class="fleche"></li>
-            <BOUCLE_sous_menu(ARTICLES){id_rubrique}>
+            <BOUCLE_sous_menu(ARTICLES){id_rubrique} {par num titre}>
                 <li><a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]">#TITRE</a></li>
             </BOUCLE_sous_menu>
         </ul>
