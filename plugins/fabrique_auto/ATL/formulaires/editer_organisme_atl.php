@@ -128,7 +128,13 @@ function formulaires_editer_organisme_atl_traiter_dist($id_organisme='new', $ret
     
     // On publie tout de suite l'organisme
     include_spip('action/editer_objet');
+
+    // donner une autorisation exceptionnelle temporaire
+    autoriser_exception('instituer', 'organisme', $res['id_organisme']);
+    // Publier l'organisme
     objet_instituer('organisme', $res['id_organisme'], array('statut' => 'publie'));
+    // retirer l'autorisation exceptionnelle
+    autoriser_exception('instituer', 'organisme', $res['id_organisme'], false);
 
 	// Un lien a prendre en compte ?
 	if ($associer_objet AND $id_organisme = $res['id_organisme']) {
