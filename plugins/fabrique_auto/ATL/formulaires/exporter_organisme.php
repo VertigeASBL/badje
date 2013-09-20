@@ -71,7 +71,8 @@ function formulaires_exporter_organisme_traiter_dist() {
         foreach ($activite as $cle => $valeur) {
             $type_activite .= $valeur['type_activite'].', ';
         }
-        spip_log($type_activite, 'type');
+
+        // On ajoute les types d'activités à la ligne.
         $data[$key]['type_activite'] = $type_activite;
     }
 
