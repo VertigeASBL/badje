@@ -18,11 +18,19 @@ function formulaires_supprimer_objet_traiter_dist($id_objet, $objet) {
     
     // On place l'élément à la poubelle.
     include_spip('action/editer_objet');
+    include_spip('inc/autoriser');
+
+    // donner une autorisation exceptionnelle temporaire
+    autoriser_exception('instituer', $objet, $id_objet);
+    // Publier l'organisme
     objet_instituer($objet, $id_objet, array('statut' => 'poubelle'));
+    // retirer l'autorisation exceptionnelle
+    autoriser_exception('instituer', $objet, $id_objet, false);
     
     /* message */
     return array(
-            'editable' => true
+            'editable' => true,
+            'redirect' => self().'#panel2'
     );
 }
 ?>
