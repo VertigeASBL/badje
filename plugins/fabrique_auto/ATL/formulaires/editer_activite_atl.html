@@ -2,7 +2,6 @@
 	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
 	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
 
-	
 	<form method='post' action='#ENV{action}'><div>
 		#ACTION_FORMULAIRE{#ENV{action}}
 		<input type='hidden' name='id_activite' value='#ENV{id_activite}' />
@@ -30,13 +29,13 @@
 				label=<:activite:label_adresse:>,
                 placeholder=<:activite:label_adresse:>})]
 
-			[(#SAISIE{input, commune,
-				label=<:activite:label_commune:>,
-                placeholder=<:activite:label_commune:>})]
-
 			[(#SAISIE{input, code_postal,
 				label=<:activite:label_code_postal:>,
                 placeholder=<:activite:label_code_postal:>})]
+
+            [(#SAISIE{input, commune,
+                label=<:activite:label_commune:>,
+                placeholder=<:activite:label_commune:>})]
 
 			[(#SAISIE{input, prix,
 				label=<:activite:label_prix:>,
