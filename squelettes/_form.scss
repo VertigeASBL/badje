@@ -316,6 +316,7 @@ td.admin {
     }
 }
 
+// Formulaire d'ajout d'activité
 .formulaire_editer_activite_atl {
     #champ_descriptif {
         height: 250px;
@@ -352,6 +353,20 @@ td.admin {
         margin-right: 10px;
         clear: none;
         float: left;
+    }
+    
+    .editer {
+        margin-top: 40px;
+        &> label {
+            font-size: pem(14);
+        }
+    }
+
+    .editer_type_activite {
+        margin-bottom: 20px;
+        #champ_type_activite {
+            width: 400px;
+        }
     }
 }
 
