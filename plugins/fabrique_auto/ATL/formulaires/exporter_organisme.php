@@ -49,9 +49,16 @@ function formulaires_exporter_organisme_traiter_dist() {
     // on ajoute les donnée des activité au fichier csv.
     $csv = array_merge($csv, $data);
 
+    // On va remplacer le symbole € par un E.
+    function replace_euro($str) {
+        return str_replace('€', 'E', $str);
+    }
+    $csv = array_map('replace_euro', $csv);
+
     // On va chercher la fonction de création de fichier CSV
     $exporter_csv = charger_fonction('exporter_csv', 'inc/', true);
     // On crée le fichier CSV
+
     echo $exporter_csv('export_activite_'._request('commune_export'), $csv, 'TAB');
     // On arrête tout, le fichier est envoyé a l'utilisateur.
     exit();
