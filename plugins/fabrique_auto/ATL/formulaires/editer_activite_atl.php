@@ -132,6 +132,13 @@ function formulaires_editer_activite_atl_traiter_dist($id_activite='new', $retou
         array('activite' => $res['id_activite'])
         );
 
+    // donner une autorisation exceptionnelle temporaire
+    autoriser_exception('instituer', 'activite', $res['id_activite']);
+    // Publier l'activite
+    objet_instituer('activite', $res['id_activite'], array('statut' => 'publie'));
+    // retirer l'autorisation exceptionnelle
+    autoriser_exception('instituer', 'activite', $res['id_activite'], false);
+
     return $res;
 }
 
