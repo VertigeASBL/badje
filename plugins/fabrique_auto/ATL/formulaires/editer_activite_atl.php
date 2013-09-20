@@ -132,12 +132,14 @@ function formulaires_editer_activite_atl_traiter_dist($id_activite='new', $retou
         array('activite' => $res['id_activite'])
         );
 
-    // donner une autorisation exceptionnelle temporaire
+    // Donner une autorisation exceptionnelle temporaire
     autoriser_exception('instituer', 'activite', $res['id_activite']);
     // Publier l'activite
     objet_instituer('activite', $res['id_activite'], array('statut' => 'publie'));
-    // retirer l'autorisation exceptionnelle
+    // Retirer l'autorisation exceptionnelle
     autoriser_exception('instituer', 'activite', $res['id_activite'], false);
+
+    $res['redirect'] = generer_url_public('editer_organisme', 'id_organisme=303#panel2');
 
     return $res;
 }
