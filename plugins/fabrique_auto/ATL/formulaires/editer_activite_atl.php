@@ -119,7 +119,8 @@ function formulaires_editer_activite_atl_traiter_dist($id_activite='new', $retou
 	
     // On traite le fomulaire et dans le res on récupère l'id_activité
     $res = formulaires_editer_objet_traiter('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
-
+    
+    include_spip('action/editer_liens.php');
     // On va lier l'organisme
     objet_associer(
         array('organisme' => _request('id_organisme')), 
