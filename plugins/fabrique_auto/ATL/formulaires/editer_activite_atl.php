@@ -13,6 +13,7 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 
 include_spip('inc/actions');
 include_spip('inc/editer');
+include_spip('action/editer_liens');
 
 /**
  * Identifier le formulaire en faisant abstraction des paramètres qui ne représentent pas l'objet edité
@@ -60,6 +61,22 @@ function formulaires_editer_activite_identifier_dist($id_activite='new', $retour
  */
 function formulaires_editer_activite_atl_charger_dist($id_activite='new', $retour='', $lier_trad=0, $config_fonc='', $row=array(), $hidden=''){
 	$valeurs = formulaires_editer_objet_charger('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
+    
+    // Si ce n'est pas un nouvel enregistrement on a besoin de sortir la liste des types d'activité.
+    if ($id_activite != 'new') {
+        $types_activites = sql_allfetsel(
+            'ta.id_type_activite', 
+            'spip_badje_type_activites AS ta
+            INNER JOIN spip_badje_type_activites_liens AS L
+                ON ta.id_type_activite = L.id_type_activite',
+                'L.id_objet='.sql_quote($id_activite).' AND objet='.sql_quote('activite')
+            );
+        
+        // On reformate pour n'avoir qu'un seul niveau de tableau contenant les ID_TYPE_ACTIVITE
+        foreach($types_activites as $type_activite)
+            $valeurs['type_activite'][] = $type_activite['id_type_activite'];
+    }
+
 	return $valeurs;
 }
 
@@ -120,7 +137,6 @@ function formulaires_editer_activite_atl_traiter_dist($id_activite='new', $retou
     // On traite le fomulaire et dans le res on récupère l'id_activité
     $res = formulaires_editer_objet_traiter('activite',$id_activite,'',$lier_trad,$retour,$config_fonc,$row,$hidden);
     
-    include_spip('action/editer_liens.php');
     // On va lier l'organisme
     objet_associer(
         array('organisme' => _request('id_organisme')), 
@@ -140,7 +156,7 @@ function formulaires_editer_activite_atl_traiter_dist($id_activite='new', $retou
     // Retirer l'autorisation exceptionnelle
     autoriser_exception('instituer', 'activite', $res['id_activite'], false);
 
-    $res['redirect'] = generer_url_public('editer_organisme', 'id_organisme=303#panel2');
+    $res['redirect'] = generer_url_public('editer_organisme', 'id_organisme='._request('id_organisme').'#panel2');
 
     return $res;
 }
