@@ -69,7 +69,7 @@ function formulaires_badje_charger_dist($retour_recherche = null) {
                 array('saisie' =>'input',
                     'options' => array(
                         'nom' => 'recherche', 
-                        'placeholder' => 'Effectuer un recherche')
+                        'placeholder' => 'Effectuez un recherche')
                 )
             )
         )
