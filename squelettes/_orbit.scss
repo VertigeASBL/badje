@@ -29,11 +29,13 @@
 
     p {
         font-size: pem(10);
+        margin-bottom: 0;
 
         &.pediode {
             font-weight: bold;
         }
         &.descriptif {
+
             margin-bottom: 5px;
         }
     }
