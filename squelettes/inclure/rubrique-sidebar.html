@@ -1,14 +1,22 @@
+[(#SET{couleur, #ARRAY{
+                    2,vert,
+                    3,turquoise,
+                    4,rouge,
+                    5,bleu,
+                    6,orange,
+                    7,brun}})]
+
 [(#REM) Ce fichier contine la sidebar en cas de rubrique ]
 <B_Menu_rubrique>
 
-[(#REM) On va chercher le titre de la rubrique ]
+[(#REM) On va chercher le titre de la rubrique et ça couleur ]
 <BOUCLE_titre_rub(RUBRIQUES){id_rubrique}>
-    <h2 class="turquoise"><span>#TITRE</span></h2>
+    <h2 class="[(#GET{couleur}|table_valeur{#ID_RUBRIQUE}|sinon{turquoise})]"><span>#TITRE</span></h2>
 </BOUCLE_titre_rub>
 
 <ul id="article-rub">
     <BOUCLE_Menu_rubrique(ARTICLES){id_rubrique} {par num titre}>
-        [<li[ class="(#EXPOSE)"]><a href="#URL_ARTICLE" titele="#TITRE">(#TITRE)</a></li>]
+        [<li class="#EXPOSE [(#GET{couleur}|table_valeur{#ID_RUBRIQUE}|sinon{turquoise})]"><a href="#URL_ARTICLE" title="#TITRE">(#TITRE)</a></li>]
     </BOUCLE_Menu_rubrique>
 </ul>
 </B_Menu_rubrique>

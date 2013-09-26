@@ -1,11 +1,18 @@
-<!-- TODO: Afficher les sous-menus -->
+[(#SET{couleur, #ARRAY{
+                    2,vert,
+                    3,turquoise,
+                    4,rouge,
+                    5,bleu,
+                    6,orange,
+                    7,brun}})]
+
 [(#REM) Menu principal du site ]
 <B_menu_principal>
 <ul class="menu-principal">
     <BOUCLE_menu_principal(RUBRIQUES){id_parent = 1}>
 
     #SET{drop, drop#COMPTEUR_BOUCLE}
-    <li class="[(#COMPTEUR_BOUCLE|alterner{vert, turquoise, rouge, bleu, orange, brun})]">
+    <li class="[(#GET{couleur}|table_valeur{#ID_RUBRIQUE}|sinon{turquoise})]">
         [<a href="#URL_RUBRIQUE" title="[(#TITRE|attribut_html)]" data-dropdown="#GET{drop}">(#TITRE)</a>]
         [(#REM) sous menu, on affiche les articles ]
         <B_sous_menu>

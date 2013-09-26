@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin:0;
     text-transform: uppercase;
     font-family: Helvetica;
-}
+} 
 
 body {
     background: #f8f0d1 url(images/main.png) no-repeat top center;
@@ -29,6 +29,13 @@ body {
     }
 }
 
+li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: 5px;
+}
+
 // On va créer tout un jeu de couleur pour le menu
 .vert {
     background: #adb451;
@@ -43,6 +50,7 @@ body {
         top: 15px;
     }
 }
+
 .turquoise {
     background: #00ada9;
     
@@ -56,6 +64,7 @@ body {
         top: 15px;
     }
 }
+
 .rouge {
     background: #a80231;
     .f-dropdown .fleche {
@@ -81,7 +90,7 @@ body {
         top: 15px;
     }
 }
-.orange {
+.orange { 
     background: #ee8016;
     .f-dropdown .fleche {
         position: absolute;
@@ -555,24 +564,74 @@ img, object, embed {
                     margin-left: 12px;
                     margin-top: 1px;
                     padding-left: 30px;
-                    background: #97d5d4;
                     width: 238px;
                     height: 28px;
-                    
-                    &.on {
-                        font-weight: normal;
-                        background: #00ada9;
-                    }
-
-                    &:hover {
-                        background: #00ada9;
-                    }
 
                     a {
                         text-transform: uppercase;
                         color: #FFF;
                         font-size: pem(12);
                         font-family: PaperJohnnyEinhalbRegular;
+                    }
+                    
+                    &.vert {
+                        background: #add551;
+                        &:hover {
+                            background: #adb451;
+                        }
+                        &.on {
+                            background: #adb451;
+                        }
+                    }
+
+                    &.turquoise {
+                        background: #97d5d4;
+                        &:hover {
+                            background: #00ada9;
+                        }
+                        &.on {
+                            background: #00ada9;
+                        }
+                    }
+
+                    &.rouge {
+                        background: #bc1e23;
+                        &:hover {
+                            background: #a80231;
+                        }
+                        &.on {
+                            background: #a80231;
+                        }
+                    }
+
+                    &.bleu {
+                        background: #69b6ab;
+                        &:hover {
+                            background: #6983ab;
+                        }
+                        &.on {
+                            background: #6983ab;
+                        }
+                    }
+
+                    &.orange {
+                        background: #eeaf60;
+                        &:hover {
+                            background: #ee8016;
+                        }
+                        &.on {
+                            background: #ee8016;
+                        }
+                    }
+
+                    &.brun {
+                        background: #b19b73;
+                        &:hover {
+                            background: #716750;
+                        }
+                        &.on {
+                            background: #716750;
+                        }
                     }
                 }
             }
